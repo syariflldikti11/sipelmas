@@ -12,8 +12,10 @@
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url(); ?>assetsadmin/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assetsadmin/css/ruang-admin.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 
 <body id="page-top">
@@ -30,7 +32,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url('admin/index'); ?>">
           <i class="fas fa-fw fa-home"></i>
-          <span>Halaman Utama</span></a>
+          <span>Dashboard</span></a>
       </li>
 
       <hr class="sidebar-divider">
@@ -61,11 +63,11 @@
         <a class="nav-link collapsed" href="<?php echo base_url(); ?>assetsadmin/#" data-toggle="collapse" data-target="#collapseBootstrap"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-file"></i>
-          <span>Permohonan Surat </span>
+          <span>Pelayanan </span>
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Permohonan Surat</h6>
+            <h6 class="collapse-header">Pelayanan</h6>
             <a class="collapse-item" href="<?php echo base_url('admin/surat_domisili'); ?>">Surat Domisili</a>
             <a class="collapse-item" href="<?php echo base_url('admin/surat_usaha'); ?>">Surat Usaha</a>
             <a class="collapse-item" href="<?php echo base_url('admin/surat_kehilangan'); ?>">Surat Kehilangan</a>
@@ -146,32 +148,7 @@
           <ul class="navbar-nav ml-auto">
            
             
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>assetsadmin/#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <span class="badge badge-warning badge-counter"><?php echo $hitung_pengaduan; ?></span>
-              </a>
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                Pengaduan
-                </h6>
-                 <?php 
-                                        $no=1;
-                                        foreach ($dt_pengaduan_baru as $d): ?>
-                <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url(); ?>assetsadmin/#">
-                 
-                  <div class="font-weight-bold">
-                    <div class="text-truncate"><?php echo $d['mengadu']; ?></div>
-                    <div class="small text-gray-500"><?php echo $d['nama']; ?>-<?php echo $d['tgl_pengaduan']; ?></div>
-                  </div>
-                </a>
-                <?php endforeach; ?>
-                
-                <a class="dropdown-item text-center small text-gray-500" href="<?php echo base_url('admin/pengaduan'); ?>">Lihat Selengkapnya</a>
-              </div>
-            </li>
+           
            
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
@@ -356,7 +333,21 @@
   <script src="<?php echo base_url(); ?>assetsadmin/js/demo/chart-area-demo.js"></script>  
    <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+  <script type="text/javascript">
+
+
+    <?php if ($this->session->flashdata('success')) { ?>
+      toastr.success("<?php echo $this->session->flashdata('success'); ?>");
+    <?php } else if ($this->session->flashdata('delete')) { ?>
+        toastr.error("<?php echo $this->session->flashdata('delete'); ?>");
+    <?php } else if ($this->session->flashdata('update')) { ?>
+          toastr.info("<?php echo $this->session->flashdata('update'); ?>");
+    <?php } ?>
+
+
+  </script>
   <!-- Page level custom scripts -->
   <script>
     $(document).ready(function () {
