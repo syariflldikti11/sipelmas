@@ -21,7 +21,188 @@ class Admin extends CI_Controller
 			redirect($url);
 		}
 	}
+function surat_masuk()
+    {
+        $data = array(
+            'judul' => 'Data Surat Masuk',
+            'menu' => 'Manajemen Surat',
+            'sub_menu' => 'Surat Masuk',
+            'dt_surat_masuk' => $this->umum->get_data('surat_masuk'),
+        );
+        $this->template->load('admin/template', 'admin/surat_masuk', $data);
+    }
+function tambah_surat_masuk()
+	{
 
+	
+		$this->template->load('admin/template', 'admin/tambah_surat_masuk');
+	}
+	function edit_surat_masuk($id = NULL)
+	{
+
+		 $data['d'] = $this->umum->ambil_data('surat_masuk', 'id_surat_masuk', $id);
+		$this->template->load('admin/template', 'admin/update_surat_masuk', $data);
+	}
+    function simpan_surat_masuk()
+    {
+        $this->db->set('id_surat_masuk', 'UUID()', FALSE);
+        $no_surat = $this->input->post('no_surat');
+        $perihal = $this->input->post('perihal');
+        $pengirim = $this->input->post('pengirim');
+        $tgl_surat = $this->input->post('tgl_surat');
+        $tgl_diterima = $this->input->post('tgl_diterima');
+        $file = $this->uploadSurat();
+        $data = array(
+            'no_surat' => $no_surat,
+            'perihal' => $perihal,
+            'pengirim' => $pengirim,
+            'tgl_surat' => $tgl_surat,
+            'tgl_diterima' => $tgl_diterima,
+            'file' => $file
+        );
+
+        $this->umum->input_data($data, 'surat_masuk');
+        $notif = "Surat Masuk Berhasil Ditambahkan";
+        $this->session->set_flashdata('success', $notif);
+        redirect('admin/surat_masuk');
+
+    }
+    function update_surat_masuk(){
+        $id_surat_masuk = $this->input->post('id_surat_masuk');
+        $no_surat = $this->input->post('no_surat');
+        $perihal = $this->input->post('perihal');
+        $pengirim = $this->input->post('pengirim');
+        $tgl_surat = $this->input->post('tgl_surat');
+        $tgl_diterima = $this->input->post('tgl_diterima');
+        $old = $this->input->post('old_file');
+            
+            if (!empty($_FILES["file"]["name"])) {
+                  $file = $this->uploadSurat();
+                  unlink("./upload/$old");
+                } else {
+                    $file = $old;
+                }
+            $data_update = array(
+                'id_surat_masuk' => $id_surat_masuk,
+                 'no_surat' => $no_surat,
+            'perihal' => $perihal,
+            'pengirim' => $pengirim,
+            'tgl_surat' => $tgl_surat,
+            'tgl_diterima' => $tgl_diterima,
+                'file' => $file
+                );
+                $where = array('id_surat_masuk' => $id_surat_masuk);
+                $res = $this->umum->UpdateData('surat_masuk', $data_update, $where);
+                if($res>=1){
+                   
+                    $notif = "Update Surat Masuk Berhasil ";
+                    $this->session->set_flashdata('update', $notif);
+                    redirect('admin/surat_masuk');
+                }else{
+                    echo "<h1>GAGAL</h1>";
+                }
+            }
+    function delete_surat_masuk($id,$file)
+    {
+
+        $this->umum->hapus('surat_masuk', 'id_surat_masuk', $id);
+        unlink("./upload/$file");
+        $notif = "Surat Masuk berhasil dihapuskan";
+        $this->session->set_flashdata('delete', $notif);
+        redirect('admin/surat_masuk');
+
+    }
+     function surat_keluar()
+    {
+        $data = array(
+            'judul' => 'Data Surat Keluar',
+            'menu' => 'Manajemen Surat',
+            'sub_menu' => 'Surat Keluar',
+            'dt_surat_keluar' => $this->umum->get_data('surat_keluar'),
+        );
+        $this->template->load('admin/template', 'admin/surat_keluar', $data);
+    }
+function tambah_surat_keluar()
+	{
+
+	
+		$this->template->load('admin/template', 'admin/tambah_surat_keluar');
+	}
+	function edit_surat_keluar($id = NULL)
+	{
+
+		 $data['d'] = $this->umum->ambil_data('surat_keluar', 'id_surat_keluar', $id);
+		$this->template->load('admin/template', 'admin/update_surat_keluar', $data);
+	}
+    function simpan_surat_keluar()
+    {
+        $this->db->set('id_surat_keluar', 'UUID()', FALSE);
+        $no_surat = $this->input->post('no_surat');
+        $perihal = $this->input->post('perihal');
+        $tujuan = $this->input->post('tujuan');
+        $tgl_surat = $this->input->post('tgl_surat');
+        $tgl_kirim_surat = $this->input->post('tgl_kirim_surat');
+        $file = $this->uploadSurat();
+        $data = array(
+            'no_surat' => $no_surat,
+            'perihal' => $perihal,
+            'tujuan' => $tujuan,
+            'tgl_surat' => $tgl_surat,
+            'tgl_kirim_surat' => $tgl_kirim_surat,
+            'file' => $file
+        );
+
+        $this->umum->input_data($data, 'surat_keluar');
+        $notif = "Surat Keluar Berhasil Ditambahkan";
+        $this->session->set_flashdata('success', $notif);
+        redirect('admin/surat_keluar');
+
+    }
+    function update_surat_keluar(){
+        $id_surat_keluar = $this->input->post('id_surat_keluar');
+        $no_surat = $this->input->post('no_surat');
+        $perihal = $this->input->post('perihal');
+        $tujuan = $this->input->post('tujuan');
+        $tgl_surat = $this->input->post('tgl_surat');
+        $tgl_kirim_surat = $this->input->post('tgl_kirim_surat');
+        $old = $this->input->post('old_file');
+            
+            if (!empty($_FILES["file"]["name"])) {
+                  $file = $this->uploadSurat();
+                  unlink("./upload/$old");
+                } else {
+                    $file = $old;
+                }
+            $data_update = array(
+                'id_surat_keluar' => $id_surat_keluar,
+                 'no_surat' => $no_surat,
+            'perihal' => $perihal,
+            'tujuan' => $tujuan,
+            'tgl_surat' => $tgl_surat,
+            'tgl_kirim_surat' => $tgl_kirim_surat,
+                'file' => $file
+                );
+                $where = array('id_surat_keluar' => $id_surat_keluar);
+                $res = $this->umum->UpdateData('surat_keluar', $data_update, $where);
+                if($res>=1){
+                   
+                    $notif = "Update Surat Keluar Berhasil ";
+                    $this->session->set_flashdata('update', $notif);
+                    redirect('admin/surat_keluar');
+                }else{
+                    echo "<h1>GAGAL</h1>";
+                }
+            }
+    function delete_surat_keluar($id,$file)
+    {
+
+        $this->umum->hapus('surat_keluar', 'id_surat_keluar', $id);
+        unlink("./upload/$file");
+        $notif = "Surat Keluar berhasil dihapuskan";
+        $this->session->set_flashdata('delete', $notif);
+        redirect('admin/surat_keluar');
+
+    }
 	function qr($kodeqr)
 	{
 		if ($kodeqr) {
@@ -136,7 +317,7 @@ class Admin extends CI_Controller
 	function tambah_ktp()
 	{
 
-		$data['page'] = 'tambah_ktp';
+	
 		$this->template->load('admin/template', 'admin/tambah_ktp', $data);
 	}
 
@@ -351,7 +532,7 @@ class Admin extends CI_Controller
 	public function uploadSurat()
 	{
 		$config['upload_path'] = 'upload/file';
-		$config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+		$config['allowed_types'] = 'pdf|jpg|png|jpeg';
 		$config['overwrite'] = false;
 		$config['max_size'] = 5000; // 1MB
 
@@ -367,8 +548,7 @@ class Admin extends CI_Controller
 		exit;
 		// return "default.jpg";
 	}
-
-
+	
 	function tambah_kk()
 	{
 

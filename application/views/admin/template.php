@@ -21,7 +21,7 @@
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+    <ul  class="navbar-nav    sidebar sidebar-light accordion" id="accordionSidebar">
       <a style="background-color: #0099CC;" class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/index'); ?>">
         <div class="sidebar-brand-icon">
           <img src="<?php echo base_url(); ?>assetsadmin/img/logobatola.png">
@@ -53,6 +53,21 @@
             <a class="collapse-item" href="<?php echo base_url('admin/pegawai'); ?>">Data Pegawai</a>
           </div>
         </div>
+      </li>
+
+       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+      Surat
+      </div>
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url('admin/surat_masuk'); ?>">
+          <i class="fas fa-fw fa-envelope"></i>
+          <span>Surat Masuk</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url('admin/surat_keluar'); ?>">
+          <i class="fas fa-fw fa-paper-plane"></i>
+          <span>Surat Keluar</span></a>
       </li>
 
       <hr class="sidebar-divider">

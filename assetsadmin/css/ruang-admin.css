@@ -715,7 +715,7 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
-  background-color: #eaecf4;
+  background-color: #0099CC;
   transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out
 }
@@ -1114,14 +1114,14 @@ a:focus {
 .sidebar-light .nav-item .nav-link:active,
 .sidebar-light .nav-item .nav-link:focus,
 .sidebar-light .nav-item .nav-link:hover {
-  color: #6e707e;
-  background-color: #eee
+  color: #ffff;
+  background-color: #0099CC
 }
 
 .sidebar-light .nav-item .nav-link:active i,
 .sidebar-light .nav-item .nav-link:focus i,
 .sidebar-light .nav-item .nav-link:hover i {
-  color: #6e707e
+  color: #fff
 }
 
 .sidebar-light .nav-item .nav-link[data-toggle=collapse]::after {
@@ -1130,10 +1130,12 @@ a:focus {
 
 .sidebar-light .nav-item.active .nav-link {
   color: #6e707e
+  background-color: #0099CC
 }
 
 .sidebar-light .nav-item.active .nav-link i {
   color: #6e707e
+  background-color: #0099CC
 }
 
 .sidebar-light #sidebarToggle {

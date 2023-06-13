@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jun 2023 pada 11.20
--- Versi server: 10.4.11-MariaDB
+-- Waktu pembuatan: 13 Jun 2023 pada 16.44
+-- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -89,7 +89,8 @@ CREATE TABLE `ktp` (
 --
 
 INSERT INTO `ktp` (`id_ktp`, `nik`, `nama`, `alamat`, `desa`, `rt`, `agama`, `tempat_lahir`, `tanggal_lahir`, `jkelamin`, `wnegara`, `pekerjaan`, `snikah`, `ftoktp`) VALUES
-('126e341b-f295-11ec-b338-c454445434d3', '6309112608980001', 'Syarif Firdaus', 'banjarmasin', 'xx', 'xx', 'Islam', 'asf', '2022-06-23', 'L', 'Indonesia', 'pns', 'Sudah Menikah', '0011.pdf');
+('126e341b-f295-11ec-b338-c454445434d3', '6309112608980001', 'Syarif Firdauss', 'banjarmasin', 'xx', 'xx', 'Islam', 'asf', '2022-06-23', 'L', 'Indonesia', 'pns', 'Sudah Menikah', '0011.pdf'),
+('18dd6073-09e6-11ee-ab00-55ae67f9aa6a', '6308101008850004', 'ayu', 'handil bakti', 'handil', 'xx', 'Islam', 'Tabalong', '2023-06-13', 'L', 'Indonesia', 'Tenaga Kontrak', 'Sudah Menikah', 'Soal_1_Evaluasi_Materi.pdf');
 
 -- --------------------------------------------------------
 
@@ -111,6 +112,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pgw`, `nama_peg`, `jabatan`, `alamat_peg`, `telp_peg`, `wa_peg`) VALUES
+('aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Rusdianto', 'Sekretaris Desa', 'Pantai Hambawang', '8769', '868'),
 ('bced8a73-0c95-11ed-830d-c454445434d3', 'Mahdiyanoor', 'Kepala Desa', 'Pantai Hambawang', '082157876927', '082157876927');
 
 -- --------------------------------------------------------
@@ -249,13 +251,6 @@ CREATE TABLE `surat_domisili` (
   `qrcode` char(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_domisili`
---
-
-INSERT INTO `surat_domisili` (`id_surat_domisili`, `no_surat`, `id_ktp`, `alamat_domisili`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('d894a529-0d45-11ed-9e5a-c454445434d3', '470 / 314/PH/ XII/ 2021', '126e341b-f295-11ec-b338-c454445434d3', 'jalan bjm', '2022-07-27', 'bced8a73-0c95-11ed-830d-c454445434d3', 'Selesai', '', 'd894a529-0d45-11ed-9e5a-c454445434d3.png');
-
 -- --------------------------------------------------------
 
 --
@@ -324,6 +319,29 @@ CREATE TABLE `surat_kehilangan` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `surat_keluar`
+--
+
+CREATE TABLE `surat_keluar` (
+  `id_surat_keluar` char(100) NOT NULL,
+  `no_surat` char(100) NOT NULL,
+  `perihal` char(100) NOT NULL,
+  `tujuan` char(100) NOT NULL,
+  `tgl_surat` date NOT NULL,
+  `file` varchar(200) NOT NULL,
+  `tgl_kirim_surat` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_keluar`
+--
+
+INSERT INTO `surat_keluar` (`id_surat_keluar`, `no_surat`, `perihal`, `tujuan`, `tgl_surat`, `file`, `tgl_kirim_surat`) VALUES
+('a328c50f-09f8-11ee-ab00-55ae67f9aa6a', 'aaaasa', 'vv', 'ooo', '2023-06-13', 'Soal_1_Evaluasi_Materi2.pdf', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `surat_kematian`
 --
 
@@ -361,6 +379,29 @@ CREATE TABLE `surat_kurang_mampu` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `surat_masuk`
+--
+
+CREATE TABLE `surat_masuk` (
+  `id_surat_masuk` char(100) NOT NULL,
+  `no_surat` char(100) NOT NULL,
+  `pengirim` char(100) NOT NULL,
+  `perihal` char(100) NOT NULL,
+  `tgl_diterima` date NOT NULL,
+  `tgl_surat` date NOT NULL,
+  `file` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_masuk`
+--
+
+INSERT INTO `surat_masuk` (`id_surat_masuk`, `no_surat`, `pengirim`, `perihal`, `tgl_diterima`, `tgl_surat`, `file`) VALUES
+('dda9e5cb-09f6-11ee-ab00-55ae67f9aa6a', 'asdad', 'ada', 'af', '2023-06-13', '2023-06-13', 'Soal_1_Evaluasi_Materi1.pdf');
 
 -- --------------------------------------------------------
 
@@ -605,6 +646,12 @@ ALTER TABLE `surat_kehilangan`
   ADD PRIMARY KEY (`id_surat_kehilangan`);
 
 --
+-- Indeks untuk tabel `surat_keluar`
+--
+ALTER TABLE `surat_keluar`
+  ADD PRIMARY KEY (`id_surat_keluar`);
+
+--
 -- Indeks untuk tabel `surat_kematian`
 --
 ALTER TABLE `surat_kematian`
@@ -615,6 +662,12 @@ ALTER TABLE `surat_kematian`
 --
 ALTER TABLE `surat_kurang_mampu`
   ADD PRIMARY KEY (`id_surat_kurang_mampu`);
+
+--
+-- Indeks untuk tabel `surat_masuk`
+--
+ALTER TABLE `surat_masuk`
+  ADD PRIMARY KEY (`id_surat_masuk`);
 
 --
 -- Indeks untuk tabel `surat_pindah_datang`

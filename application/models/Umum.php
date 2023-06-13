@@ -682,6 +682,35 @@ function admin_surat_kehilangan()
 		$query = $this->db->get_where('ktp', array('id_ktp' => $id));
         return $query->row_array();
 	}
+	function update_surat_masuk($id = FALSE)
+	{
+		if($id == FALSE){
+			$query = $this->db->get('surat_masuk');
+			return $query->result_array();
+		}	
+
+		$query = $this->db->get_where('surat_masuk', array('id_surat_masuk' => $id));
+        return $query->row_array();
+	}
+	function update_surat_keluar($id = FALSE)
+	{
+		if($id == FALSE){
+			$query = $this->db->get('surat_keluar');
+			return $query->result_array();
+		}	
+
+		$query = $this->db->get_where('surat_keluar', array('id_surat_keluar' => $id));
+        return $query->row_array();
+	}
+	function ambil_data($tabel, $kolom = FALSE, $id = FALSE)
+	{
+		if ($id === FALSE) {
+			$q = $this->db->get($tabel);	//ambil seluruh data tabel
+			return $q->result();		//kembalikan
+		}
+		$q = $this->db->get_where($tabel, array($kolom => $id)); //ambil satu baris data dengan $kolom=$id
+		return $q->row();				//kembalikan
+	}
 	function update_surat_domisili($id = FALSE)
 	{
 		if($id == FALSE){
