@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-    <link href="<?php echo base_url(); ?>assets/img/logobatola.ico" rel="icon">
+    <link href="<?php echo base_url(); ?>assetsadmin/img/logobatola.ico" rel="icon">
   <title>SIAPKADES- Sistem Informasi Administrasi Pelayanan Kantor Desa Pantai Hambawang</title>
-  <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url(); ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url(); ?>assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url(); ?>assets/css/ruang-admin.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assetsadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url(); ?>assetsadmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url(); ?>assetsadmin/vendor/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url(); ?>assetsadmin/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -22,7 +22,7 @@
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a style="background-color: #0099CC;" class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/index'); ?>">
         <div class="sidebar-brand-icon">
-          <img src="<?php echo base_url(); ?>assets/img/logobatola.png">
+          <img src="<?php echo base_url(); ?>assetsadmin/img/logobatola.png">
         </div>
         <div class="sidebar-brand-text mx-3">SIAPKADES</div>
       </a>
@@ -38,7 +38,7 @@
        Master Data
       </div>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url(); ?>assets/#" data-toggle="collapse" data-target="#collapseBootstrapp"
+        <a class="nav-link collapsed" href="<?php echo base_url(); ?>assetsadmin/#" data-toggle="collapse" data-target="#collapseBootstrapp"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-window-maximize"></i>
           <span>Master Data</span>
@@ -58,7 +58,7 @@
        Pelayanan
       </div>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url(); ?>assets/#" data-toggle="collapse" data-target="#collapseBootstrap"
+        <a class="nav-link collapsed" href="<?php echo base_url(); ?>assetsadmin/#" data-toggle="collapse" data-target="#collapseBootstrap"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-file"></i>
           <span>Permohonan Surat </span>
@@ -105,7 +105,7 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url(); ?>assets/#" data-toggle="collapse" data-target="#collapseBootstrappp"
+        <a class="nav-link collapsed" href="<?php echo base_url(); ?>assetsadmin/#" data-toggle="collapse" data-target="#collapseBootstrappp"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-window-maximize"></i>
           <span>Download Laporan</span>
@@ -147,7 +147,7 @@
            
             
             <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>assets/#" id="messagesDropdown" role="button" data-toggle="dropdown"
+              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>assetsadmin/#" id="messagesDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <span class="badge badge-warning badge-counter"><?php echo $hitung_pengaduan; ?></span>
@@ -160,7 +160,7 @@
                  <?php 
                                         $no=1;
                                         foreach ($dt_pengaduan_baru as $d): ?>
-                <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url(); ?>assets/#">
+                <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url(); ?>assetsadmin/#">
                  
                   <div class="font-weight-bold">
                     <div class="text-truncate"><?php echo $d['mengadu']; ?></div>
@@ -175,9 +175,9 @@
            
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>assets/#" id="userDropdown" role="button" data-toggle="dropdown"
+              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>assetsadmin/#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>assets/img/boy.png" style="max-width: 60px">
+                <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>assetsadmin/img/boy.png" style="max-width: 60px">
                 <span class="ml-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('ses_name');  ?></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -314,3 +314,59 @@
                 </div>
               </div>
             </div>
+
+
+
+
+                <?= $contents ?>
+
+
+                  <!-- Footer -->
+      <footer class="fixed-bottom bg-white">
+
+        <!---------------------
+
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Muhammad Ahsin Rizal</a></b>
+            </span>
+          </div>
+        </div>
+
+        ---------------->
+
+        
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <script src="<?php echo base_url(); ?>assetsadmin/vendor/jquery/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/vendor/select2/dist/js/select2.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/js/ruang-admin.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/vendor/chart.js/Chart.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/js/demo/chart-area-demo.js"></script>  
+   <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script>
+    $(document).ready(function () {
+      $('.select2-single').select2();
+      $('.select2-singlee').select2();
+      $('.select2-singleee').select2();
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+  </script>
+</body>
+
+</html>

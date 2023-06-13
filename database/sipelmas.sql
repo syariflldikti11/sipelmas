@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 27 Jul 2022 pada 00.21
--- Versi server: 10.4.13-MariaDB
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 13 Jun 2023 pada 11.20
+-- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -18,28 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `siapkades`
+-- Database: `sipelmas`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `admin`
---
-
-CREATE TABLE `admin` (
-  `id_admin` char(100) NOT NULL,
-  `nama` char(100) NOT NULL,
-  `username` char(100) NOT NULL,
-  `password` char(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `admin`
---
-
-INSERT INTO `admin` (`id_admin`, `nama`, `username`, `password`) VALUES
-('', 'Admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
 
 -- --------------------------------------------------------
 
@@ -53,6 +33,13 @@ CREATE TABLE `informasi` (
   `informasi` text NOT NULL,
   `file` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `informasi`
+--
+
+INSERT INTO `informasi` (`id_informasi`, `isi_informasi`, `informasi`, `file`) VALUES
+('', 'sdsd', 'sds', '');
 
 -- --------------------------------------------------------
 
@@ -144,16 +131,44 @@ CREATE TABLE `pengaduan` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pengguna`
+--
+
+CREATE TABLE `pengguna` (
+  `id_pengguna` char(100) NOT NULL,
+  `username` char(100) NOT NULL,
+  `password` char(100) NOT NULL,
+  `role` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pengguna`
+--
+
+INSERT INTO `pengguna` (`id_pengguna`, `username`, `password`, `role`) VALUES
+('wq5r3wdffds', '6309112608980001', '21232f297a57a5a743894a0e4a801fc3', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pengunjung`
 --
 
 CREATE TABLE `pengunjung` (
-  `id_pengunjung` char(100) NOT NULL,
+  `id_pengguna` char(100) NOT NULL,
   `nik` char(100) NOT NULL,
   `password` char(100) NOT NULL,
   `email` char(100) NOT NULL,
-  `telp` char(100) NOT NULL
+  `telp` char(100) NOT NULL,
+  `role` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pengunjung`
+--
+
+INSERT INTO `pengunjung` (`id_pengguna`, `nik`, `password`, `email`, `telp`, `role`) VALUES
+('879f7720-0d45-11ed-9e5a-c454445434d3', '6309112608980001', '8cb2237d0679ca88db6464eac60da96345513964', 'syrif.firdaus@gmail.com', '082157876927', 1);
 
 -- --------------------------------------------------------
 
@@ -209,6 +224,13 @@ CREATE TABLE `surat_biodek` (
   `no_tanah` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `surat_biodek`
+--
+
+INSERT INTO `surat_biodek` (`id_surat_biodek`, `no_surat`, `id_ktp`, `luas_tanah`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`, `no_tanah`) VALUES
+('f370ca28-0d6b-11ed-9e5a-c454445434d3', '470 / 314/PH/ XII/ 20a21', '126e341b-f295-11ec-b338-c454445434d3', 'ds', '2022-07-27', 'bced8a73-0c95-11ed-830d-c454445434d3', 'Selesai', '', '', 'dsf');
+
 -- --------------------------------------------------------
 
 --
@@ -226,6 +248,13 @@ CREATE TABLE `surat_domisili` (
   `file` char(100) NOT NULL,
   `qrcode` char(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_domisili`
+--
+
+INSERT INTO `surat_domisili` (`id_surat_domisili`, `no_surat`, `id_ktp`, `alamat_domisili`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('d894a529-0d45-11ed-9e5a-c454445434d3', '470 / 314/PH/ XII/ 2021', '126e341b-f295-11ec-b338-c454445434d3', 'jalan bjm', '2022-07-27', 'bced8a73-0c95-11ed-830d-c454445434d3', 'Selesai', '', 'd894a529-0d45-11ed-9e5a-c454445434d3.png');
 
 -- --------------------------------------------------------
 
@@ -264,6 +293,13 @@ CREATE TABLE `surat_janda` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_janda`
+--
+
+INSERT INTO `surat_janda` (`id_surat_janda`, `no_surat`, `id_ktp`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('5d583917-0d5e-11ed-9e5a-c454445434d3', 'aaa', '126e341b-f295-11ec-b338-c454445434d3', '2022-07-27', 'bced8a73-0c95-11ed-830d-c454445434d3', 'Selesai', '', '5d583917-0d5e-11ed-9e5a-c454445434d3.png');
 
 -- --------------------------------------------------------
 
@@ -322,7 +358,8 @@ CREATE TABLE `surat_kurang_mampu` (
   `tanggal_surat` date NOT NULL,
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
-  `file` char(100) NOT NULL
+  `file` char(100) NOT NULL,
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -484,12 +521,6 @@ CREATE TABLE `surat_usaha` (
 --
 
 --
--- Indeks untuk tabel `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
-
---
 -- Indeks untuk tabel `informasi`
 --
 ALTER TABLE `informasi`
@@ -520,10 +551,16 @@ ALTER TABLE `pengaduan`
   ADD PRIMARY KEY (`id_pengaduan`);
 
 --
+-- Indeks untuk tabel `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id_pengguna`);
+
+--
 -- Indeks untuk tabel `pengunjung`
 --
 ALTER TABLE `pengunjung`
-  ADD PRIMARY KEY (`id_pengunjung`);
+  ADD PRIMARY KEY (`id_pengguna`);
 
 --
 -- Indeks untuk tabel `proposal`
