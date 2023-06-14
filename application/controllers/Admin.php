@@ -9,6 +9,7 @@ require 'PHPMailer/src/SMTP.php';
 class Admin extends CI_Controller
 {
 
+
 	function __construct()
 	{
 		parent::__construct();
@@ -21,6 +22,13 @@ class Admin extends CI_Controller
 			redirect($url);
 		}
 	}
+
+public function rupiah($angka){
+  
+  $hasil_rupiah = "" . number_format($angka,0,',','.');
+  return $hasil_rupiah;
+}
+
 	function user()
     {
         $data = array(
@@ -644,6 +652,7 @@ function tambah_surat_keluar()
 		exit;
 		// return "default.jpg";
 	}
+
 	
 	function tambah_kk()
 	{
@@ -1374,7 +1383,7 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -1388,7 +1397,7 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_kematian";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_kematian";
 			$qrcode = $id_surat_kematian . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -1404,13 +1413,13 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -1611,7 +1620,7 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -1625,7 +1634,7 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_pindah_datang";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_pindah_datang";
 			$qrcode = $id_surat_pindah_datang . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -1641,13 +1650,13 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -1888,7 +1897,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -1902,7 +1911,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_pindah_keluar";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_pindah_keluar";
 			$qrcode = $id_surat_keluar . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -1918,13 +1927,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -2105,7 +2114,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -2119,7 +2128,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_belum_menikah";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_belum_menikah";
 			$qrcode = $id_surat_belum_menikah . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2135,13 +2144,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -2273,7 +2282,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -2287,7 +2296,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_kurang_mampu";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_kurang_mampu";
 			$qrcode = $id_surat_kurang_mampu . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2303,13 +2312,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -2434,7 +2443,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 		foreach ($query->result() as $row) {
 			$email = $row->email;
 		}
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -2448,7 +2457,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_domisili";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_domisili";
 			$qrcode = $id_surat_domisili . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2464,13 +2473,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -2603,7 +2612,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 		foreach ($query->result() as $row) {
 			$email = $row->email;
 		}
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -2617,7 +2626,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_janda";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_janda";
 			$qrcode = $id_surat_janda . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2633,13 +2642,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -2770,7 +2779,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -2784,7 +2793,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_izin_keramaian";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_izin_keramaian";
 			$qrcode = $id_surat_izin_keramaian . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2800,13 +2809,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -2938,7 +2947,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -2952,7 +2961,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_skck";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_skck";
 			$qrcode = $id_surat_skck . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2968,13 +2977,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -3107,7 +3116,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -3121,7 +3130,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_biodek";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_biodek";
 			$qrcode = $id_surat_biodek . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -3137,13 +3146,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -3276,7 +3285,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -3290,7 +3299,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_kehilangan";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_kehilangan";
 			$qrcode = $id_surat_kehilangan . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -3306,13 +3315,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
@@ -3530,7 +3539,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$email = $row->email;
 		}
 
-
+$localIP = getHostByName(getHostName());
 		$qrcode = '';
 		if ($status == 'Selesai') {
 			$this->load->library('ciqrcode'); //pemanggilan library QR CODE
@@ -3544,7 +3553,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_usaha";
+			$link = "http://$localIP/sipelmas/qr/scan/$id_surat_usaha";
 			$qrcode = $id_surat_usaha . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -3560,13 +3569,13 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->isSMTP(); //Send using SMTP
 				$mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
 				$mail->SMTPAuth = true; //Enable SMTP authentication
-				$mail->Username = 'siapkades.pantaihambawang@gmail.com'; //SMTP username
-				$mail->Password = 'dabdbgtuvbuehkus'; //SMTP password
+				$mail->Username = 'mengajian.si.bjm@gmail.com'; //SMTP username
+				$mail->Password = 'gmrzryemjjtxwnrw'; //SMTP password
 				$mail->SMTPSecure = 'tls'; //Enable implicit TLS encryption
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
+				$mail->setFrom('mengajian.si.bjm@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content

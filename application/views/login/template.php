@@ -60,9 +60,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navigation">
               <ul class="navbar-nav mx-auto">
-              
+                 <li class="nav-item">
+                  <a class="nav-link me-2" href="<?= base_url('login/pengaduan'); ?>">
+                    <i class="fas fa-list opacity-6 text-dark me-1"></i>
+                    Form Pengaduan
+                  </a>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link me-2" href="<?= base_url('login/daftar_pengaduan'); ?>">
+                    <i class="fas fa-list opacity-6 text-dark me-1"></i>
+                    Daftar Pengaduan
+                  </a>
+                </li>
                 <li class="nav-item">
-                  <a class="nav-link me-2" href="<?= base_url(); ?>pages/sign-up.html">
+                  <a class="nav-link me-2" href="#">
                     <i class="fas fa-user opacity-6 text-dark me-1"></i>
                     Register
                   </a>

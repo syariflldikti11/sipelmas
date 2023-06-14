@@ -2,7 +2,12 @@
 <?php
 $total_pelayanan=0;
 $total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat_janda+$surat_kehilangan+$surat_kematian+$surat_kurang_mampu+$surat_pindah_datang+$surat_pindah_keluar+$surat_skck+$surat_usaha+$surat_domisili;
+
 ?>
+  
+
+  
+
  <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Halaman Admin</h1>

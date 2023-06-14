@@ -10,15 +10,36 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model('m_login');
     }
+    function pengaduan()
+    { $data = array(
+
+                'action' => 'login/action_pengaduan',
+            );
+       
+        $this->template->load('login/template', 'login/pengaduan',$data);
+    }
+     function action_pengaduan()
+    {
+        $this->db->set('id_pengaduan', 'UUID()', FALSE);
+        $mengadu = $this->input->post('mengadu');
+        $data = array(
+            'mengadu' => $mengadu,
+    
+        );
+
+        $this->umum->input_data($data, 'pengaduan');
+        $notif = "Pengaduan Berhasil dikirim";
+        $this->session->set_flashdata('success', $notif);
+        redirect('login/pengaduan');
+
+    }
     public function index()
     {
         $role = $this->session->userdata('role');
         if ($role == 1) {
-            redirect(site_url('pegawai'));
+            redirect(site_url('pengunjung'));
         }
-        if ($role == 2) {
-            redirect(site_url('admin'));
-        } else {
+    else {
             $data = array(
 
                 'action' => 'login/auth_pengunjung',
@@ -29,12 +50,15 @@ class Login extends CI_Controller
      public function auth_sipelmas()
     {
         $role = $this->session->userdata('role');
-        if ($role == 1) {
+        if ($role == 3) {
             redirect(site_url('pegawai'));
         }
         if ($role == 2) {
             redirect(site_url('admin'));
-        } else {
+        }
+          if ($role == 2) {
+            redirect(site_url('camat'));
+        }  else {
             $data = array(
 
                 'action' => 'login/action_auth_sipelmas',
@@ -101,5 +125,10 @@ public function action_auth_sipelmas()
     {
         $this->session->sess_destroy();
         redirect(base_url('login'));
+    }
+    function logout_sipelmas()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url('login/auth_sipelmas'));
     }
 }

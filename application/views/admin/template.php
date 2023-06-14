@@ -218,7 +218,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
-                  <a href="<?php echo base_url('login/logout'); ?>" class="btn btn-info">Logout</a>
+                  <a href="<?php echo base_url('login/logout_sipelmas'); ?>" class="btn btn-info">Logout</a>
                 </div>
               </div>
             </div>

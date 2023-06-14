@@ -34,7 +34,7 @@
                        
                           <option value='3'>Pegawai</option>
                           <option value='2'>Admin</option>
-                          <option value='4'>Pimpinan</option>
+                          <option value='4'>Camat</option>
                         </select>
                       </div>
  <input type="submit" name="submit" class="btn btn-info" value="Tambah">

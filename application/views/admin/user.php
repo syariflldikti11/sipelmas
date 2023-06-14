@@ -28,7 +28,7 @@
                         <td><?php echo $no++; ?></td>
                          <td><?php echo $d['nik']; ?></td>
                         <td><?php echo $d['nama_peg']; ?></td>
-                        <td><?php if($d['role']==3) {echo 'Pegawai';} ?> <?php if($d['role']==2) {echo 'Admin';} ?></td>
+                        <td><?php if($d['role']==3) {echo 'Pegawai';} ?> <?php if($d['role']==2) {echo 'Admin';} ?> <?php if($d['role']==4) {echo 'Csmst';} ?></td>
                      
                        
                         <td><a class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingin menghapus data ini')"  href="<?php echo base_url('admin/delete_user/'.$d['id_pengguna']);?>"> <i class="fas fa-trash"></i> </a></td>
