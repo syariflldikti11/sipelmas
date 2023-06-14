@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jun 2023 pada 14.12
+-- Waktu pembuatan: 14 Jun 2023 pada 14.32
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.2.31
 
@@ -161,13 +161,20 @@ INSERT INTO `pengguna` (`id_pengguna`, `password`, `role`, `id_pegawai`) VALUES
 --
 
 CREATE TABLE `pengunjung` (
-  `id_pengguna` char(100) NOT NULL,
+  `id_pengunjung` char(100) NOT NULL,
   `nik` char(100) NOT NULL,
   `password` char(100) NOT NULL,
   `email` char(100) NOT NULL,
   `telp` char(100) NOT NULL,
   `role` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pengunjung`
+--
+
+INSERT INTO `pengunjung` (`id_pengunjung`, `nik`, `password`, `email`, `telp`, `role`) VALUES
+('91c81f6f-0aae-11ee-8368-7673dcf73f56', '6309112608980002', '827ccb0eea8a706c4c34a16891f84e7b', 'asyarrif@gmail.com', '', 1);
 
 -- --------------------------------------------------------
 
@@ -606,7 +613,7 @@ ALTER TABLE `pengguna`
 -- Indeks untuk tabel `pengunjung`
 --
 ALTER TABLE `pengunjung`
-  ADD PRIMARY KEY (`id_pengguna`);
+  ADD PRIMARY KEY (`id_pengunjung`);
 
 --
 -- Indeks untuk tabel `penugasan`
