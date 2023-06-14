@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-    <link href="<?php echo base_url(); ?>assetsadmin/img/logobatola.ico" rel="icon">
-  <title>SIAPKADES- Sistem Informasi Administrasi Pelayanan Kantor Desa Pantai Hambawang</title>
+    <link href="<?php echo base_url(); ?>assets/img/logo.png" rel="icon">
+  <title>SIPELMAS- Aplikasi Surat Menyurat dan Monitoring Fasilitas Pelayanan Masyarakat</title>
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css">
@@ -16,6 +16,11 @@
   <link href="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -24,9 +29,9 @@
     <ul  class="navbar-nav    sidebar sidebar-light accordion" id="accordionSidebar">
       <a style="background-color: #0099CC;" class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/index'); ?>">
         <div class="sidebar-brand-icon">
-          <img src="<?php echo base_url(); ?>assetsadmin/img/logobatola.png">
+          <img src="<?php echo base_url(); ?>assets/img/logo.png">
         </div>
-        <div class="sidebar-brand-text mx-3">SIAPKADES</div>
+        <div class="sidebar-brand-text mx-3">SIPELMAS</div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
@@ -47,10 +52,11 @@
         </a>
         <div id="collapseBootstrapp" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Master Dta</h6>
+        
             <a class="collapse-item" href="<?php echo base_url('admin/ktp'); ?>">Data KTP</a>
             <a class="collapse-item" href="<?php echo base_url('admin/kk'); ?>">Data KK</a>
             <a class="collapse-item" href="<?php echo base_url('admin/pegawai'); ?>">Data Pegawai</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/user'); ?>">Data User</a>
           </div>
         </div>
       </li>
@@ -82,7 +88,7 @@
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Pelayanan</h6>
+      
             <a class="collapse-item" href="<?php echo base_url('admin/surat_domisili'); ?>">Surat Domisili</a>
             <a class="collapse-item" href="<?php echo base_url('admin/surat_usaha'); ?>">Surat Usaha</a>
             <a class="collapse-item" href="<?php echo base_url('admin/surat_kehilangan'); ?>">Surat Kehilangan</a>
@@ -114,7 +120,20 @@
         </a>
       </li>
 
-     
+     <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+       Kegiatan
+      </div>
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url('admin/jenis_kegiatan'); ?>">
+          <i class="fas fa-fw fa-file"></i>
+          <span>Jenis Kegiatan</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="<?php echo base_url('admin/penugasan'); ?>">
+          <i class="fas fa-fw fa-tasks"></i>
+          <span>Kegiatan</span></a>
+      </li>
 
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -130,15 +149,7 @@
         <div id="collapseBootstrappp" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Laporan</h6>
-            <a class="collapse-item" data-toggle="modal" data-target="#lapsurat" href="#">Surat</a>
            
-            <a class="collapse-item" href="<?php echo base_url('admin/cetak_proposal'); ?>">Pengajuan Proposal</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/cetak_pengaduan'); ?>">Pengaduan</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/cetak_kk'); ?>">Data KK</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/cetak_pegawai'); ?>">Data Pegawai</a>
-
-            <a class="collapse-item" data-toggle="modal" data-target="#exampleModal"
-                    id="#myBtn">Data KTP</a>
           </div>
         </div>
       </li>
@@ -162,7 +173,14 @@
           </button>
           <ul class="navbar-nav ml-auto">
            
-            
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+               
+             <span class="ml-2 d-none d-lg-inline text-white small"> <?= $this->session->userdata('nama'); ?></span>
+              </a>
+             
+            </li>
            
            
             <div class="topbar-divider d-none d-sm-block"></div>
@@ -170,7 +188,7 @@
               <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>assetsadmin/#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>assetsadmin/img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('ses_name');  ?></span>
+                
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 
@@ -313,24 +331,8 @@
                 <?= $contents ?>
 
 
-                  <!-- Footer -->
-      <footer class="fixed-bottom bg-white">
-
-        <!---------------------
-
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
-              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Muhammad Ahsin Rizal</a></b>
-            </span>
-          </div>
-        </div>
-
-        ---------------->
-
-        
-      </footer>
-      <!-- Footer -->
+               
+       
     </div>
   </div>
 
@@ -349,7 +351,9 @@
    <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
+ <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script type="text/javascript">
 
 
@@ -373,6 +377,45 @@
       $('#dataTableHover').DataTable(); // ID From dataTable with Hover
     });
   </script>
+  <script type="text/javascript">
+jQuery(function(){
+ new Highcharts.Chart({
+  chart: {
+   renderTo: 'chart',
+   type: 'column',
+  },
+  title: {
+   text: '',
+   x: -20
+  },
+  subtitle: {
+   text: '',
+   x: -20
+  },
+  xAxis: {
+   categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
+                    'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des']
+  },
+  yAxis: {
+   title: {
+    text: 'Pengaduan'
+   }
+  },
+  series: [{
+   name: 'Pengaduan',
+   data: <?php echo json_encode($grafik_pengaduan); ?>,
+   color: '#FF530D'
+ 
+  },
+  { name: 'Respon',
+
+       data: <?php echo json_encode($grafik_respon); ?>,
+        color: '#5cb85c'
+  }
+  ]
+ });
+}); 
+</script>
 </body>
 
 </html>
