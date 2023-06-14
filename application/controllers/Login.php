@@ -76,6 +76,7 @@ public function action_auth_sipelmas()
             if ($data->role == 2) {
                 $this->session->set_userdata('role', $data->role);
                 $this->session->set_userdata('username', $data->username);
+                $this->session->set_userdata('nama', $data->nama_peg);
                 redirect('admin');
             }
             if ($data->role == 3) {

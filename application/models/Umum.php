@@ -19,6 +19,122 @@ public function hitung_pengaduan()
       return 0;
     }
 }
+public function hitung($tabel)
+{   
+   $query = $this->db->get($tabel);
+    if($query->num_rows()>0)
+    {
+      return $query->num_rows();
+    }
+    else
+    {
+      return 0;
+    }
+}
+public function hitung_surat($tabel, $kolom = FALSE, $id = FALSE)
+{   
+$query = $this->db->get_where($tabel, array($kolom => $id));
+    if($query->num_rows()>0)
+    {
+      return $query->num_rows();
+    }
+    else
+    {
+      return 0;
+    }
+}
+public function hitung_surat_pending($tabel, $kolom = FALSE, $id = FALSE)
+{   
+$query = $this->db->get_where($tabel, array($kolom = $id));
+    if($query->num_rows()>0)
+    {
+      return $query->num_rows();
+    }
+    else
+    {
+      return 0;
+    }
+}
+function ambil_data($tabel, $kolom = FALSE, $id = FALSE)
+	{
+		if ($id === FALSE) {
+			$q = $this->db->get($tabel);	//ambil seluruh data tabel
+			return $q->result();		//kembalikan
+		}
+		$q = $this->db->get_where($tabel, array($kolom => $id)); //ambil satu baris data dengan $kolom=$id
+		return $q->row();				//kembalikan
+	}
+function get_peserta($id)
+	{		
+	   
+		$this->db->select('*');
+	   $this->db->from('peserta_penugasan a');
+		$this->db->join('penugasan b','a.id_penugasan=b.id_penugasan','left');
+			$this->db->join('pegawai c','a.id_pegawai=c.id_pgw','left');
+				$this->db->where('a.id_penugasan',$id);
+	   $query = $this->db->get();
+	   return $query->result();
+	}
+	function get_user()
+	{		
+	   
+		$this->db->select('*');
+	   $this->db->from('pengguna a');
+		$this->db->join('pegawai b','a.id_pegawai=b.id_pgw','left');
+
+	   $query = $this->db->get();
+	   return $query->result_array();
+	}
+function grafik_pengaduan()
+ {
+ $tgl=date('Y');
+  $sql= $this->db->query("
+  
+  select distinct
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=1)AND (YEAR(tgl_pengaduan)='$tgl'))),0) AS 'Januari',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=2)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Februari',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=3)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Maret',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=4)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'April',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=5)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Mei',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=6)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Juni',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=7)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Juli',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=8)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Agustus',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=9)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'September',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=10)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Oktober',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=11)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'November',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=12)AND (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Desember'
+ from pengaduan GROUP BY YEAR(tgl_pengaduan) 
+  
+  ");
+  
+  return $sql;
+  
+ }
+ function grafik_respon()
+ {
+ $tgl=date('Y');
+  $sql= $this->db->query("
+  
+  select distinct
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=1)AND balasan !='NULL' and (YEAR(tgl_pengaduan)='$tgl'))),0) AS 'Januari',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=2)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Februari',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=3)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Maret',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=4)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'April',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=5)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Mei',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=6)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Juni',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=7)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Juli',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=8)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Agustus',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=9)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'September',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=10)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Oktober',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=11)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'November',
+  ifnull((SELECT count(id_pengaduan) FROM pengaduan WHERE((Month(tgl_pengaduan)=12)AND balasan !='NULL' and (YEAR(tgl_pengaduan)=$tgl))),0) AS 'Desember'
+ from pengaduan GROUP BY YEAR(tgl_pengaduan) 
+  
+  ");
+  
+  return $sql;
+  
+ }  
 
 function get_ktp()
 	{
@@ -77,6 +193,16 @@ function pengaduan()
 	
 		$query = $this->db->get();
 		return $query->result_array();
+	}
+	function get_penugasan()
+	{
+		$a=$this->session->userdata('ses_id');
+		$this->db->select('*');
+		$this->db->from('penugasan a');
+		$this->db->join('jenis_kegiatan c','a.id_jenis_kegiatan=c.id_jenis_kegiatan','');
+	
+		$query = $this->db->get();
+		return $query->result();
 	}
 	function pengajuan_blt()
 	{
@@ -702,14 +828,15 @@ function admin_surat_kehilangan()
 		$query = $this->db->get_where('surat_keluar', array('id_surat_keluar' => $id));
         return $query->row_array();
 	}
-	function ambil_data($tabel, $kolom = FALSE, $id = FALSE)
+	
+	function ambil($tabel, $kolom = FALSE, $id = FALSE)
 	{
 		if ($id === FALSE) {
 			$q = $this->db->get($tabel);	//ambil seluruh data tabel
 			return $q->result();		//kembalikan
 		}
 		$q = $this->db->get_where($tabel, array($kolom => $id)); //ambil satu baris data dengan $kolom=$id
-		return $q->row();				//kembalikan
+		return $q->row_array();				//kembalikan
 	}
 	function update_surat_domisili($id = FALSE)
 	{
@@ -849,6 +976,11 @@ function get_data($tabel)
 	{
 		$query = $this->db->get($tabel);
 		return $query->result_array();		
+	}
+	function get_table($tabel)
+	{
+		$query = $this->db->get($tabel);
+		return $query->result();		
 	}
 	function set_data($tabel)
 	{

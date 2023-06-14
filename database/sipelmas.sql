@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jun 2023 pada 16.44
--- Versi server: 10.4.13-MariaDB
+-- Waktu pembuatan: 14 Jun 2023 pada 11.30
+-- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -39,7 +39,25 @@ CREATE TABLE `informasi` (
 --
 
 INSERT INTO `informasi` (`id_informasi`, `isi_informasi`, `informasi`, `file`) VALUES
-('', 'sdsd', 'sds', '');
+('sfsfdsfs', 'sdsd', 'sds', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_kegiatan`
+--
+
+CREATE TABLE `jenis_kegiatan` (
+  `id_jenis_kegiatan` varchar(200) NOT NULL,
+  `nama_jenis_kegiatan` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jenis_kegiatan`
+--
+
+INSERT INTO `jenis_kegiatan` (`id_jenis_kegiatan`, `nama_jenis_kegiatan`) VALUES
+('36c2d594-0a7f-11ee-ac0b-c454445434d3', 'saf');
 
 -- --------------------------------------------------------
 
@@ -104,16 +122,17 @@ CREATE TABLE `pegawai` (
   `jabatan` char(100) NOT NULL,
   `alamat_peg` char(100) NOT NULL,
   `telp_peg` char(100) NOT NULL,
-  `wa_peg` char(100) NOT NULL
+  `wa_peg` char(100) NOT NULL,
+  `nik` varchar(240) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id_pgw`, `nama_peg`, `jabatan`, `alamat_peg`, `telp_peg`, `wa_peg`) VALUES
-('aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Rusdianto', 'Sekretaris Desa', 'Pantai Hambawang', '8769', '868'),
-('bced8a73-0c95-11ed-830d-c454445434d3', 'Mahdiyanoor', 'Kepala Desa', 'Pantai Hambawang', '082157876927', '082157876927');
+INSERT INTO `pegawai` (`id_pgw`, `nama_peg`, `jabatan`, `alamat_peg`, `telp_peg`, `wa_peg`, `nik`) VALUES
+('aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Rusdianto', 'Sekretaris Desa', 'Pantai Hambawang', '8769', '868', '6309112608980002'),
+('bced8a73-0c95-11ed-830d-c454445434d3', 'Mahdiyanoor', 'Kepala Desa', 'Pantai Hambawang', '082157876927', '082157876927', '6309112608980001');
 
 -- --------------------------------------------------------
 
@@ -130,6 +149,14 @@ CREATE TABLE `pengaduan` (
   `peng_telpon` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `pengaduan`
+--
+
+INSERT INTO `pengaduan` (`id_pengaduan`, `id_ktp`, `mengadu`, `balasan`, `tgl_pengaduan`, `peng_telpon`) VALUES
+('2eqeawe', '126e341b-f295-11ec-b338-c454445434d3', 'as', 'sfd', '2023-06-14 02:34:05', '08'),
+('ewrsdfe', '126e341b-f295-11ec-b338-c454445434d3', 'adss', NULL, '2023-04-01 02:40:50', '');
+
 -- --------------------------------------------------------
 
 --
@@ -138,17 +165,18 @@ CREATE TABLE `pengaduan` (
 
 CREATE TABLE `pengguna` (
   `id_pengguna` char(100) NOT NULL,
-  `username` char(100) NOT NULL,
   `password` char(100) NOT NULL,
-  `role` int(11) NOT NULL
+  `role` int(11) NOT NULL,
+  `id_pegawai` varchar(240) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_pengguna`, `username`, `password`, `role`) VALUES
-('wq5r3wdffds', '6309112608980001', '21232f297a57a5a743894a0e4a801fc3', 2);
+INSERT INTO `pengguna` (`id_pengguna`, `password`, `role`, `id_pegawai`) VALUES
+('e954cec8-0a7d-11ee-ac0b-c454445434d3', '827ccb0eea8a706c4c34a16891f84e7b', 2, 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a'),
+('f080bc72-0a7d-11ee-ac0b-c454445434d3', '21232f297a57a5a743894a0e4a801fc3', 2, 'bced8a73-0c95-11ed-830d-c454445434d3');
 
 -- --------------------------------------------------------
 
@@ -175,6 +203,51 @@ INSERT INTO `pengunjung` (`id_pengguna`, `nik`, `password`, `email`, `telp`, `ro
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `penugasan`
+--
+
+CREATE TABLE `penugasan` (
+  `id_penugasan` varchar(200) NOT NULL,
+  `tgl_mulai` date NOT NULL,
+  `tgl_akhir` date NOT NULL,
+  `nama_penugasan` varchar(200) NOT NULL,
+  `no_surat` varchar(100) NOT NULL,
+  `file` varchar(100) DEFAULT NULL,
+  `tgl_surat` date NOT NULL,
+  `catatan_pimpinan` varchar(200) NOT NULL,
+  `id_jenis_kegiatan` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penugasan`
+--
+
+INSERT INTO `penugasan` (`id_penugasan`, `tgl_mulai`, `tgl_akhir`, `nama_penugasan`, `no_surat`, `file`, `tgl_surat`, `catatan_pimpinan`, `id_jenis_kegiatan`) VALUES
+('96253f73-04e9-11ee-876e-c454445434d3', '2023-06-07', '2023-06-08', 'jjs', '470 / 314/PH/ XII/ 2021', '4__Surat_Keterangan.pdf', '2023-06-07', '', ''),
+('ccfab9e9-0a83-11ee-ac0b-c454445434d3', '2023-06-14', '2023-06-14', 'ok', 'xxx', NULL, '2023-06-14', '', '36c2d594-0a7f-11ee-ac0b-c454445434d3');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `peserta_penugasan`
+--
+
+CREATE TABLE `peserta_penugasan` (
+  `id_peserta_penugasan` varchar(100) NOT NULL,
+  `id_pegawai` varchar(100) NOT NULL,
+  `id_penugasan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `peserta_penugasan`
+--
+
+INSERT INTO `peserta_penugasan` (`id_peserta_penugasan`, `id_pegawai`, `id_penugasan`) VALUES
+('8e55dc97-04eb-11ee-876e-c454445434d3', 'ec3f5a25-fd64-11ed-9f05-ea3c6f7707bf', '96253f73-04e9-11ee-876e-c454445434d3');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `proposal`
 --
 
@@ -187,6 +260,13 @@ CREATE TABLE `proposal` (
   `telp` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `proposal`
+--
+
+INSERT INTO `proposal` (`id_proposal`, `id_ktp`, `tgl_proposal`, `mengajukan`, `proposal`, `telp`, `status`) VALUES
+('08412bca-0a60-11ee-ac0b-c454445434d3', '126e341b-f295-11ec-b338-c454445434d3', '2023-06-14 16:00:00', 'sd', '4__Surat_Keterangan.pdf', '08', 'Proses');
 
 -- --------------------------------------------------------
 
@@ -206,6 +286,13 @@ CREATE TABLE `surat_belum_menikah` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_belum_menikah`
+--
+
+INSERT INTO `surat_belum_menikah` (`id_surat_belum_menikah`, `no_surat`, `id_ktp`, `bin`, `status_nikah`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('f8028609-0a8a-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 20a21', '126e341b-f295-11ec-b338-c454445434d3', 'as', 'Belum menikah', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
 
 -- --------------------------------------------------------
 
@@ -231,7 +318,7 @@ CREATE TABLE `surat_biodek` (
 --
 
 INSERT INTO `surat_biodek` (`id_surat_biodek`, `no_surat`, `id_ktp`, `luas_tanah`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`, `no_tanah`) VALUES
-('f370ca28-0d6b-11ed-9e5a-c454445434d3', '470 / 314/PH/ XII/ 20a21', '126e341b-f295-11ec-b338-c454445434d3', 'ds', '2022-07-27', 'bced8a73-0c95-11ed-830d-c454445434d3', 'Selesai', '', '', 'dsf');
+('894aa5aa-0a8b-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 20a21', '126e341b-f295-11ec-b338-c454445434d3', '', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -250,6 +337,13 @@ CREATE TABLE `surat_domisili` (
   `file` char(100) NOT NULL,
   `qrcode` char(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_domisili`
+--
+
+INSERT INTO `surat_domisili` (`id_surat_domisili`, `no_surat`, `id_ktp`, `alamat_domisili`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('3bd39bd3-0a8a-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 2021', '126e341b-f295-11ec-b338-c454445434d3', 'xxxx', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
 
 -- --------------------------------------------------------
 
@@ -271,6 +365,13 @@ CREATE TABLE `surat_izin_keramaian` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_izin_keramaian`
+--
+
+INSERT INTO `surat_izin_keramaian` (`id_surat_izin_keramaian`, `no_surat`, `id_ktp`, `dalam_rangka`, `hari`, `tanggal`, `tempat`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('108de23c-0a8b-11ee-ac0b-c454445434d3', 'xxx', '126e341b-f295-11ec-b338-c454445434d3', 'ads', 'ads', 'adas', 'ads', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
 
 -- --------------------------------------------------------
 
@@ -294,6 +395,7 @@ CREATE TABLE `surat_janda` (
 --
 
 INSERT INTO `surat_janda` (`id_surat_janda`, `no_surat`, `id_ktp`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('0e7f2359-0a88-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 20a21', '126e341b-f295-11ec-b338-c454445434d3', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Selesai', '', '0e7f2359-0a88-11ee-ac0b-c454445434d3.png'),
 ('5d583917-0d5e-11ed-9e5a-c454445434d3', 'aaa', '126e341b-f295-11ec-b338-c454445434d3', '2022-07-27', 'bced8a73-0c95-11ed-830d-c454445434d3', 'Selesai', '', '5d583917-0d5e-11ed-9e5a-c454445434d3.png');
 
 -- --------------------------------------------------------
@@ -315,6 +417,13 @@ CREATE TABLE `surat_kehilangan` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_kehilangan`
+--
+
+INSERT INTO `surat_kehilangan` (`id_surat_kehilangan`, `no_surat`, `id_ktp`, `kehilangan`, `tgl_kehilangan`, `tempat`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('9a2a8afc-0a8a-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 20a21', '126e341b-f295-11ec-b338-c454445434d3', 'saf', '2023-06-14', 'Rumah Mempelai', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
 
 -- --------------------------------------------------------
 
@@ -360,6 +469,13 @@ CREATE TABLE `surat_kematian` (
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `surat_kematian`
+--
+
+INSERT INTO `surat_kematian` (`id_surat_kematian`, `no_surat`, `id_ktp`, `hari`, `pukul`, `bertempat`, `dimakamkan`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('c74a0d3d-0a8a-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 2021', '126e341b-f295-11ec-b338-c454445434d3', 'Seninds', 'a', 'jhkkjl', 'asd', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -379,6 +495,13 @@ CREATE TABLE `surat_kurang_mampu` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_kurang_mampu`
+--
+
+INSERT INTO `surat_kurang_mampu` (`id_surat_kurang_mampu`, `no_surat`, `id_ktp`, `peruntukan`, `keperluan`, `penghasilan`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('b17e963f-0a8a-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 2021', '126e341b-f295-11ec-b338-c454445434d3', 'SURAT KETERANGAN MISIKN', 'asf', '2000000', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
 
 -- --------------------------------------------------------
 
@@ -537,6 +660,13 @@ CREATE TABLE `surat_skck` (
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `surat_skck`
+--
+
+INSERT INTO `surat_skck` (`id_surat_skck`, `no_surat`, `id_ktp`, `keperluan`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('459d520e-0a8b-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 2021', '18dd6073-09e6-11ee-ab00-55ae67f9aa6a', 'a', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -558,6 +688,13 @@ CREATE TABLE `surat_usaha` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data untuk tabel `surat_usaha`
+--
+
+INSERT INTO `surat_usaha` (`id_surat_usaha`, `no_surat`, `id_ktp`, `jenis_usaha`, `nama_usaha`, `alamat_usaha`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
+('7c458396-0a8a-11ee-ac0b-c454445434d3', '470 / 314/PH/ XII/ 20a21', '126e341b-f295-11ec-b338-c454445434d3', 'sdf', 'arfs', 'ad', '2023-06-14', 'aba2d31d-09e3-11ee-ab00-55ae67f9aa6a', 'Proses', '', '');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -566,6 +703,12 @@ CREATE TABLE `surat_usaha` (
 --
 ALTER TABLE `informasi`
   ADD PRIMARY KEY (`id_informasi`);
+
+--
+-- Indeks untuk tabel `jenis_kegiatan`
+--
+ALTER TABLE `jenis_kegiatan`
+  ADD PRIMARY KEY (`id_jenis_kegiatan`);
 
 --
 -- Indeks untuk tabel `kk`
@@ -602,6 +745,18 @@ ALTER TABLE `pengguna`
 --
 ALTER TABLE `pengunjung`
   ADD PRIMARY KEY (`id_pengguna`);
+
+--
+-- Indeks untuk tabel `penugasan`
+--
+ALTER TABLE `penugasan`
+  ADD PRIMARY KEY (`id_penugasan`);
+
+--
+-- Indeks untuk tabel `peserta_penugasan`
+--
+ALTER TABLE `peserta_penugasan`
+  ADD PRIMARY KEY (`id_peserta_penugasan`);
 
 --
 -- Indeks untuk tabel `proposal`

@@ -11,11 +11,10 @@
 <body>
 <table width="100%" border="0">
   <tr>
-    <td width="11%"><img src="<?php echo base_url(); ?>assets\img\logobatola.png" width="90" height="88" /></td>
-    <td width="89%"><p align="center"><strong>PEMERINTAH KABUPATEN BARITO KUALA<br /> 
-      KECAMATAN MANDASTANA<br />
-      <font size="+2">DESA PANTAI HAMBAWANG</font></strong> <br />
-      <font size="-2">Jl. Pantai Hambawang RT.04 RW.02 Kecamatan Mandastana Kabupaten Barito Kuala</font>      </td>
+    <td width="11%"><img src="<?php echo base_url(); ?>assets\img\logo.png" width="90" height="88" /></td>
+    <td width="89%"><p align="center"><strong><font size="+3">PEMERINTAH KABUPATEN BANJAR</font><br />
+      <font size="+2"> KECAMATAN KERTAK HANYAR</font></strong> <br />
+      <font size="-2">Jl. A. Yani, Tatah Belayung Baru, Kec. Kertak Hanyar, Kabupaten Banjar, Kalimantan Selatan 70654</font> </p></td>
   </tr>
 </table>
 <br />
@@ -63,8 +62,8 @@ padding:1.0pt 0cm 0cm 0cm'>
 </table>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Bahwa nama tersebut di atas adalah benar-benar mempunyai usaha <strong><?php echo $d['nama_usaha']; ?></strong> </p>
 <p>
-  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Demikian Surat Keterangan Domisili ini dibuat untuk dapat dipergunakan sebagaimana &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;mestinya..</p> <br>  <br>  
-<p align="right">Pantai Hambawang, <?php echo date('d-m-Y');?><br />
+  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Demikian Surat Keterangan usaha ini dibuat untuk dapat dipergunakan sebagaimana &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;mestinya..</p> <br>  <br>  
+<p align="right">Kertak Hanyar, <?php echo date('d-m-Y');?><br />
 <?php echo $d['jabatan']; ?></p>
 <div align="right">
   <?php if($d['status']=='Selesai') :?>

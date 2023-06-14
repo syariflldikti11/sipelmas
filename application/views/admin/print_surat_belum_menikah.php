@@ -11,11 +11,10 @@
 <body>
 <table width="100%" border="0">
   <tr>
-    <td width="11%"><img src="<?php echo base_url(); ?>assets\img\logobatola.png" width="90" height="88" /></td>
-    <td width="89%"><p align="center"><strong>PEMERINTAH KABUPATEN BARITO KUALA<br /> 
-      KECAMATAN MANDASTANA<br />
-      <font size="+2">DESA PANTAI HAMBAWANG</font></strong> <br />
-      <font size="-2">Jl. Pantai Hambawang RT.04 RW.02 Kecamatan Mandastana Kabupaten Barito Kuala</font>      </td>
+    <td width="11%"><img src="<?php echo base_url(); ?>assets\img\logo.png" width="90" height="88" /></td>
+    <td width="89%"><p align="center"><strong><font size="+3">PEMERINTAH KABUPATEN BANJAR</font><br />
+      <font size="+2"> KECAMATAN KERTAK HANYAR</font></strong> <br />
+      <font size="-2">Jl. A. Yani, Tatah Belayung Baru, Kec. Kertak Hanyar, Kabupaten Banjar, Kalimantan Selatan 70654</font> </p></td>
   </tr>
 </table>
 <br />
@@ -64,7 +63,7 @@ padding:1.0pt 0cm 0cm 0cm'>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Dengan ini dalam keadaan sehat jasmani dan rohani menyatakan/menerangkan<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;dengan sebenar-benarnya tanpa adanya paksaan dan tekanan dari siapa pun :<br />
 </p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1.      Bahwa sampai saat ini masih berdomisili di Desa : Pantai Hambawang<br />
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1.      Bahwa sampai saat ini masih berdomisili di Kecamatan : Kertak Hanyar<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2.      Bahwa saya sampai saat ini betul-betul berstatus : <?php echo $d['status_nikah']; ?> </p>
 <p><br />
   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Apabila dikemudian hari timbul akibat hukum dari keterangan ini, maka saya<br />
@@ -78,7 +77,7 @@ pidana penjara paling lama tujuh tahun.</strong></p> <br> <br>
   <tr>
     <td width="7%">1. </td>
     <td width="64%">(.........................................)</td>
-    <td width="29%">Pantai Hambawang,<?php echo date('d-m-Y'); ?></td>
+    <td width="29%">Kertak Hanyar,<?php echo date('d-m-Y'); ?></td>
   </tr>
   <tr>
     <td>2.</td>

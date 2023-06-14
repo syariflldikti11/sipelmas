@@ -6,7 +6,9 @@
 
 html {
   position: relative;
+  
   min-height: 100%;
+
   font-family: Nunito
 }
 
@@ -21,12 +23,17 @@ a:focus {
 #wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex
+  display: flex;
+ padding-right: 80px;
+  padding-left: 80px;
+  background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');
+background-repeat: repeat;
 }
 
 #wrapper #content-wrapper {
   background-color: #fafdfb;
   width: 100%;
+
   overflow-x: hidden
 }
 
@@ -186,9 +193,8 @@ a:focus {
 }
 
 .bg-gradient-light {
-  background-color: #e3eaef;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #e3eaef), to(#c2cbe5));
-  background-image: linear-gradient(180deg, #e3eaef 10%, #c2cbe5 100%);
+  background-color: #F5F5F5;
+
   background-size: cover
 }
 

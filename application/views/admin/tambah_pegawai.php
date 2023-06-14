@@ -12,6 +12,11 @@
        <?php echo validation_errors();
                                                        
     echo form_open('admin/tambah_pegawai'); ?>
+     <div class="form-group">
+                      <label for="exampleInputEmail1">NIK</label>
+                      <input type="text" name="nik" class="form-control">
+                    
+                    </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nama</label>
                       <input type="text" name="nama_peg" class="form-control">

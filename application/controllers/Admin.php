@@ -21,6 +21,46 @@ class Admin extends CI_Controller
 			redirect($url);
 		}
 	}
+	function user()
+    {
+        $data = array(
+            'judul' => 'Data Surat Masuk',
+            'dt_user' => $this->umum->get_user(),
+        );
+        $this->template->load('admin/template', 'admin/user', $data);
+    }
+    function tambah_user()
+	{
+
+	 $data['dt_pegawai'] = $this->umum->get_data('pegawai');
+		$this->template->load('admin/template', 'admin/tambah_user',$data);
+	}
+	 function simpan_user()
+    {
+        $this->db->set('id_pengguna', 'UUID()', FALSE);
+        $id_pegawai = $this->input->post('id_pegawai');
+        $password = $this->input->post('password');
+        $role = $this->input->post('role');
+        $data = array(
+            'id_pegawai' => $id_pegawai,
+            'role' => $role,
+            'password' => md5($password),
+        );
+
+        $this->umum->input_data($data, 'pengguna');
+        $notif = "User Berhasil Ditambahkan";
+        $this->session->set_flashdata('success', $notif);
+        redirect('admin/user');
+
+    }
+    function delete_user($id)
+    {
+
+        $this->umum->hapus('pengguna', 'id_pengguna', $id);
+        $notif = "User Berhasil dihapuskan";
+        $this->session->set_flashdata('delete', $notif);
+        redirect('admin/user');
+    }
 function surat_masuk()
     {
         $data = array(
@@ -224,9 +264,65 @@ function tambah_surat_keluar()
 		$data = array(
 			'menu' => 'Dashboard',
 			'sub_menu' => '',
-			'dt_pengaduan_baru' => $this->umum->pengaduan_masyarakat(),
-			'hitung_pengaduan' => $this->umum->hitung_pengaduan(),
+			'surat_masuk' => $this->umum->hitung('surat_masuk'),
+			'surat_keluar' => $this->umum->hitung('surat_keluar'),
+			'penugasan' => $this->umum->hitung('penugasan'),
+			'surat_domisili' => $this->umum->hitung_surat('surat_domisili', 'status','Selesai'),
+			'surat_biodek' => $this->umum->hitung_surat('surat_biodek', 'status','Selesai'),
+			'surat_belum_menikah' => $this->umum->hitung_surat('surat_belum_menikah', 'status','Selesai'),
+			'surat_izin_keramaian' => $this->umum->hitung_surat('surat_izin_keramaian', 'status','Selesai'),
+			'surat_janda' => $this->umum->hitung_surat('surat_janda', 'status','Selesai'),
+			'surat_kehilangan' => $this->umum->hitung_surat('surat_kehilangan', 'status','Selesai'),
+			'surat_kematian' => $this->umum->hitung_surat('surat_kematian', 'status','Selesai'),
+			'surat_kurang_mampu' => $this->umum->hitung_surat('surat_kurang_mampu', 'status','Selesai'),
+			'surat_pindah_datang' => $this->umum->hitung_surat('surat_pindah_datang', 'status','Selesai'),
+			'surat_pindah_keluar' => $this->umum->hitung_surat('surat_pindah_keluar', 'status','Selesai'),
+			'surat_skck' => $this->umum->hitung_surat('surat_skck', 'status','Selesai'),
+			'surat_usaha' => $this->umum->hitung_surat('surat_usaha', 'status','Selesai'),
+			'psurat_domisili' => $this->umum->hitung('surat_domisili'),
+			'psurat_biodek' => $this->umum->hitung('surat_biodek'),
+			'psurat_belum_menikah' => $this->umum->hitung('surat_belum_menikah'),
+			'psurat_izin_keramaian' => $this->umum->hitung('surat_izin_keramaian'),
+			'psurat_janda' => $this->umum->hitung('surat_janda'),
+			'psurat_kehilangan' => $this->umum->hitung('surat_kehilangan'),
+			'psurat_kematian' => $this->umum->hitung('surat_kematian'),
+			'psurat_kurang_mampu' => $this->umum->hitung('surat_kurang_mampu'),
+			'psurat_pindah_datang' => $this->umum->hitung('surat_pindah_datang'),
+			'psurat_pindah_keluar' => $this->umum->hitung('surat_pindah_keluar'),
+			'psurat_skck' => $this->umum->hitung('surat_skck'),
+			'psurat_usaha' => $this->umum->hitung('surat_usaha'),
 		);
+		foreach($this->umum->grafik_pengaduan()->result_array() as $row)
+   {
+    $data['grafik_pengaduan'][]=(float)$row['Januari'];
+    $data['grafik_pengaduan'][]=(float)$row['Februari'];
+    $data['grafik_pengaduan'][]=(float)$row['Maret'];
+    $data['grafik_pengaduan'][]=(float)$row['April'];
+    $data['grafik_pengaduan'][]=(float)$row['Mei'];
+    $data['grafik_pengaduan'][]=(float)$row['Juni'];
+    $data['grafik_pengaduan'][]=(float)$row['Juli'];
+    $data['grafik_pengaduan'][]=(float)$row['Agustus'];
+    $data['grafik_pengaduan'][]=(float)$row['September'];
+    $data['grafik_pengaduan'][]=(float)$row['Oktober'];
+    $data['grafik_pengaduan'][]=(float)$row['November'];
+    $data['grafik_pengaduan'][]=(float)$row['Desember'];
+   }
+
+   foreach($this->umum->grafik_respon()->result_array() as $roww)
+   {
+    $data['grafik_respon'][]=(float)$roww['Januari'];
+    $data['grafik_respon'][]=(float)$roww['Februari'];
+    $data['grafik_respon'][]=(float)$roww['Maret'];
+    $data['grafik_respon'][]=(float)$roww['April'];
+    $data['grafik_respon'][]=(float)$roww['Mei'];
+    $data['grafik_respon'][]=(float)$roww['Juni'];
+    $data['grafik_respon'][]=(float)$roww['Juli'];
+    $data['grafik_respon'][]=(float)$roww['Agustus'];
+    $data['grafik_respon'][]=(float)$roww['September'];
+    $data['grafik_respon'][]=(float)$roww['Oktober'];
+    $data['grafik_respon'][]=(float)$roww['November'];
+    $data['grafik_respon'][]=(float)$roww['Desember'];
+   }
 		$this->template->load('admin/template', 'admin/home', $data);
 	}
 	function informasi()
@@ -682,6 +778,147 @@ function tambah_surat_keluar()
 		redirect('admin/pegawai');
 
 	}
+	function penugasan()
+    {
+        $data = array(
+            'judul' => 'Data Penugasan Pegawai',
+            'menu' => 'Penugasan Pegawai',
+            'sub_menu' => '',
+            'dt_penugasan' => $this->umum->get_penugasan(),
+  
+        );
+        $this->template->load('admin/template', 'admin/penugasan', $data);
+    }
+    function tambah_penugasan()
+    {
+          $data['dt_jenis_kegiatan'] = $this->umum->get_table('jenis_kegiatan');
+        $this->db->set('id_penugasan', 'UUID()', FALSE);
+        $this->form_validation->set_rules('no_surat', 'no_surat', 'required');
+        if ($this->form_validation->run() === FALSE)
+                $this->template->load('admin/template', 'admin/tambah_penugasan', $data);
+        else {
+
+            $this->umum->set_data("penugasan");
+            $notif = "Tambah Data Berhasil";
+            $this->session->set_flashdata('success', $notif);
+            redirect('admin/penugasan');
+        }
+    }
+     function update_penugasan($id=false)
+    {
+$data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
+        $this->form_validation->set_rules('id_penugasan', 'id_penugasan', 'required');
+        if ($this->form_validation->run() === FALSE)
+                 $this->template->load('admin/template', 'admin/update_penugasan', $data);
+        else {
+            $this->umum->update_data("penugasan");
+            $notif = " Update Data Berhasil";
+            $this->session->set_flashdata('update', $notif);
+            redirect('admin/penugasan');
+        }
+    }
+    function delete_penugasan($id)
+    {
+
+        $this->umum->hapus('penugasan', 'id_penugasan', $id);
+        $notif = "Delete Data Berhasil";
+        $this->session->set_flashdata('delete', $notif);
+        redirect('admin/penugasan');
+    }
+     function peserta_penugasan($id=false)
+    {
+        $data = array(
+            'id' => $id,
+        'dt_peserta' => $this->umum->get_peserta($id),
+        'dt_pegawai' => $this->umum->get_table('pegawai'),
+        );
+        $this->template->load('admin/template', 'admin/peserta_penugasan', $data);
+    }
+     function tambah_peserta_penugasan()
+    {
+
+        $this->db->set('id_peserta_penugasan', 'UUID()', FALSE);
+        $this->form_validation->set_rules('id_pegawai', 'id_pegawai', 'required');
+        $id_penugasan = $this->input->post('id_penugasan');
+        if ($this->form_validation->run() === FALSE)
+      redirect(base_url() . "admin/peserta_penugasan/".$id_penugasan);
+        else {
+
+            $this->umum->set_data("peserta_penugasan");
+            $notif = "Tambah Peserta Penugasan Berhasil";
+            $this->session->set_flashdata('success', $notif);
+             redirect(base_url() . "admin/peserta_penugasan/".$id_penugasan);
+        }
+    }
+
+    
+     function delete_peserta_penugasan($id,$id_penugasan)
+    {
+
+        $this->umum->hapus('peserta_penugasan', 'id_peserta_penugasan', $id);
+        $notif = "Data Berhasil dihapuskan";
+        $this->session->set_flashdata('delete', $notif);
+      redirect(base_url() . "admin/peserta_penugasan/".$id_penugasan);
+    }
+
+	function jenis_kegiatan()
+	{
+
+		$data['dt_jenis_kegiatan'] = $this->umum->get_data('jenis_kegiatan');
+		$this->template->load('admin/template', 'admin/jenis_kegiatan', $data);
+	}
+	function cetak_jenis_kegiatan()
+	{
+
+		
+		$this->load->view('admin/cetak_jenis_kegiatan', $data);
+
+	}
+	function tambah_jenis_kegiatan()
+	{
+
+
+		$this->db->set('id_jenis_kegiatan', 'UUID()', FALSE);
+	$this->form_validation->set_rules('nama_jenis_kegiatan', 'nama_jenis_kegiatan', 'required');
+		if ($this->form_validation->run() === FALSE)
+			$this->template->load('admin/template', 'admin/tambah_jenis_kegiatan');
+		else {
+
+			$this->umum->set_data("jenis_kegiatan");
+			$notif = "Tambah Data Berhasil";
+			$this->session->set_flashdata('success', $notif);
+			redirect('admin/jenis_kegiatan');
+		}
+	}
+	function update_jenis_kegiatan($id = NULL)
+	{
+
+	$data['d'] = $this->umum->ambil('jenis_kegiatan', 'id_jenis_kegiatan', $id);
+		$this->form_validation->set_rules('id_jenis_kegiatan', 'id_jenis_kegiatan', 'required');
+		if ($this->form_validation->run() === FALSE)
+			$this->template->load('admin/template', 'admin/update_jenis_kegiatan', $data);
+		else {
+
+
+			$this->umum->update_data("jenis_kegiatan");
+			$notif = "Update Data Berhasil";
+			$this->session->set_flashdata('update', $notif);
+			redirect('admin/jenis_kegiatan');
+		}
+
+	}
+
+	function delete_jenis_kegiatan($id = NULL)
+	{
+
+
+		$this->umum->hapus('jenis_kegiatan', 'id_jenis_kegiatan', $id);
+		$notif = "Delete Data Berhasil";
+		$this->session->set_flashdata('delete', $notif);
+		redirect('admin/jenis_kegiatan');
+
+	}
+
 
 	function pengaduan()
 	{
@@ -969,7 +1206,7 @@ function tambah_surat_keluar()
 		
 		$data['dt_ktp'] = $this->umum->get_data('ktp');
 		$data['d'] = $this->umum->update_proposal($id);
-		$this->template->load('admin/template', 'admin/edit_proposal', $data);
+		$this->template->load('admin/template', 'admin/update_proposal', $data);
 
 	}
 	function update_proposal()
@@ -1151,7 +1388,7 @@ function tambah_surat_keluar()
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_kematian";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_kematian";
 			$qrcode = $id_surat_kematian . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -1173,12 +1410,12 @@ function tambah_surat_keluar()
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat kematian anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -1388,7 +1625,7 @@ function tambah_surat_keluar()
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_pindah_datang";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_pindah_datang";
 			$qrcode = $id_surat_pindah_datang . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -1410,12 +1647,12 @@ function tambah_surat_keluar()
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat pindah datang anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -1665,7 +1902,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_pindah_keluar";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_pindah_keluar";
 			$qrcode = $id_surat_keluar . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -1687,12 +1924,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat pindah keluar anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -1882,7 +2119,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_belum_menikah";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_belum_menikah";
 			$qrcode = $id_surat_belum_menikah . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -1904,12 +2141,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat belum menikah anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -2050,7 +2287,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_kurang_mampu";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_kurang_mampu";
 			$qrcode = $id_surat_kurang_mampu . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2072,12 +2309,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat kurang mampu anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -2211,7 +2448,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_domisili";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_domisili";
 			$qrcode = $id_surat_domisili . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2233,12 +2470,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan permohonan surat domisili anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -2380,7 +2617,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_janda";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_janda";
 			$qrcode = $id_surat_janda . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2402,12 +2639,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan permohonan surat pernyataan janda anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -2547,7 +2784,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_izin_keramaian";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_izin_keramaian";
 			$qrcode = $id_surat_izin_keramaian . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2569,12 +2806,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat izin mengumpulkan orang banyak/izin keramaian anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -2715,7 +2952,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_skck";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_skck";
 			$qrcode = $id_surat_skck . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2737,12 +2974,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat skck anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -2884,7 +3121,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_biodek";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_biodek";
 			$qrcode = $id_surat_biodek . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -2906,12 +3143,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat penguasaan fisik bidang tanah (Biodek) anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -3053,7 +3290,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_kehilangan";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_kehilangan";
 			$qrcode = $id_surat_kehilangan . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -3075,12 +3312,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan permohonan surat kehilangan anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo
@@ -3307,7 +3544,7 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 			$config['black'] = array(224, 255, 255); // array, default is array(255,255,255)
 			$config['white'] = array(70, 130, 180); // array, default is array(0,0,0)
 			$this->ciqrcode->initialize($config);
-			$link = "http://192.168.2.211:8080/siapkades/qr/scan/$id_surat_usaha";
+			$link = "http://192.168.2.211:8080/sipelmas/qr/scan/$id_surat_usaha";
 			$qrcode = $id_surat_usaha . '.png'; //buat name dari qr code sesuai dengan asal_pendapatan
 
 			$params['data'] = $link; //data yang akan di jadikan QR CODE
@@ -3329,12 +3566,12 @@ $this->template->load('admin/template', 'admin/update_surat_pindah_keluar', $dat
 				$mail->Port = 587; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 				//pengirim
-				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIAPKADES');
+				$mail->setFrom('siapkades.pantaihambawang@gmail.com', 'SIPELMAS');
 				$mail->addAddress($email); //Add a recipient
 
 				//Content
 				$mail->isHTML(true); //Set email format to HTML
-				$mail->Subject = 'Pelayanan Surat | SIAPKADES';
+				$mail->Subject = 'Pelayanan Surat | SIPELMAS';
 				$mail->Body = 'Kami informasikan  permohonan surat usaha anda sudah selesai silahkan login ke website untuk download file suratnya.';
 				$mail->AltBody = '';
 				//$mail->AddEmbeddedImage('gambar/logo.png', 'logo'); //abaikan jika tidak ada logo

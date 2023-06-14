@@ -19,6 +19,11 @@
                     
                     </div>
                      <div class="form-group">
+                      <label for="exampleInputEmail1">NIK</label>
+                      <input type="text" name="nik" value="<?php echo $d['nik'];?>" class="form-control">
+                    
+                    </div>
+                     <div class="form-group">
                       <label for="exampleInputEmail1">Jabatan</label>
                       <select class="form-control" name="jabatan">
                         <option value="Kepala Desa" <?php if($d['jabatan']=='Kepala Desa') echo 'selected'; ?>>Kepala Desa</option>

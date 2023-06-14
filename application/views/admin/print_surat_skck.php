@@ -11,11 +11,10 @@
 <body>
 <table width="100%" border="0">
   <tr>
-    <td width="11%"><img src="<?php echo base_url(); ?>assets\img\logobatola.png" width="90" height="88" /></td>
-    <td width="89%"><p align="center"><strong>PEMERINTAH KABUPATEN BARITO KUALA<br /> 
-      KECAMATAN MANDASTANA<br />
-      <font size="+2">DESA PANTAI HAMBAWANG</font></strong> <br />
-      <font size="-2">Jl. Pantai Hambawang RT.04 RW.02 Kecamatan Mandastana Kabupaten Barito Kuala</font>      </td>
+    <td width="11%"><img src="<?php echo base_url(); ?>assets\img\logo.png" width="90" height="88" /></td>
+    <td width="89%"><p align="center"><strong><font size="+3">PEMERINTAH KABUPATEN BANJAR</font><br />
+      <font size="+2"> KECAMATAN KERTAK HANYAR</font></strong> <br />
+      <font size="-2">Jl. A. Yani, Tatah Belayung Baru, Kec. Kertak Hanyar, Kabupaten Banjar, Kalimantan Selatan 70654</font> </p></td>
   </tr>
 </table>
 <br />
@@ -27,7 +26,7 @@ padding:1.0pt 0cm 0cm 0cm'>
   <tr>
     <td width="14%">Nomor</td>
     <td width="48%">: <?php echo $d['no_surat']; ?></td>
-    <td width="38%">Pantai Hambawang, <?php echo date('d-m-Y');?></td>
+    <td width="38%">Kertak Hanyar, <?php echo date('d-m-Y');?></td>
   </tr>
   <tr>
     <td>Perihal </td>
@@ -44,17 +43,17 @@ padding:1.0pt 0cm 0cm 0cm'>
     <td>&nbsp;</td>
     <td><table border="0" cellspacing="0" cellpadding="0" width="0">
       <tr>
-        <td width="593" valign="top"><p>Sektor    Kepolisian Kec. Mandastana<br />
+        <td width="593" valign="top"><p>Sektor    Kepolisian Kec. Kertak Hanyar<br />
           Di<br />
-            -Bangkit Baru <br />
+            -Tempat <br />
             <br />
         </p></td>
       </tr>
     </table></td>
   </tr>
 </table>
-<p>&emsp;&emsp;&emsp;&emsp;Yang bertanda tangan dibawah ini Kepala Desa Pantai Hambawang Kecamatan Mandastana <br />
-  Kabupaten Barito Kuala, dengan ini memberikan  Surat Keterangan kepada :</p>
+<p/>Yang bertanda tangan dibawah ini Camat Kertak Hanyar  Kabupaten Banjar, dengan ini menyatakan dengan sebenarnya : <br />
+<br>
 <table width="100%" border="0">
   <tr>
     <td >&nbsp;</td>
@@ -88,9 +87,9 @@ padding:1.0pt 0cm 0cm 0cm'>
   </tr>
 </table> 
 <br>
-<p>&emsp;&emsp;&emsp;&emsp;Orang tersebut di atas adalah benar-benar penduduk Desa Pantai Hambawang  Kec.Mandastana, dan sepengatahuan kami orang tersebut di atas adalah baik adat  istiadatnya baik dipemerintahan maupun di masyarakat dan tidak pernah terhukum.<br />
+<p>&emsp;&emsp;&emsp;&emsp;Orang tersebut di atas adalah benar-benar penduduk Kecamatan Kertak Hanyar, dan sepengatahuan kami orang tersebut di atas adalah baik adat  istiadatnya baik dipemerintahan maupun di masyarakat dan tidak pernah terhukum.<br />
 Surat Keterangan ini diberikan untuk keperluan <strong><?php echo $d['keperluan']; ?></strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;Demikian surat keterangan ini dibuat agar dapat diketahui dan dipergunakan  sebagaimana mestinya.</p>
+<p>Demikian surat keterangan ini dibuat agar dapat diketahui dan dipergunakan  sebagaimana mestinya.</p>
 <table width="100%" border="0">
   <tr>
     <td width="50%"><div align="center"></div></td>
