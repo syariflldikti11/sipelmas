@@ -30,7 +30,7 @@
                   </div>
                   <p class="mt-4 text-sm text-center">
                     Belum Punya Akun?
-                    <a href="#" class="text-info text-gradient font-weight-bold">Register</a>
+                    <a href="<?= base_url('login/register'); ?>" class="text-info text-gradient font-weight-bold">Register</a>
                   </p>
                 </form>
               </div>

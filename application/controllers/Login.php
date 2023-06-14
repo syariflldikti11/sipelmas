@@ -18,6 +18,34 @@ class Login extends CI_Controller
        
         $this->template->load('login/template', 'login/pengaduan',$data);
     }
+     function register()
+    { $data = array(
+
+                'action' => 'login/action_register',
+            );
+       
+        $this->template->load('login/template', 'login/register',$data);
+    }
+     function action_register()
+    {
+        $this->db->set('id_pengunjung', 'UUID()', FALSE);
+
+        $password = $this->input->post('password');
+        $nik = $this->input->post('nik');
+        $email = $this->input->post('email');
+        $data = array(
+ 
+            'nik' => $nik,
+            'email' => $email,
+            'password' => md5($password),
+        );
+
+        $this->umum->input_data($data, 'pengunjung');
+        $notif = "Register Berhasil Silahkan Login";
+        $this->session->set_flashdata('success', $notif);
+        redirect('login');
+
+    }
      function action_pengaduan()
     {
         $this->db->set('id_pengaduan', 'UUID()', FALSE);
