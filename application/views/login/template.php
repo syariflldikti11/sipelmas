@@ -36,6 +36,7 @@
   <link id="pagestyle" href="<?= base_url(); ?>assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+   <link href="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -75,7 +76,7 @@
                 <li class="nav-item">
                   <a class="nav-link me-2" href="<?= base_url('login/register'); ?>">
                     <i class="fas fa-user opacity-6 text-dark me-1"></i>
-                    Register
+                    Register Pengunjung
                   </a>
                 </li>
                 <li class="nav-item">
@@ -105,6 +106,8 @@
   <script src="<?= base_url(); ?>assets/js/core/bootstrap.min.js"></script>
   <script src="<?= base_url(); ?>assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="<?= base_url(); ?>assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url(); ?>assetsadmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -119,7 +122,13 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?= base_url(); ?>assets/js/material-dashboard.min.js?v=3.1.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+ <script>
+    $(document).ready(function () {
 
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+  </script>
 <script type="text/javascript">
 
 

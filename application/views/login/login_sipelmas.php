@@ -17,16 +17,13 @@
                      echo form_open($action,'class="text-start"'); ?>
                   <div class="input-group input-group-outline my-3">
                    
-                    <input type="text" name="username" class="form-control" placeholder="NIK" >
+                    <input type="text" name="username" class="form-control" placeholder="NIK" required oninvalid="this.setCustomValidity('NIK tidak boleh kosong')" oninput="setCustomValidity('')" >
                   </div>
                   <div class="input-group input-group-outline mb-3">
                 
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')">
                   </div>
-                  <div class="form-check form-switch d-flex align-items-center mb-3">
-                    <input class="form-check-input" type="checkbox" id="rememberMe" checked>
-                    <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
-                  </div>
+                 
                   <div class="text-center">
                  
                      <input type="submit" class="btn bg-gradient-info w-100 my-4 mb-2" value="Login">

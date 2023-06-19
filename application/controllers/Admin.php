@@ -422,7 +422,7 @@ function tambah_surat_keluar()
 	{
 
 	
-		$this->template->load('admin/template', 'admin/tambah_ktp', $data);
+		$this->template->load('admin/template', 'admin/tambah_ktp');
 	}
 
 

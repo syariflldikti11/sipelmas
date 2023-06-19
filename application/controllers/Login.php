@@ -18,6 +18,14 @@ class Login extends CI_Controller
        
         $this->template->load('login/template', 'login/pengaduan',$data);
     }
+     function daftar_pengaduan()
+    { $data = array(
+
+                 'dt_pengaduan' => $this->umum->get_pengaduan(),
+            );
+       
+        $this->template->load('login/template', 'login/daftar_pengaduan',$data);
+    }
      function register()
     { $data = array(
 
@@ -136,14 +144,14 @@ public function action_auth_sipelmas()
             } else {
                 $notif = "Gagal";
                 $this->session->set_flashdata('delete', $notif);
-                redirect('login');
+                redirect('auth_sipelmas');
             }
 
         } else {
             $notif = "username/Password Salah";
             $this->session->set_flashdata('delete', $notif);
 
-            redirect('login');
+            redirect('auth_sipelmas');
         }
     }
 

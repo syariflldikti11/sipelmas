@@ -12,21 +12,20 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start">
+                 <?php
+                     echo form_open($action,'class="text-start"'); ?>
                   <div class="input-group input-group-outline my-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control">
+                   
+                    <input type="text" name="username" class="form-control" placeholder="NIK"  required oninvalid="this.setCustomValidity('NIK tidak boleh kosong')" oninput="setCustomValidity('')">
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" name="password" placeholder="Password"  required oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')">
                   </div>
-                  <div class="form-check form-switch d-flex align-items-center mb-3">
-                    <input class="form-check-input" type="checkbox" id="rememberMe" checked>
-                    <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
-                  </div>
-                  <div class="text-center">
-                    <button type="button" class="btn bg-gradient-info w-100 my-4 mb-2">Sign in</button>
+                 
+                   <div class="text-center">
+                 
+                     <input type="submit" class="btn bg-gradient-info w-100 my-4 mb-2" value="Login">
                   </div>
                   <p class="mt-4 text-sm text-center">
                     Belum Punya Akun?

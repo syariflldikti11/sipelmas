@@ -85,6 +85,16 @@ function get_peserta($id)
 	   $query = $this->db->get();
 	   return $query->result_array();
 	}
+	function get_pengaduan()
+	{		
+	   
+		$this->db->select('*');
+	   $this->db->from('pengaduan');
+	   $this->db->order_by('tgl_pengaduan desc');
+	
+	   $query = $this->db->get();
+	   return $query->result();
+	}
 function grafik_pengaduan()
  {
  $tgl=date('Y');
