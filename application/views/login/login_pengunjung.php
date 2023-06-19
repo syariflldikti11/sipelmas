@@ -19,7 +19,7 @@
                     <input type="text" name="username" class="form-control" placeholder="NIK"  required oninvalid="this.setCustomValidity('NIK tidak boleh kosong')" oninput="setCustomValidity('')">
                   </div>
                   <div class="input-group input-group-outline mb-3">
-                    <label class="form-label">Password</label>
+                 
                     <input type="password" class="form-control" name="password" placeholder="Password"  required oninvalid="this.setCustomValidity('Password tidak boleh kosong')" oninput="setCustomValidity('')">
                   </div>
                  

@@ -19,7 +19,6 @@
 
          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
@@ -27,7 +26,7 @@
   <div id="wrapper">
     <!-- Sidebar -->
     <ul  class="navbar-nav    sidebar sidebar-light accordion" id="accordionSidebar">
-      <a style="background-color: #0099CC;" class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/index'); ?>">
+      <a style="background-color: #0099CC;" class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user/index'); ?>">
         <div class="sidebar-brand-icon">
           <img src="<?php echo base_url(); ?>assets/img/logo.png">
         </div>
@@ -35,7 +34,7 @@
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('admin/index'); ?>">
+        <a class="nav-link" href="<?php echo base_url('user/index'); ?>">
           <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
       </li>
@@ -53,28 +52,14 @@
         <div id="collapseBootstrapp" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
         
-            <a class="collapse-item" href="<?php echo base_url('admin/ktp'); ?>">Data KTP</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/kk'); ?>">Data KK</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/pegawai'); ?>">Data Pegawai</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/user'); ?>">Data User</a>
+            <a class="collapse-item" href="<?php echo base_url('user/ktp'); ?>">Data KTP</a>
+           
           </div>
         </div>
       </li>
 
-       <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-      Surat
-      </div>
-      <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url('admin/surat_masuk'); ?>">
-          <i class="fas fa-fw fa-envelope"></i>
-          <span>Surat Masuk</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url('admin/surat_keluar'); ?>">
-          <i class="fas fa-fw fa-paper-plane"></i>
-          <span>Surat Keluar</span></a>
-      </li>
+      
+     
 
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -89,51 +74,38 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
       
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_domisili'); ?>">Surat Domisili</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_usaha'); ?>">Surat Usaha</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_kehilangan'); ?>">Surat Kehilangan</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_kurang_mampu'); ?>">Surat Kurang Mampu</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_kematian'); ?>">Surat Kematian</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_belum_menikah'); ?>">Surat Belum Menikah</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_pindah_keluar'); ?>">Surat Pindah Keluar</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_pindah_datang'); ?>">Surat Pindah Datang</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_izin_keramaian'); ?>">Surat Ijin Mengumpulkan <br />Orang Banyak</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_skck'); ?>">SKCK</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_biodek'); ?>">Surat Penguasan Fisik <br />Bidang Tanah</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/surat_janda'); ?>">Surat Keterangan Janda</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_domisili'); ?>">Surat Domisili</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_usaha'); ?>">Surat Usaha</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_kehilangan'); ?>">Surat Kehilangan</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_kurang_mampu'); ?>">Surat Kurang Mampu</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_kematian'); ?>">Surat Kematian</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_belum_menikah'); ?>">Surat Belum Menikah</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_pindah_keluar'); ?>">Surat Pindah Keluar</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_pindah_datang'); ?>">Surat Pindah Datang</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_izin_keramaian'); ?>">Surat Ijin Mengumpulkan <br />Orang Banyak</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_skck'); ?>">SKCK</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_biodek'); ?>">Surat Penguasan Fisik <br />Bidang Tanah</a>
+            <a class="collapse-item" href="<?php echo base_url('user/surat_janda'); ?>">Surat Keterangan Janda</a>
           </div>
         </div>
       </li>
 
    
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/proposal'); ?>">
+        <a class="nav-link" href="<?php echo base_url('user/proposal'); ?>">
           <i class="fas fa-fw fa-book"></i>
           <span>Pengajuan Proposal</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/pengaduan'); ?>">
+        <a class="nav-link" href="<?php echo base_url('user/pengaduan'); ?>">
           <i class="fas fa-fw fa-envelope"></i>
           <span>Pengaduan</span>
         </a>
       </li>
 
-     <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-       Kegiatan
-      </div>
-      <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url('admin/jenis_kegiatan'); ?>">
-          <i class="fas fa-fw fa-file"></i>
-          <span>Jenis Kegiatan</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url('admin/penugasan'); ?>">
-          <i class="fas fa-fw fa-tasks"></i>
-          <span>Kegiatan</span></a>
-      </li>
+    
 
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -149,14 +121,14 @@
         <div id="collapseBootstrappp" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Laporan</h6>
-           <a class="collapse-item" data-toggle="modal" data-target="#lapsurat" href="#">Pelayanan</a>
+           
           </div>
         </div>
       </li>
 
       <hr class="sidebar-divider">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('admin/informasi'); ?>">
+        <a class="nav-link" href="<?php echo base_url('user/informasi'); ?>">
           <i class="fas fa-fw fa-bullhorn"></i>
           <span>Informasi Pelayanan</span>
         </a>
@@ -192,8 +164,15 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 
-               
+                <a class="dropdown-item" href="<?php echo base_url('user/ktp'); ?>">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Data Saya
+                </a>
                 <div class="dropdown-divider"></div>
+ <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#ganti">
+              <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Ganti Password
+                </a>
                 <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
@@ -203,6 +182,34 @@
           </ul>
         </nav>
         <!-- Modal Logout -->
+         <div class="modal fade" id="ganti" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Ganti Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('user/update_password'); ?>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Password Baru</label>
+                        <input type="text" class="form-control"  name="password"  required >
+                        
+                      </div>
+                     
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+                    <input type="submit" name="submit"  class="btn btn-primary btn-pill" value="Update">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -218,7 +225,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
-                  <a href="<?php echo base_url('login/logout_sipelmas'); ?>" class="btn btn-info">Logout</a>
+                  <a href="<?php echo base_url('login/logout'); ?>" class="btn btn-info">Logout</a>
                 </div>
               </div>
             </div>
@@ -236,7 +243,7 @@
                 
                 <?php echo validation_errors();
                                                        
-    echo form_open('admin/download_ktp'); ?>
+    echo form_open('user/download_ktp'); ?>
                 <div class="modal-body">
                   <div class="form-group">
                       <label>RT</label>
@@ -273,7 +280,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Pelayanan </h5>
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -281,7 +288,7 @@
                   <div class="modal-body">
                      <?php  
              echo validation_errors();                       
-    echo form_open('admin/download_semua_surat'); ?>
+    echo form_open('user/download_semua_surat'); ?>
                    <div class="form-group">
                         <label for="exampleInputEmail1">Surat</label>
                         <select class="form-control" name="jenis">

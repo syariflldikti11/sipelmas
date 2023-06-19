@@ -112,10 +112,14 @@ class Login extends CI_Controller
             $data = $cek_login->row();
             if ($data->role == 1) {
                 $this->session->set_userdata('role', $data->role);
-                $this->session->set_userdata('nama', $data->nama_pegawai);
-                $this->session->set_userdata('foto', $data->file);
-                $this->session->set_userdata('id_pegawai', $data->id_pegawai);
-                redirect('pengunjung');
+                $this->session->set_userdata('ses_id', $data->nik);
+              
+                redirect('user');
+            }
+            else {
+                $notif = "Gagal";
+                $this->session->set_flashdata('delete', $notif);
+                redirect('login');
             }
         
 
@@ -144,14 +148,14 @@ public function action_auth_sipelmas()
             } else {
                 $notif = "Gagal";
                 $this->session->set_flashdata('delete', $notif);
-                redirect('auth_sipelmas');
+                redirect('login/auth_sipelmas');
             }
 
         } else {
             $notif = "username/Password Salah";
             $this->session->set_flashdata('delete', $notif);
 
-            redirect('auth_sipelmas');
+            redirect('login/auth_sipelmas');
         }
     }
 
