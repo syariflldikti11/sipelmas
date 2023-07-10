@@ -57,6 +57,7 @@
             <a class="collapse-item" href="<?php echo base_url('admin/kk'); ?>">Data KK</a>
             <a class="collapse-item" href="<?php echo base_url('admin/pegawai'); ?>">Data Pegawai</a>
             <a class="collapse-item" href="<?php echo base_url('admin/user'); ?>">Data User</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/ttd_laporan'); ?>">TTD Laporan</a>
           </div>
         </div>
       </li>
@@ -150,6 +151,15 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Laporan</h6>
            <a class="collapse-item" data-toggle="modal" data-target="#lapsurat" href="#">Pelayanan</a>
+           <a class="collapse-item" data-toggle="modal" data-target="#lapkegiatan" href="#">Kegiatan</a>
+           <a class="collapse-item" data-toggle="modal" data-target="#lappengaduan" href="#">Pengaduan</a>
+           <a class="collapse-item" data-toggle="modal" data-target="#lapproposal" href="#">Pengajuan Proposal</a>
+      
+            <a class="collapse-item" href="<?php echo base_url('admin/cetak_kk'); ?>">Data KK</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/cetak_pegawai'); ?>">Data Pegawai</a>
+
+            <a class="collapse-item" data-toggle="modal" data-target="#exampleModal"
+                    id="#myBtn">Data KTP</a>
           </div>
         </div>
       </li>
@@ -208,7 +218,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabelLogout">Logout SIAPKADES Pantai Hambawang</h5>
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Logout SIPELMAS</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -324,6 +334,124 @@
                 </div>
               </div>
             </div>
+
+              <div class="modal fade" id="lapkegiatan" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Kegiatan </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('admin/cetak_kegiatan'); ?>
+                  
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Submit">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+              <div class="modal fade" id="lappengaduan" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Pengaduan </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('admin/cetak_pengaduan'); ?>
+                  
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Submit">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="lapproposal" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Proposal </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('admin/cetak_proposal'); ?>
+                  
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Submit">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
 
 
 

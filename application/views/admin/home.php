@@ -91,7 +91,123 @@ $total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat
       
 <div class="row">
 
-           <div class="col-xl-6 col-lg-7">
+          
+
+              <div class="col-xl-6 col-lg-7">
+
+               <!-- Area Chart -->
+               <div class="card shadow mb-4">
+                   <div class="card-header py-3 bg-gradient-light">
+                       <h6 class="m-0 font-weight-bold text-info">Statisik Pelayanan</h6>
+                   </div>
+                   <div class="card-body">
+                       
+  <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                      
+                        <th>Layanan</th>
+                        <th>Selesai</th>
+                        <th>Belum Selesai</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Surat Domisili</td>
+                        <td><?= $surat_domisili; ?> </td>
+                        <td>
+                        <?php if($psurat_domisili<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_domisili==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_domisili; ?> </span></td>
+                      </tr>
+                       <tr>
+                        <td>Surat Belum Menikah</td>
+                        <td><?= $surat_belum_menikah; ?></td>
+                         <td><?php if($psurat_belum_menikah<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_belum_menikah==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_belum_menikah; ?> </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat biodek</td>
+                        <td><?= $surat_biodek; ?>  </td>
+                         <td><?php if($psurat_biodek<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_biodek==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_biodek; ?>  </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Izin Keramaian</td>
+                        <td><?= $surat_izin_keramaian; ?> </td>
+                         <td><?php if($psurat_izin_keramaian<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_izin_keramaian==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_izin_keramaian; ?> </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Janda</td>
+                        <td><?= $surat_janda; ?>  </td>
+                        <td><?php if($psurat_janda<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_janda==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_janda; ?> </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Kehilangan</td>
+                        <td><?= $surat_kehilangan; ?>  </td>
+                         <td><?php if($psurat_kehilangan<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_kehilangan==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_kehilangan; ?>  </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Kematian</td>
+                        <td><?= $surat_kematian; ?> </td>
+                        <td><?php if($psurat_kematian<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_kematian==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_kematian; ?> </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Kurang Mampu</td>
+                        <td><?= $surat_kurang_mampu; ?></td>
+                         <td><?php if($psurat_kurang_mampu<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_kurang_mampu==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_kurang_mampu; ?></span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Pindah Datang</td>
+                        <td><?= $surat_pindah_datang; ?>  </td>
+                        <td><?php if($psurat_pindah_datang<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_pindah_datang==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_pindah_datang; ?>  </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Pindah Keluar</td>
+                        <td><?= $surat_pindah_keluar; ?>  </td>
+                        <td><?php if($psurat_pindah_keluar<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_pindah_keluar==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_pindah_keluar; ?> </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat SKCK</td>
+                        <td><?= $surat_skck; ?>  </td>
+                         <td><?php if($psurat_skck<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_skck==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_skck; ?>  </span></td>
+                        
+                      </tr>
+                       <tr>
+                        <td>Surat Usaha</td>
+                        <td><?= $surat_usaha; ?>  </td>
+                                                <td><?php if($psurat_usaha<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($psurat_usaha==0) :?><span class="badge badge-success"><?php endif; ?><?= $psurat_usaha; ?> </span></td>
+                        
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                   </div>
+               </div>
+           </div>
+          
+
+            <div class="col-xl-6 col-lg-7">
 
                <!-- Area Chart -->
                <div class="card shadow mb-4">
@@ -102,93 +218,6 @@ $total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat
                    <div class="card-body">
 
                        <div id="chart"></div>
-                   </div>
-               </div>
-           </div>
-           <div class="col-xl-6 col-lg-7">
-
-               <!-- Area Chart -->
-               <div class="card shadow mb-4">
-                   <div class="card-header py-3 bg-gradient-light">
-                       <h6 class="m-0 font-weight-bold text-info">Layanan Belum Selesai</h6>
-                   </div>
-                   <div class="card-body">
-                       
-  <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                      <tr>
-                      
-                        <th>Layanan</th>
-                        <th>Ket</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Surat Domisili</td>
-                        <td><span class="badge badge-warning"><?= $surat_domisili; ?> dari <?= $psurat_domisili; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Belum Menikah</td>
-                        <td><span class="badge badge-success"><?= $surat_belum_menikah; ?> dari <?= $psurat_belum_menikah; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat biodek</td>
-                        <td><span class="badge badge-warning"><?= $surat_biodek; ?> dari <?= $psurat_biodek; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Izin Keramaian</td>
-                        <td><span class="badge badge-success"><?= $surat_izin_keramaian; ?> dari <?= $psurat_izin_keramaian; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Janda</td>
-                        <td><span class="badge badge-warning"><?= $surat_janda; ?> dari <?= $psurat_janda; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Kehilangan</td>
-                        <td><span class="badge badge-success"><?= $surat_kehilangan; ?> dari <?= $psurat_kehilangan; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Kematian</td>
-                        <td><span class="badge badge-warning"><?= $surat_kematian; ?> dari <?= $psurat_kematian; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Kurang Mampu</td>
-                        <td><span class="badge badge-success"><?= $surat_kurang_mampu; ?> dari <?= $psurat_kurang_mampu; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Pindah Datang</td>
-                        <td><span class="badge badge-warning"><?= $surat_pindah_datang; ?> dari <?= $psurat_pindah_datang; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Pindah Keluar</td>
-                        <td><span class="badge badge-success"><?= $surat_pindah_keluar; ?> dari <?= $psurat_pindah_keluar; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat SKCK</td>
-                        <td><span class="badge badge-warning"><?= $surat_skck; ?> dari <?= $psurat_skck; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-                       <tr>
-                        <td>Surat Usaha</td>
-                        <td><span class="badge badge-success"><?= $surat_usaha; ?> dari <?= $psurat_usaha; ?> </span></td>
-                        <td><a href="#" class="btn btn-sm btn-info">Lihat</a></td>
-                      </tr>
-
-                    </tbody>
-                  </table>
-                </div>
                    </div>
                </div>
            </div>

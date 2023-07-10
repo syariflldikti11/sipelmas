@@ -5,7 +5,7 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-info">Data Pengajuan Proposal <a class="btn btn-info btn-sm" href="<?php echo base_url('admin/tambah_proposal'); ?>">Tambah </a> <a class="btn btn-success btn-sm" href="<?php echo base_url('admin/cetak_proposal'); ?>">Cetak Semua </a></h6>
+                  <h6 class="m-0 font-weight-bold text-info">Data Pengajuan Proposal <a class="btn btn-info btn-sm" href="<?php echo base_url('admin/tambah_proposal'); ?>">Tambah </a></h6>
                 </div>
                 <div class="table-responsive p-3">
                   <table class="table align-items-center table-flush" id="dataTable">

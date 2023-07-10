@@ -37,6 +37,73 @@ public function rupiah($angka){
         );
         $this->template->load('admin/template', 'admin/user', $data);
     }
+    function ttd_laporan()
+    {
+        $data = array(
+            'judul' => 'Data TTD Laporan',
+            'dt_ttd_laporan' => $this->umum->get_data('ttd_laporan'),
+        );
+        $this->template->load('admin/template', 'admin/ttd_laporan', $data);
+    }
+    function update_ttd_laporan(){
+        $id_ttd = $this->input->post('id_ttd');
+        $nama_ttd = $this->input->post('nama_ttd');
+        $jabatan = $this->input->post('jabatan');
+        $lebar = $this->input->post('lebar');
+        $nip = $this->input->post('nip');
+        $old = $this->input->post('old_file');
+            
+            if (!empty($_FILES["file"]["name"])) {
+                  $file = $this->uploadFilettd();
+                  unlink("./upload/file/$old");
+                } else {
+                    $file = $old;
+                }
+            $data_update = array(
+                'id_ttd' => $id_ttd,
+                'nama_ttd' => $nama_ttd,
+                'jabatan' => $jabatan,
+                'lebar' => $lebar,
+                'nip' => $nip,
+                'file' => $file
+                );
+                $where = array('id_ttd' => $id_ttd);
+                $res = $this->umum->UpdateData('ttd_laporan', $data_update, $where);
+                if($res>=1){
+                   
+                    $notif = "Update TTD Laporan Berhasil ";
+                    $this->session->set_flashdata('update', $notif);
+                    redirect('admin/ttd_laporan');
+                }else{
+                    echo "<h1>GAGAL</h1>";
+                }
+            }
+             public function uploadFilettd()
+    {
+        $config['upload_path'] = 'upload/file';
+        $config['allowed_types'] = 'pdf|doc|docx|xls|xlsx|jpg|jpeg|png';
+        $config['overwrite'] = false;
+        $config['max_size'] = 5000;
+
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('file')) {
+            return $this->upload->data("file_name");
+        }
+        $error = $this->upload->display_errors();
+        echo $error;
+        exit;
+
+    }
+    function edit_ttd($id = NULL)
+	{
+
+		$data['page'] = "edit_ttd";
+		$data['d'] = $this->umum->ambil_data('ttd_laporan', 'id_ttd',1);
+		$this->template->load('admin/template', 'admin/update_ttd', $data);
+	}
     function tambah_user()
 	{
 
@@ -287,18 +354,19 @@ function tambah_surat_keluar()
 			'surat_pindah_keluar' => $this->umum->hitung_surat('surat_pindah_keluar', 'status','Selesai'),
 			'surat_skck' => $this->umum->hitung_surat('surat_skck', 'status','Selesai'),
 			'surat_usaha' => $this->umum->hitung_surat('surat_usaha', 'status','Selesai'),
-			'psurat_domisili' => $this->umum->hitung('surat_domisili'),
-			'psurat_biodek' => $this->umum->hitung('surat_biodek'),
-			'psurat_belum_menikah' => $this->umum->hitung('surat_belum_menikah'),
-			'psurat_izin_keramaian' => $this->umum->hitung('surat_izin_keramaian'),
-			'psurat_janda' => $this->umum->hitung('surat_janda'),
-			'psurat_kehilangan' => $this->umum->hitung('surat_kehilangan'),
-			'psurat_kematian' => $this->umum->hitung('surat_kematian'),
-			'psurat_kurang_mampu' => $this->umum->hitung('surat_kurang_mampu'),
-			'psurat_pindah_datang' => $this->umum->hitung('surat_pindah_datang'),
-			'psurat_pindah_keluar' => $this->umum->hitung('surat_pindah_keluar'),
-			'psurat_skck' => $this->umum->hitung('surat_skck'),
-			'psurat_usaha' => $this->umum->hitung('surat_usaha'),
+			'psurat_domisili' => $this->umum->hitung_surat('surat_domisili', 'status','Proses'),
+            'psurat_biodek' => $this->umum->hitung_surat('surat_biodek', 'status','Proses'),
+            'psurat_belum_menikah' => $this->umum->hitung_surat('surat_belum_menikah', 'status','Proses'),
+            'psurat_izin_keramaian' => $this->umum->hitung_surat('surat_izin_keramaian', 'status','Proses'),
+            'psurat_janda' => $this->umum->hitung_surat('surat_janda', 'status','Proses'),
+            'psurat_kehilangan' => $this->umum->hitung_surat('surat_kehilangan', 'status','Proses'),
+            'psurat_kematian' => $this->umum->hitung_surat('surat_kematian', 'status','Proses'),
+            'psurat_kurang_mampu' => $this->umum->hitung_surat('surat_kurang_mampu', 'status','Proses'),
+            'psurat_pindah_datang' => $this->umum->hitung_surat('surat_pindah_datang', 'status','Proses'),
+            'psurat_pindah_keluar' => $this->umum->hitung_surat('surat_pindah_keluar', 'status','Proses'),
+            'psurat_skck' => $this->umum->hitung_surat('surat_skck', 'status','Proses'),
+            'psurat_usaha' => $this->umum->hitung_surat('surat_usaha', 'status','Proses'),
+
 		);
 		foreach($this->umum->grafik_pengaduan()->result_array() as $row)
    {
@@ -815,7 +883,7 @@ function tambah_surat_keluar()
     }
      function update_penugasan($id=false)
     {
-$data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
+$data['d'] = $this->umum->ambil_datanew('penugasan', 'id_penugasan', $id);
         $this->form_validation->set_rules('id_penugasan', 'id_penugasan', 'required');
         if ($this->form_validation->run() === FALSE)
                  $this->template->load('admin/template', 'admin/update_penugasan', $data);
@@ -938,15 +1006,7 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 
 
 	}
-	function cetak_pengaduan()
-	{
-
-		$data['page'] = 'pengaduan';
-		$data['dt_pengaduan'] = $this->umum->admin_pengaduan();
-		$this->load->view('admin/cetak_pengaduan', $data);
-
-
-	}
+	
 	function update_pengaduan($id = NULL)
 	{
 
@@ -1149,15 +1209,7 @@ $data['d'] = $this->umum->ambil_data('penugasan', 'id_penugasan', $id);
 
 
 	}
-	function cetak_proposal()
-	{
-
-		
-		$data['dt_proposal'] = $this->umum->admin_proposal();
-		$this->load->view('admin/cetak_proposal', $data);
-
-
-	}
+	
 	function tambah_proposal()
 	{
 
@@ -3667,6 +3719,36 @@ $localIP = getHostByName(getHostName());
 
 
 	}
+    function cetak_kegiatan()
+    {
+
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_kegiatan'] = $this->umum->cetak_kegiatan($dari, $sampai);
+        $this->load->view('admin/cetak_kegiatan', $data);
+
+
+    }
+    function cetak_proposal()
+    {
+
+           $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_proposal'] = $this->umum->cetak_proposal($dari, $sampai);
+        $this->load->view('admin/cetak_proposal', $data);
+
+
+    }
+    function cetak_pengaduan()
+    {
+
+         $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_pengaduan'] = $this->umum->cetak_pengaduan($dari, $sampai);
+        $this->load->view('admin/cetak_pengaduan', $data);
+
+
+    }
 
 	function download_semua_surat_pindah()
 	{

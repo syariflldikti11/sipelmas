@@ -76,7 +76,7 @@
                   
                      <option value="Proses" <?php if($d['status']=='Proses') echo 'selected'; ?>>Proses</option>
                      <option value="Ditolak" <?php if($d['status']=='Ditolak') echo 'selected'; ?>>Ditolak</option>
-                     <option value="Selesai" <?php if($d['status']=='Selesai') echo 'selected'; ?>>Selesai</option>
+                       <option value="Validasi Pimpinan" <?php if($d['status']=='Validasi Pimpinan') echo 'selected'; ?>>Validasi Pimpinan</option>
                 
                      </select>
                     

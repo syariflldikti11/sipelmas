@@ -92,7 +92,7 @@ class Login extends CI_Controller
         if ($role == 2) {
             redirect(site_url('admin'));
         }
-          if ($role == 2) {
+          if ($role == 4) {
             redirect(site_url('camat'));
         }  else {
             $data = array(
@@ -142,6 +142,12 @@ public function action_auth_sipelmas()
                 $this->session->set_userdata('username', $data->username);
                 $this->session->set_userdata('nama', $data->nama_peg);
                 redirect('admin');
+            }
+             if ($data->role == 4) {
+                $this->session->set_userdata('role', $data->role);
+                $this->session->set_userdata('username', $data->username);
+                $this->session->set_userdata('nama', $data->nama_peg);
+                redirect('camat');
             }
             if ($data->role == 3) {
 

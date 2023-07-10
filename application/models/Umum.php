@@ -31,6 +31,22 @@ public function hitung($tabel)
       return 0;
     }
 }
+public function hitung_lagi($tabel)
+{   
+  $this->db->select('*');
+		$this->db->from($tabel);
+		$this->db->where('status !="Ditolak"');
+		
+    $query = $this->db->get();
+    if($query->num_rows()>0)
+    {
+      return $query->num_rows();
+    }
+    else
+    {
+      return 0;
+    }
+}
 public function hitung_surat($tabel, $kolom = FALSE, $id = FALSE)
 {   
 $query = $this->db->get_where($tabel, array($kolom => $id));
@@ -55,15 +71,7 @@ $query = $this->db->get_where($tabel, array($kolom = $id));
       return 0;
     }
 }
-function ambil_data($tabel, $kolom = FALSE, $id = FALSE)
-	{
-		if ($id === FALSE) {
-			$q = $this->db->get($tabel);	//ambil seluruh data tabel
-			return $q->result();		//kembalikan
-		}
-		$q = $this->db->get_where($tabel, array($kolom => $id)); //ambil satu baris data dengan $kolom=$id
-		return $q->row();				//kembalikan
-	}
+
 function get_peserta($id)
 	{		
 	   
@@ -405,6 +413,36 @@ function surat_kehilangan()
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+	function ambil_data($tabel, $kolom = FALSE, $id = FALSE)		
+	{
+		if($id === FALSE)
+		{
+			$q = $this->db->get($tabel);	//ambil seluruh data tabel
+			return $q->result();		//kembalikan
+		}
+		$q = $this->db->get_where($tabel,array($kolom=>$id)); //ambil satu baris data dengan $kolom=$id
+		return $q->row_array();				//kembalikan
+	}
+	function ambil_datanew($tabel, $kolom = FALSE, $id = FALSE)		
+	{
+		if($id === FALSE)
+		{
+			$q = $this->db->get($tabel);	//ambil seluruh data tabel
+			return $q->result();		//kembalikan
+		}
+		$q = $this->db->get_where($tabel,array($kolom=>$id)); //ambil satu baris data dengan $kolom=$id
+		return $q->row();				//kembalikan
+	}
+	function ambil_datarow($tabel, $kolom = FALSE, $id = FALSE)		
+	{
+		if($id === FALSE)
+		{
+			$q = $this->db->get($tabel);	//ambil seluruh data tabel
+			return $q->result();		//kembalikan
+		}
+		$q = $this->db->get_where($tabel,array($kolom=>$id)); //ambil satu baris data dengan $kolom=$id
+		return $q->row();				//kembalikan
+	}
 	function surat_usaha()
 	{
 		$a=$this->session->userdata('ses_id');
@@ -422,7 +460,7 @@ function surat_kehilangan()
 		$a=$this->session->userdata('ses_id');
 		$this->db->select('*');
 		$this->db->from('pengaduan');
-		$this->db->join('ktp','pengaduan.id_ktp=ktp.id_ktp','');
+		$this->db->join('ktp','pengaduan.id_ktp=ktp.id_ktp','left');
 		
 	
 		$query = $this->db->get();
@@ -1177,4 +1215,36 @@ $this->db->from('surat_domisili');
         $query = $this->db->get();
         return $query->result_array();
     }
+    function cetak_kegiatan($dari,$sampai)
+    {   
+        $this->db->select('*');
+$this->db->from('penugasan a');
+		$this->db->join('jenis_kegiatan b','a.id_jenis_kegiatan=b.id_jenis_kegiatan','');
+
+      $this->db->where('a.tgl_mulai between "'.$dari.'" and "'.$sampai.'"');               
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function cetak_proposal($dari,$sampai)
+	{
+		$this->db->select('*');
+		$this->db->from('proposal');
+		$this->db->join('ktp','proposal.id_ktp=ktp.id_ktp','');
+		      $this->db->where('tgl_proposal between "'.$dari.'" and "'.$sampai.'"');               
+
+	
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+    function cetak_pengaduan($dari,$sampai)
+	{
+		$a=$this->session->userdata('ses_id');
+		$this->db->select('*');
+		$this->db->from('pengaduan');
+		$this->db->join('ktp','pengaduan.id_ktp=ktp.id_ktp','left');
+		     $this->db->where('tgl_pengaduan between "'.$dari.'" and "'.$sampai.'"');  
+	
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }
