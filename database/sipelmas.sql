@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jul 2023 pada 11.03
+-- Waktu pembuatan: 11 Jul 2023 pada 04.38
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.31
 
@@ -33,6 +33,13 @@ CREATE TABLE `informasi` (
   `informasi` text NOT NULL,
   `file` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `informasi`
+--
+
+INSERT INTO `informasi` (`id_informasi`, `isi_informasi`, `informasi`, `file`) VALUES
+('rdfwq3er235tew', 'asd', 'asd', '');
 
 -- --------------------------------------------------------
 
@@ -123,7 +130,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pgw`, `nama_peg`, `jabatan`, `alamat_peg`, `telp_peg`, `wa_peg`, `nik`) VALUES
-('8uewhfwoinsowiqhrfnseoifis', 'Syarif Firdaus', '', '', '', '', '6309112608980001');
+('8uewhfwoinsowiqhrfnseoifis', 'Syarif Firdaus', 'Camat', 'Pantai Hambawang', '1', '1', '6309112608980001');
 
 -- --------------------------------------------------------
 
@@ -145,6 +152,7 @@ CREATE TABLE `pengaduan` (
 --
 
 INSERT INTO `pengaduan` (`id_pengaduan`, `id_ktp`, `mengadu`, `balasan`, `tgl_pengaduan`, `peng_telpon`) VALUES
+('7ac68484-1f8f-11ee-807c-c454445434d3', '6a322154-1eda-11ee-876c-c454445434d3', 'ae', NULL, '2023-07-11', '0'),
 ('7c790d6b-0aac-11ee-8368-7673dcf73f56', '', 'adnsds', 'oke', '0000-00-00', ''),
 ('873e993f-0aac-11ee-8368-7673dcf73f56', '', 'sadfdf', 'silahkan', '2023-06-14', '');
 
@@ -167,6 +175,7 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`id_pengguna`, `password`, `role`, `id_pegawai`) VALUES
 ('793997f9-1ee8-11ee-876c-c454445434d3', 'e0dc1c969db5fa159c0e3ccc290e2314', 4, '8uewhfwoinsowiqhrfnseoifis'),
+('813baa8a-1f92-11ee-807c-c454445434d3', 'a271166d6c5bd3a19c853758f5731354', 3, '8uewhfwoinsowiqhrfnseoifis'),
 ('f080bc72-0a7d-11ee-ac0b-c454445434d3', '21232f297a57a5a743894a0e4a801fc3', 2, '8uewhfwoinsowiqhrfnseoifis');
 
 -- --------------------------------------------------------
@@ -309,7 +318,7 @@ CREATE TABLE `surat_domisili` (
 --
 
 INSERT INTO `surat_domisili` (`id_surat_domisili`, `no_surat`, `id_ktp`, `alamat_domisili`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`, `status_pimpinan`) VALUES
-('458e8731-1ede-11ee-876c-c454445434d3', '470 / 314/PH/ XII/ 20a21', '6a322154-1eda-11ee-876c-c454445434d3', 'jalan bjm', '2023-07-10', '8uewhfwoinsowiqhrfnseoifis', 'Proses', '', '', ''),
+('458e8731-1ede-11ee-876c-c454445434d3', '470 / 314/PH/ XII/ 20a21', '6a322154-1eda-11ee-876c-c454445434d3', 'jalan bjm', '2023-07-10', '8uewhfwoinsowiqhrfnseoifis', 'Validasi Pimpinan', '', '', ''),
 ('771c68db-1eda-11ee-876c-c454445434d3', '470 / 314/PH/ XII/ 2021', '6a322154-1eda-11ee-876c-c454445434d3', 'jalan bjm', '2023-07-10', '8uewhfwoinsowiqhrfnseoifis', 'Selesai', '', '771c68db-1eda-11ee-876c-c454445434d3.png', ''),
 ('f95fba37-1edc-11ee-876c-c454445434d3', '470 / 314/PH/ XII/ 2021', '6a322154-1eda-11ee-876c-c454445434d3', 'jalan bjm', '2023-07-10', '8uewhfwoinsowiqhrfnseoifis', 'Selesai', '', 'f95fba37-1edc-11ee-876c-c454445434d3.png', '');
 

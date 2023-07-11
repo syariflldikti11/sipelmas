@@ -87,7 +87,7 @@ class Login extends CI_Controller
     {
         $role = $this->session->userdata('role');
         if ($role == 3) {
-            redirect(site_url('pegawai'));
+            redirect(site_url('operator'));
         }
         if ($role == 2) {
             redirect(site_url('admin'));
@@ -150,7 +150,10 @@ public function action_auth_sipelmas()
                 redirect('camat');
             }
             if ($data->role == 3) {
-
+  $this->session->set_userdata('role', $data->role);
+                $this->session->set_userdata('username', $data->username);
+                $this->session->set_userdata('nama', $data->nama_peg);
+                redirect('operator');
             } else {
                 $notif = "Gagal";
                 $this->session->set_flashdata('delete', $notif);

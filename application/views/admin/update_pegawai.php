@@ -26,13 +26,10 @@
                      <div class="form-group">
                       <label for="exampleInputEmail1">Jabatan</label>
                       <select class="form-control" name="jabatan">
-                        <option value="Kepala Desa" <?php if($d['jabatan']=='Kepala Desa') echo 'selected'; ?>>Kepala Desa</option>
-                      <option value="Sekretaris Desa" <?php if($d['jabatan']=='Sekretaris Desa') echo 'selected'; ?>>Sekretaris Desa</option>
-                        <option value="Kaur Keuangan" <?php if($d['jabatan']=='Kaur Keuangan') echo 'selected'; ?>>Kaur Keuangan</option>
-                        <option value="Kaur Keuangan" <?php if($d['jabatan']=='Kaur Umum') echo 'selected'; ?>>Kaur Umum</option>
-                        <option value="Kaur Keuangan" <?php if($d['jabatan']=='Kasi Pemerintahan') echo 'selected'; ?>>Kasi Pemerintahan</option>
-                        <option value="Kaur Keuangan" <?php if($d['jabatan']=='Kasi Kesejahteraan') echo 'selected'; ?>>Kasi Kesejahteraan</option>
-                        <option value="Kaur Keuangan" <?php if($d['jabatan']=='Kaur Pelayanan') echo 'selected'; ?>>Kasi Pelayanan</option>
+                        <option value="Camat" <?php if($d['jabatan']=='Camat') echo 'selected'; ?>>Camat</option>
+                   
+                        <option value="Staff" <?php if($d['jabatan']=='Staff') echo 'selected'; ?>>Staff</option>
+                       
                       </select>
                     
                     </div>

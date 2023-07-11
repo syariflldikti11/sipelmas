@@ -98,6 +98,7 @@ function print_surat_kematian($id = NULL)
 
         $data['judul'] = 'home';
         $data['dt_pengaduan'] = $this->umum->pengaduan_masyarakat();
+        $data['dt_informasi'] = $this->umum->get_data('informasi');
         $this->template->load('user/template', 'user/home', $data);
 
 

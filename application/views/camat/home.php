@@ -93,12 +93,12 @@ $total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat
 
           
 
-              <div class="col-xl-6 col-lg-7">
+              <div class="col-xl-4 col-lg-7">
 
                <!-- Area Chart -->
                <div class="card shadow mb-4">
                    <div class="card-header py-3 bg-gradient-light">
-                       <h6 class="m-0 font-weight-bold text-info">Statisik Pelayanan</h6>
+                       <h6 class="m-0 font-weight-bold text-info">Statistik Pelayanan</h6>
                    </div>
                    <div class="card-body">
                        
@@ -206,8 +206,21 @@ $total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat
                </div>
            </div>
           
+ <div class="col-xl-4 col-lg-7">
 
-            <div class="col-xl-6 col-lg-7">
+               <!-- Area Chart -->
+               <div class="card shadow mb-4">
+
+                   <div class="card-header py-3 bg-gradient-light">
+                       <h6 class="m-0 font-weight-bold text-info">Statistik Kegiatan</h6>
+                   </div>
+                   <div class="card-body">
+
+                       <div id="kegiatan"></div>
+                   </div>
+               </div>
+           </div>
+            <div class="col-xl-4 col-lg-7">
 
                <!-- Area Chart -->
                <div class="card shadow mb-4">
@@ -243,4 +256,47 @@ $total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat
 
         </div>
         <!---Container Fluid-->
-      
+      <script type="text/javascript">
+jQuery(function(){
+ new Highcharts.Chart({
+  chart: {
+   renderTo: 'kegiatan',
+   type: 'column',
+  },
+  title: {
+   text: '',
+   x: -20
+  },
+  subtitle: {
+   text: '',
+   x: -20
+  },
+  xAxis: {
+   categories: ['Kegiatan'],
+   
+  },
+  yAxis: {
+   title: {
+    text: 'Jumlah Kegiatan'
+   }
+  },
+  series: [
+  <?php $jenis_kegiatan = $this->db->query("Select * from jenis_kegiatan");
+                         foreach ($jenis_kegiatan->result() as $rowjenis_kegiatan) {
+                           $jenis_kegiatan=$rowjenis_kegiatan->nama_jenis_kegiatan;
+                           $id_jenis_kegiatan=$rowjenis_kegiatan->id_jenis_kegiatan;
+
+                      $kegiatan = $this->db->query("Select count(id_jenis_kegiatan) as jumlah from penugasan where id_jenis_kegiatan='$id_jenis_kegiatan'");
+                         foreach ($kegiatan->result() as $rowkegiatan) {
+                           $jumlah=$rowkegiatan->jumlah;
+                      
+                          }  ?>
+                          {
+                      name: '<?php echo $jenis_kegiatan; ?>',
+                      data: [<?php echo $jumlah; ?>]
+                  },
+                          <?php } ?>
+  ]
+ });
+}); 
+</script>

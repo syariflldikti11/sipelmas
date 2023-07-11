@@ -16,15 +16,11 @@
                     
                      <div class="form-group">
                       <input type="hidden" name="id_informasi" value="<?php echo $d['id_informasi']; ?>" class="form-control">
-                      <label for="exampleFormControlTextarea1">Isi Informasi 1</label>
+                      <label for="exampleFormControlTextarea1">Isi Informasi</label>
                       <textarea class="form-control" name="isi_informasi" id="exampleFormControlTextarea1" rows="3"><?php echo $d['isi_informasi']; ?></textarea>
                     </div>
 
-                    <div class="form-group">
-                      
-                      <label for="exampleFormControlTextarea1">Isi Informasi 2</label>
-                      <textarea class="form-control" name="informasi" id="exampleFormControlTextarea1" rows="3"><?php echo $d['informasi']; ?></textarea>
-                    </div>
+                  
 
                     <div class="form-group">
                     

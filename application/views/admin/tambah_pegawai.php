@@ -26,13 +26,10 @@
                       <label for="exampleInputEmail1">Jabatan</label>
                       <select name="jabatan" class="form-control" >
                         <option value="">--Pilih---</option>
-                        <option value="Kepala Desa">Kepala Desa</option>
-                        <option value="Sektretaris Desa">Sektretaris Desa</option>
-                        <option value="Kaur Keuangan">Kaur Keuangan</option>
-                        <option value="Kaur Keuangan">Kaur Umum</option>
-                        <option value="Kaur Keuangan">Kasi Pemerintahan</option>
-                        <option value="Kasi Kesejahteraan">Kasi Kesejahteraan</option>
-                        <option value="Kaur Pelayanan">Kasi Pelayanan</option>
+                        <option value="Camat">Camat</option>
+                     
+                        <option value="Staff">Staff</option>
+                      
                       </select>
                     
                     </div>

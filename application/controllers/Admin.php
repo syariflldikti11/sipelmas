@@ -441,7 +441,7 @@ function tambah_surat_keluar()
 	{
 		$id_informasi = $this->input->post('id_informasi');
 		$isi_informasi = $this->input->post('isi_informasi');
-		$informasi = $this->input->post('informasi');
+	
 
 		if (!empty($_FILES["file"]["name"])) {
 			$file = $this->uploadfileinfo();
@@ -451,7 +451,7 @@ function tambah_surat_keluar()
 		$data_update = array(
 			'id_informasi' => $id_informasi,
 			'isi_informasi' => $isi_informasi,
-			'informasi' => $informasi,
+			
 			'file' => $file
 		);
 		$where = array('id_informasi' => $id_informasi);

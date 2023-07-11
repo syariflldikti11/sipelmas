@@ -13,8 +13,9 @@
                       <tr>
                         <th>No</th>
                       
-                        <th>Informasi 1</th>  
-                        <th>Infromasi 2</th>
+                        <th>Informasi </th>  
+                        <th>Lampiran </th>  
+                
                         <th>Opsi</th>   
                         
                         
@@ -28,7 +29,7 @@
                       <tr>
                         <td><?php echo $no++; ?></td>
                          <td><?php echo $d['isi_informasi']; ?></td>
-                       
+                         <td><a href="<?php echo base_url(); ?>upload/file/<?php echo $d['file']; ?>"><?php echo $d['file']; ?></a></td>
                         
                     
                       </tr>

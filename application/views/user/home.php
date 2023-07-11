@@ -25,7 +25,31 @@
              
            
           </div>
-            <div class="col-xl-12 col-lg-5 ">
+          <div class="col-xl-6 col-lg-5 ">
+              <div class="card">
+                <div class="card-header py-4 bg-info d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-light">Informasi Pelayanan</h6>
+                </div>
+                <div>
+                  <?php 
+                                        $no=1;
+                                        foreach ($dt_informasi as $d): ?>
+                  <div class="customer-message align-items-center">
+                    <a class="font-weight-bold" href="#">
+                      <div class="text-truncate message-title"><?php echo $d['isi_informasi']; ?></div>
+                      
+                    </a>
+                  </div>
+                  <?php endforeach; ?>
+                
+                  <div class="card-footer text-center">
+                    <a class="m-0 small text-primary card-link" href="<?php echo base_url('user/informasi');?>">Lihat Lampiran <i
+                        class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-5 ">
               <div class="card">
                 <div class="card-header py-4 bg-info d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-light">Pengaduan Masyarakat</h6>
