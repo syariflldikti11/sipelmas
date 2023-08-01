@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jul 2023 pada 04.38
--- Versi server: 10.4.11-MariaDB
+-- Waktu pembuatan: 01 Agu 2023 pada 17.39
+-- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -34,13 +34,6 @@ CREATE TABLE `informasi` (
   `file` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `informasi`
---
-
-INSERT INTO `informasi` (`id_informasi`, `isi_informasi`, `informasi`, `file`) VALUES
-('rdfwq3er235tew', 'asd', 'asd', '');
-
 -- --------------------------------------------------------
 
 --
@@ -51,13 +44,6 @@ CREATE TABLE `jenis_kegiatan` (
   `id_jenis_kegiatan` varchar(200) NOT NULL,
   `nama_jenis_kegiatan` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `jenis_kegiatan`
---
-
-INSERT INTO `jenis_kegiatan` (`id_jenis_kegiatan`, `nama_jenis_kegiatan`) VALUES
-('1e4f0a7a-1ef2-11ee-876c-c454445434d3', 'Penyuluhan');
 
 -- --------------------------------------------------------
 
@@ -102,13 +88,6 @@ CREATE TABLE `ktp` (
   `ftoktp` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `ktp`
---
-
-INSERT INTO `ktp` (`id_ktp`, `nik`, `nama`, `alamat`, `desa`, `rt`, `agama`, `tempat_lahir`, `tanggal_lahir`, `jkelamin`, `wnegara`, `pekerjaan`, `snikah`, `ftoktp`) VALUES
-('6a322154-1eda-11ee-876c-c454445434d3', '6309112608980002', 'Ismail Marzuki', 'Kotabaru', 'handil', '5', 'Islam', 'Tabalongg', '2023-07-10', 'L', 'Indonesia', 'pns', 'Sudah Menikah', 'CNUfYPQUEAATf_t3.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -130,7 +109,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pgw`, `nama_peg`, `jabatan`, `alamat_peg`, `telp_peg`, `wa_peg`, `nik`) VALUES
-('8uewhfwoinsowiqhrfnseoifis', 'Syarif Firdaus', 'Camat', 'Pantai Hambawang', '1', '1', '6309112608980001');
+('8uewhfwoinsowiqhrfnseoifis', 'Syarif Firdaus', '', '', '', '', '6309112608980001');
 
 -- --------------------------------------------------------
 
@@ -143,18 +122,9 @@ CREATE TABLE `pengaduan` (
   `id_ktp` char(100) NOT NULL,
   `mengadu` text NOT NULL,
   `balasan` text DEFAULT NULL,
-  `tgl_pengaduan` date NOT NULL DEFAULT current_timestamp(),
+  `tgl_pengaduan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `peng_telpon` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pengaduan`
---
-
-INSERT INTO `pengaduan` (`id_pengaduan`, `id_ktp`, `mengadu`, `balasan`, `tgl_pengaduan`, `peng_telpon`) VALUES
-('7ac68484-1f8f-11ee-807c-c454445434d3', '6a322154-1eda-11ee-876c-c454445434d3', 'ae', NULL, '2023-07-11', '0'),
-('7c790d6b-0aac-11ee-8368-7673dcf73f56', '', 'adnsds', 'oke', '0000-00-00', ''),
-('873e993f-0aac-11ee-8368-7673dcf73f56', '', 'sadfdf', 'silahkan', '2023-06-14', '');
 
 -- --------------------------------------------------------
 
@@ -166,7 +136,7 @@ CREATE TABLE `pengguna` (
   `id_pengguna` char(100) NOT NULL,
   `password` char(100) NOT NULL,
   `role` int(11) NOT NULL,
-  `id_pegawai` varchar(240) NOT NULL
+  `id_pegawai` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -174,8 +144,6 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`id_pengguna`, `password`, `role`, `id_pegawai`) VALUES
-('793997f9-1ee8-11ee-876c-c454445434d3', 'e0dc1c969db5fa159c0e3ccc290e2314', 4, '8uewhfwoinsowiqhrfnseoifis'),
-('813baa8a-1f92-11ee-807c-c454445434d3', 'a271166d6c5bd3a19c853758f5731354', 3, '8uewhfwoinsowiqhrfnseoifis'),
 ('f080bc72-0a7d-11ee-ac0b-c454445434d3', '21232f297a57a5a743894a0e4a801fc3', 2, '8uewhfwoinsowiqhrfnseoifis');
 
 -- --------------------------------------------------------
@@ -198,7 +166,6 @@ CREATE TABLE `pengunjung` (
 --
 
 INSERT INTO `pengunjung` (`id_pengunjung`, `nik`, `password`, `email`, `telp`, `role`) VALUES
-('549a0452-0e7d-11ee-8284-c454445434d3', '6308101008850004', '827ccb0eea8a706c4c34a16891f84e7b', 'asyasarrif@gmail.com', '', 1),
 ('91c81f6f-0aae-11ee-8368-7673dcf73f56', '6309112608980002', '827ccb0eea8a706c4c34a16891f84e7b', 'asyarrif@gmail.com', '', 1);
 
 -- --------------------------------------------------------
@@ -219,13 +186,6 @@ CREATE TABLE `penugasan` (
   `id_jenis_kegiatan` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `penugasan`
---
-
-INSERT INTO `penugasan` (`id_penugasan`, `tgl_mulai`, `tgl_akhir`, `nama_penugasan`, `no_surat`, `file`, `tgl_surat`, `catatan_pimpinan`, `id_jenis_kegiatan`) VALUES
-('299fe8eb-1ef2-11ee-876c-c454445434d3', '2023-07-10', '2023-07-10', 'ok', '470 / 314/PH/ XII/ 2021', NULL, '2023-07-10', 'bagus', '1e4f0a7a-1ef2-11ee-876c-c454445434d3');
-
 -- --------------------------------------------------------
 
 --
@@ -234,7 +194,7 @@ INSERT INTO `penugasan` (`id_penugasan`, `tgl_mulai`, `tgl_akhir`, `nama_penugas
 
 CREATE TABLE `peserta_penugasan` (
   `id_peserta_penugasan` varchar(100) NOT NULL,
-  `id_pegawai` varchar(100) NOT NULL,
+  `id_pegawai` char(100) NOT NULL,
   `id_penugasan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -270,8 +230,7 @@ CREATE TABLE `surat_belum_menikah` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -290,7 +249,6 @@ CREATE TABLE `surat_biodek` (
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL,
   `no_tanah` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -309,18 +267,8 @@ CREATE TABLE `surat_domisili` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(200) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `surat_domisili`
---
-
-INSERT INTO `surat_domisili` (`id_surat_domisili`, `no_surat`, `id_ktp`, `alamat_domisili`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`, `status_pimpinan`) VALUES
-('458e8731-1ede-11ee-876c-c454445434d3', '470 / 314/PH/ XII/ 20a21', '6a322154-1eda-11ee-876c-c454445434d3', 'jalan bjm', '2023-07-10', '8uewhfwoinsowiqhrfnseoifis', 'Validasi Pimpinan', '', '', ''),
-('771c68db-1eda-11ee-876c-c454445434d3', '470 / 314/PH/ XII/ 2021', '6a322154-1eda-11ee-876c-c454445434d3', 'jalan bjm', '2023-07-10', '8uewhfwoinsowiqhrfnseoifis', 'Selesai', '', '771c68db-1eda-11ee-876c-c454445434d3.png', ''),
-('f95fba37-1edc-11ee-876c-c454445434d3', '470 / 314/PH/ XII/ 2021', '6a322154-1eda-11ee-876c-c454445434d3', 'jalan bjm', '2023-07-10', '8uewhfwoinsowiqhrfnseoifis', 'Selesai', '', 'f95fba37-1edc-11ee-876c-c454445434d3.png', '');
 
 -- --------------------------------------------------------
 
@@ -340,8 +288,7 @@ CREATE TABLE `surat_izin_keramaian` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -358,8 +305,7 @@ CREATE TABLE `surat_janda` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -379,8 +325,7 @@ CREATE TABLE `surat_kehilangan` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -437,8 +382,7 @@ CREATE TABLE `surat_kurang_mampu` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -496,7 +440,6 @@ CREATE TABLE `surat_pindah_datang` (
   `tanggal_surat` date NOT NULL,
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL,
   `nik1` text NOT NULL,
   `nik2` text NOT NULL,
   `nik3` text NOT NULL,
@@ -555,7 +498,6 @@ CREATE TABLE `surat_pindah_keluar` (
   `tanggal_surat` date NOT NULL,
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL,
   `nik1` text NOT NULL,
   `nik2` text NOT NULL,
   `nik3` text NOT NULL,
@@ -590,8 +532,7 @@ CREATE TABLE `surat_skck` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -611,31 +552,8 @@ CREATE TABLE `surat_usaha` (
   `tanda_tangan` char(100) NOT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
-  `qrcode` char(100) NOT NULL,
-  `status_pimpinan` varchar(20) NOT NULL
+  `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `ttd_laporan`
---
-
-CREATE TABLE `ttd_laporan` (
-  `id_ttd` int(11) NOT NULL,
-  `nama_ttd` varchar(100) NOT NULL,
-  `jabatan` varchar(100) NOT NULL,
-  `file` varchar(100) NOT NULL,
-  `lebar` int(11) NOT NULL,
-  `nip` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `ttd_laporan`
---
-
-INSERT INTO `ttd_laporan` (`id_ttd`, `nama_ttd`, `jabatan`, `file`, `lebar`, `nip`) VALUES
-(1, 'Harianto', 'Camat', 'CNUfYPQUEAATf_t2.jpg', 70, '197101161992032001');
 
 --
 -- Indexes for dumped tables
@@ -663,7 +581,8 @@ ALTER TABLE `kk`
 -- Indeks untuk tabel `ktp`
 --
 ALTER TABLE `ktp`
-  ADD PRIMARY KEY (`id_ktp`);
+  ADD PRIMARY KEY (`id_ktp`),
+  ADD KEY `nik` (`nik`);
 
 --
 -- Indeks untuk tabel `pegawai`
@@ -675,73 +594,92 @@ ALTER TABLE `pegawai`
 -- Indeks untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  ADD PRIMARY KEY (`id_pengaduan`);
+  ADD PRIMARY KEY (`id_pengaduan`),
+  ADD KEY `id_ktp` (`id_ktp`);
 
 --
 -- Indeks untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id_pengguna`);
+  ADD PRIMARY KEY (`id_pengguna`),
+  ADD KEY `id_pegawai` (`id_pegawai`);
 
 --
 -- Indeks untuk tabel `pengunjung`
 --
 ALTER TABLE `pengunjung`
-  ADD PRIMARY KEY (`id_pengunjung`);
+  ADD PRIMARY KEY (`id_pengunjung`),
+  ADD KEY `nik` (`nik`);
 
 --
 -- Indeks untuk tabel `penugasan`
 --
 ALTER TABLE `penugasan`
-  ADD PRIMARY KEY (`id_penugasan`);
+  ADD PRIMARY KEY (`id_penugasan`),
+  ADD KEY `id_jenis_kegiatan` (`id_jenis_kegiatan`);
 
 --
 -- Indeks untuk tabel `peserta_penugasan`
 --
 ALTER TABLE `peserta_penugasan`
-  ADD PRIMARY KEY (`id_peserta_penugasan`);
+  ADD PRIMARY KEY (`id_peserta_penugasan`),
+  ADD KEY `id_pegawai` (`id_pegawai`),
+  ADD KEY `id_penugasan` (`id_penugasan`);
 
 --
 -- Indeks untuk tabel `proposal`
 --
 ALTER TABLE `proposal`
-  ADD PRIMARY KEY (`id_proposal`);
+  ADD PRIMARY KEY (`id_proposal`),
+  ADD KEY `id_ktp` (`id_ktp`);
 
 --
 -- Indeks untuk tabel `surat_belum_menikah`
 --
 ALTER TABLE `surat_belum_menikah`
-  ADD PRIMARY KEY (`id_surat_belum_menikah`);
+  ADD PRIMARY KEY (`id_surat_belum_menikah`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_biodek`
 --
 ALTER TABLE `surat_biodek`
-  ADD PRIMARY KEY (`id_surat_biodek`);
+  ADD PRIMARY KEY (`id_surat_biodek`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_domisili`
 --
 ALTER TABLE `surat_domisili`
-  ADD PRIMARY KEY (`id_surat_domisili`);
+  ADD PRIMARY KEY (`id_surat_domisili`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_izin_keramaian`
 --
 ALTER TABLE `surat_izin_keramaian`
-  ADD PRIMARY KEY (`id_surat_izin_keramaian`);
+  ADD PRIMARY KEY (`id_surat_izin_keramaian`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_janda`
 --
 ALTER TABLE `surat_janda`
-  ADD PRIMARY KEY (`id_surat_janda`);
+  ADD PRIMARY KEY (`id_surat_janda`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_kehilangan`
 --
 ALTER TABLE `surat_kehilangan`
-  ADD PRIMARY KEY (`id_surat_kehilangan`);
+  ADD PRIMARY KEY (`id_surat_kehilangan`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_keluar`
@@ -753,13 +691,17 @@ ALTER TABLE `surat_keluar`
 -- Indeks untuk tabel `surat_kematian`
 --
 ALTER TABLE `surat_kematian`
-  ADD PRIMARY KEY (`id_surat_kematian`);
+  ADD PRIMARY KEY (`id_surat_kematian`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_kurang_mampu`
 --
 ALTER TABLE `surat_kurang_mampu`
-  ADD PRIMARY KEY (`id_surat_kurang_mampu`);
+  ADD PRIMARY KEY (`id_surat_kurang_mampu`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_masuk`
@@ -771,41 +713,152 @@ ALTER TABLE `surat_masuk`
 -- Indeks untuk tabel `surat_pindah_datang`
 --
 ALTER TABLE `surat_pindah_datang`
-  ADD PRIMARY KEY (`id_surat_pindah_datang`);
+  ADD PRIMARY KEY (`id_surat_pindah_datang`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_pindah_keluar`
 --
 ALTER TABLE `surat_pindah_keluar`
-  ADD PRIMARY KEY (`id_surat_pindah_keluar`);
+  ADD PRIMARY KEY (`id_surat_pindah_keluar`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_skck`
 --
 ALTER TABLE `surat_skck`
-  ADD PRIMARY KEY (`id_surat_skck`);
+  ADD PRIMARY KEY (`id_surat_skck`),
+  ADD KEY `id_ktp` (`id_ktp`,`tanda_tangan`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
 -- Indeks untuk tabel `surat_usaha`
 --
 ALTER TABLE `surat_usaha`
-  ADD PRIMARY KEY (`id_surat_usaha`);
+  ADD PRIMARY KEY (`id_surat_usaha`),
+  ADD KEY `id_ktp` (`id_ktp`),
+  ADD KEY `tanda_tangan` (`tanda_tangan`);
 
 --
--- Indeks untuk tabel `ttd_laporan`
---
-ALTER TABLE `ttd_laporan`
-  ADD PRIMARY KEY (`id_ttd`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- AUTO_INCREMENT untuk tabel `ttd_laporan`
+-- Ketidakleluasaan untuk tabel `pengaduan`
 --
-ALTER TABLE `ttd_laporan`
-  MODIFY `id_ttd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `pengaduan`
+  ADD CONSTRAINT `pengaduan_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`);
+
+--
+-- Ketidakleluasaan untuk tabel `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `penugasan`
+--
+ALTER TABLE `penugasan`
+  ADD CONSTRAINT `penugasan_ibfk_1` FOREIGN KEY (`id_jenis_kegiatan`) REFERENCES `jenis_kegiatan` (`id_jenis_kegiatan`);
+
+--
+-- Ketidakleluasaan untuk tabel `peserta_penugasan`
+--
+ALTER TABLE `peserta_penugasan`
+  ADD CONSTRAINT `peserta_penugasan_ibfk_1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pgw`),
+  ADD CONSTRAINT `peserta_penugasan_ibfk_2` FOREIGN KEY (`id_penugasan`) REFERENCES `penugasan` (`id_penugasan`);
+
+--
+-- Ketidakleluasaan untuk tabel `proposal`
+--
+ALTER TABLE `proposal`
+  ADD CONSTRAINT `proposal_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_belum_menikah`
+--
+ALTER TABLE `surat_belum_menikah`
+  ADD CONSTRAINT `surat_belum_menikah_ibfk_1` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_biodek`
+--
+ALTER TABLE `surat_biodek`
+  ADD CONSTRAINT `surat_biodek_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_biodek_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_domisili`
+--
+ALTER TABLE `surat_domisili`
+  ADD CONSTRAINT `surat_domisili_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_domisili_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_izin_keramaian`
+--
+ALTER TABLE `surat_izin_keramaian`
+  ADD CONSTRAINT `surat_izin_keramaian_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_izin_keramaian_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_janda`
+--
+ALTER TABLE `surat_janda`
+  ADD CONSTRAINT `surat_janda_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_janda_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_kehilangan`
+--
+ALTER TABLE `surat_kehilangan`
+  ADD CONSTRAINT `surat_kehilangan_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_kehilangan_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_kematian`
+--
+ALTER TABLE `surat_kematian`
+  ADD CONSTRAINT `surat_kematian_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_kematian_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_kurang_mampu`
+--
+ALTER TABLE `surat_kurang_mampu`
+  ADD CONSTRAINT `surat_kurang_mampu_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_kurang_mampu_ibfk_2` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_kurang_mampu_ibfk_3` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_pindah_datang`
+--
+ALTER TABLE `surat_pindah_datang`
+  ADD CONSTRAINT `surat_pindah_datang_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_pindah_datang_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_pindah_keluar`
+--
+ALTER TABLE `surat_pindah_keluar`
+  ADD CONSTRAINT `surat_pindah_keluar_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_pindah_keluar_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_skck`
+--
+ALTER TABLE `surat_skck`
+  ADD CONSTRAINT `surat_skck_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_skck_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
+
+--
+-- Ketidakleluasaan untuk tabel `surat_usaha`
+--
+ALTER TABLE `surat_usaha`
+  ADD CONSTRAINT `surat_usaha_ibfk_1` FOREIGN KEY (`id_ktp`) REFERENCES `ktp` (`id_ktp`),
+  ADD CONSTRAINT `surat_usaha_ibfk_2` FOREIGN KEY (`tanda_tangan`) REFERENCES `pegawai` (`id_pgw`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
