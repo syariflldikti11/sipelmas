@@ -41,7 +41,7 @@
                         <td><a href="<?php echo base_url(); ?>upload/file/<?php echo $d["file"] ?>"><?php echo $d["file"] ?></td>
                      
                        
-                        <td><a class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingin menghapus data ini')"  href="<?php echo base_url('admin/delete_surat_masuk/'.$d['id_surat_masuk']);?>"> <i class="fas fa-trash"></i> </a>  </a>  <a class="btn btn-info btn-sm"   href="<?php echo base_url('admin/edit_surat_masuk/'.$d['id_surat_masuk']);?>"> <i class="fas fa-fw fa-edit"></i> </a></td>
+                        <td><a class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingin menghapus data ini')"  href="<?php echo base_url('admin/delete_surat_masuk/'.$d['id_surat_masuk'].'/'.$d['file']);?>"> <i class="fas fa-trash"></i> </a>  </a>  <a class="btn btn-info btn-sm"   href="<?php echo base_url('admin/edit_surat_masuk/'.$d['id_surat_masuk']);?>"> <i class="fas fa-fw fa-edit"></i> </a></td>
                         
                     
                       </tr>
