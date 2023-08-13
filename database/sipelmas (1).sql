@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Agu 2023 pada 17.39
+-- Waktu pembuatan: 14 Agu 2023 pada 00.33
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.2.31
 
@@ -33,6 +33,13 @@ CREATE TABLE `informasi` (
   `informasi` text NOT NULL,
   `file` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `informasi`
+--
+
+INSERT INTO `informasi` (`id_informasi`, `isi_informasi`, `informasi`, `file`) VALUES
+('1', 'tes', 'tes', '');
 
 -- --------------------------------------------------------
 
@@ -119,7 +126,7 @@ INSERT INTO `pegawai` (`id_pgw`, `nama_peg`, `jabatan`, `alamat_peg`, `telp_peg`
 
 CREATE TABLE `pengaduan` (
   `id_pengaduan` char(100) NOT NULL,
-  `id_ktp` char(100) NOT NULL,
+  `id_ktp` char(100) DEFAULT NULL,
   `mengadu` text NOT NULL,
   `balasan` text DEFAULT NULL,
   `tgl_pengaduan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -166,6 +173,7 @@ CREATE TABLE `pengunjung` (
 --
 
 INSERT INTO `pengunjung` (`id_pengunjung`, `nik`, `password`, `email`, `telp`, `role`) VALUES
+('58f91786-3a29-11ee-9c76-708bcddc309b', '6308101008850004', '827ccb0eea8a706c4c34a16891f84e7b', 'adie.kopertis11@gmail.com', '', 1),
 ('91c81f6f-0aae-11ee-8368-7673dcf73f56', '6309112608980002', '827ccb0eea8a706c4c34a16891f84e7b', 'asyarrif@gmail.com', '', 1);
 
 -- --------------------------------------------------------
@@ -344,6 +352,13 @@ CREATE TABLE `surat_keluar` (
   `tgl_kirim_surat` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `surat_keluar`
+--
+
+INSERT INTO `surat_keluar` (`id_surat_keluar`, `no_surat`, `perihal`, `tujuan`, `tgl_surat`, `file`, `tgl_kirim_surat`) VALUES
+('33ff9b50-39b7-11ee-bc56-878814cdc77d', 'as', 'a', 'sds', '2023-08-14', 'neraca_inspektorat_2022.pdf', '2023-08-17');
+
 -- --------------------------------------------------------
 
 --
@@ -400,6 +415,13 @@ CREATE TABLE `surat_masuk` (
   `tgl_surat` date NOT NULL,
   `file` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `surat_masuk`
+--
+
+INSERT INTO `surat_masuk` (`id_surat_masuk`, `no_surat`, `pengirim`, `perihal`, `tgl_diterima`, `tgl_surat`, `file`) VALUES
+('17357294-39b7-11ee-bc56-878814cdc77d', 'as', 'a', 'a', '2023-08-20', '2023-08-13', 'neraca_dkp3_2022.pdf');
 
 -- --------------------------------------------------------
 
@@ -554,6 +576,28 @@ CREATE TABLE `surat_usaha` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ttd_laporan`
+--
+
+CREATE TABLE `ttd_laporan` (
+  `id_ttd` int(11) NOT NULL,
+  `nip` varchar(100) NOT NULL,
+  `nama_ttd` varchar(100) NOT NULL,
+  `jabatan` varchar(100) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `lebar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `ttd_laporan`
+--
+
+INSERT INTO `ttd_laporan` (`id_ttd`, `nip`, `nama_ttd`, `jabatan`, `file`, `lebar`) VALUES
+(1, '12345', 'budi', 'camat', 'x', 50);
 
 --
 -- Indexes for dumped tables
@@ -740,6 +784,22 @@ ALTER TABLE `surat_usaha`
   ADD PRIMARY KEY (`id_surat_usaha`),
   ADD KEY `id_ktp` (`id_ktp`),
   ADD KEY `tanda_tangan` (`tanda_tangan`);
+
+--
+-- Indeks untuk tabel `ttd_laporan`
+--
+ALTER TABLE `ttd_laporan`
+  ADD PRIMARY KEY (`id_ttd`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `ttd_laporan`
+--
+ALTER TABLE `ttd_laporan`
+  MODIFY `id_ttd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
