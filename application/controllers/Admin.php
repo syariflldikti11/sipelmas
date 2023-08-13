@@ -155,7 +155,7 @@ function tambah_surat_masuk()
 	function edit_surat_masuk($id = NULL)
 	{
 
-		 $data['d'] = $this->umum->ambil_data('surat_masuk', 'id_surat_masuk', $id);
+		 $data['d'] = $this->umum->ambil_datanew('surat_masuk', 'id_surat_masuk', $id);
 		$this->template->load('admin/template', 'admin/update_surat_masuk', $data);
 	}
     function simpan_surat_masuk()
@@ -246,7 +246,7 @@ function tambah_surat_keluar()
 	function edit_surat_keluar($id = NULL)
 	{
 
-		 $data['d'] = $this->umum->ambil_data('surat_keluar', 'id_surat_keluar', $id);
+		 $data['d'] = $this->umum->ambil_datanew('surat_keluar', 'id_surat_keluar', $id);
 		$this->template->load('admin/template', 'admin/update_surat_keluar', $data);
 	}
     function simpan_surat_keluar()
