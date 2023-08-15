@@ -107,24 +107,7 @@
 
     
 
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-       Laporan
-      </div>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url(); ?>assetsadmin/#" data-toggle="collapse" data-target="#collapseBootstrappp"
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="far fa-fw fa-window-maximize"></i>
-          <span>Download Laporan</span>
-        </a>
-        <div id="collapseBootstrappp" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Laporan</h6>
-           
-          </div>
-        </div>
-      </li>
+    
 
       <hr class="sidebar-divider">
       <li class="nav-item">

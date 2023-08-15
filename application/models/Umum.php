@@ -1107,6 +1107,22 @@ function get_data($tabel)
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+	function lap_surat_masuk($dari,$sampai)
+    {   
+        $this->db->select('*');
+$this->db->from('surat_masuk');
+      $this->db->where('tgl_surat between "'.$dari.'" and "'.$sampai.'"');               
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    function lap_surat_keluar($dari,$sampai)
+    {   
+        $this->db->select('*');
+$this->db->from('surat_keluar');
+      $this->db->where('tgl_surat between "'.$dari.'" and "'.$sampai.'"');               
+        $query = $this->db->get();
+        return $query->result_array();
+    }
  function lap_surat_janda($dari,$sampai)
     {   
         $this->db->select('*');

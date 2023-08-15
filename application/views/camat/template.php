@@ -111,7 +111,21 @@
         <div id="collapseBootstrappp" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Laporan</h6>
-           <a class="collapse-item" data-toggle="modal" data-target="#lapsurat" href="#">Pelayanan</a>
+           <a class="collapse-item" data-toggle="modal" data-target="#lapsuratdomisili" href="#">Surat Domisili</a>
+         
+           <a class="collapse-item" data-toggle="modal" data-target="#lapsuratusaha" href="#">Surat Usaha</a>
+                         <a class="collapse-item" data-toggle="modal" data-target="#lapsuratkehilangan" href="#">Surat Kehilangan</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratkurangmampu" href="#">Surat Kurang Mampu</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratkematian" href="#">Surat Kematian</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratbelummenikah" href="#">Surat Belum Menikah</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratpindahkeluar" href="#">Surat Pindah Keluar</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratpindahdatang" href="#">Surat Pindah Datang</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratizinkeramaian" href="#">Surat Izin Keramaian</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratskck" href="#">Surat SKCK</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratbiodek" href="#">Surat Biodek</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratjanda" href="#">Surat Janda</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratmasuk" href="#">Surat Masuk</a>
+                          <a class="collapse-item" data-toggle="modal" data-target="#lapsuratkeluar" href="#">Surat Keluar</a>
            <a class="collapse-item" data-toggle="modal" data-target="#lapkegiatan" href="#">Kegiatan</a>
            <a class="collapse-item" data-toggle="modal" data-target="#lappengaduan" href="#">Pengaduan</a>
            <a class="collapse-item" data-toggle="modal" data-target="#lapproposal" href="#">Pengajuan Proposal</a>
@@ -407,7 +421,561 @@
             </div>
 
 
+<div class="modal fade" id="lapsuratjanda" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Janda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_janda'); ?>
+                  
+                      <input type="hidden" class="form-control"  name="jenis" value="12" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
 
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="lapsuratkeluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Keluar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_keluar'); ?>
+                  
+                      <input type="hidden" class="form-control"  name="jenis" value="14" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="lapsuratmasuk" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Masuk</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_masuk'); ?>
+                  
+                      <input type="hidden" class="form-control"  name="jenis" value="13" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="lapsuratbiodek" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Biodek </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_biodek'); ?>
+                    <input type="hidden" class="form-control"  name="jenis" value="11" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+<div class="modal fade" id="lapsuratskck" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat SKCK </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_skck'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="10" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+<div class="modal fade" id="lapsuratizinkeramaian" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Izin Keramaian </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_izin_keramaian'); ?>
+                    <input type="hidden" class="form-control"  name="jenis" value="9" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+<div class="modal fade" id="lapsuratpindahdatang" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Pindah Datang </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_pindah_datang'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="8" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+<div class="modal fade" id="lapsuratpindahkeluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Pindah Keluar </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_pindah_keluar'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="7" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+<div class="modal fade" id="lapsuratbelummenikah" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Belum Menikah </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_belum_menikah'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="6" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="modal fade" id="lapsuratkematian" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Kematian </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_kematian'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="5" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="modal fade" id="lapsuratkurangmampu" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Kurang Mampu </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_kurang_mampu'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="4" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="modal fade" id="lapsuratkehilangan" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Kehilangan </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_kehilangan'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="3" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="lapsuratdomisili" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Domisili </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_domisili'); ?>
+                   <input type="hidden" class="form-control"  name="jenis" value="1" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+<div class="modal fade" id="lapsuratusaha" tabindex="-1" role="dialog" aria-labelledby="exampleModalFormTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalFormTitle">Laporan Surat Usaha </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <?php  
+             echo validation_errors();                       
+    echo form_open('camat/download_surat_usaha'); ?>
+                    <input type="hidden" class="form-control"  name="jenis" value="2" required >
+                       <div class="form-group">
+                        <label for="exampleInputEmail1">Dari</label>
+                        <input type="date" class="form-control"  name="dari" required >
+                        
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Sampai</label>
+                        <input type="date" class="form-control"  name="sampai" required >
+                        
+                      </div>
+                
+                      
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+
+                    <input type="submit" name="submit"  class="btn btn-info btn-pill" value="Download">
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
 
 
 

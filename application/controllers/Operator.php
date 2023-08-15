@@ -23,6 +23,120 @@ class Operator extends CI_Controller
 		}
 	}
 
+      function download_surat_keluar()
+    {
+           $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_keluar'] = $this->umum->lap_surat_keluar($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+    function download_surat_masuk()
+    {
+           $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_masuk'] = $this->umum->lap_surat_masuk($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_biodek()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_biodek'] = $this->umum->lap_surat_biodek($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_skck()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_skck'] = $this->umum->lap_surat_skck($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_izin_keramaian()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_izin_keramaian'] = $this->umum->lap_surat_izin_keramaian($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_pindah_keluar()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_pindah_keluar'] = $this->umum->lap_surat_pindah_keluar($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_pindah_datang()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_pindah_datang'] = $this->umum->lap_surat_pindah_datang($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_belum_menikah()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_belum_menikah'] = $this->umum->lap_surat_belum_menikah($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_kematian()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_kematian'] = $this->umum->lap_surat_kematian($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_kurang_mampu()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_kurang_mampu'] = $this->umum->lap_surat_kurang_mampu($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_kehilangan()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_kehilangan'] = $this->umum->lap_surat_kehilangan($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_usaha()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_usaha'] = $this->umum->lap_surat_usaha($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+
+    function download_surat_domisili()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_domisili'] = $this->umum->lap_surat_domisili($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+       function download_surat_janda()
+    {
+        $jenis = $this->input->post('jenis');
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+        $data['dt_surat_janda'] = $this->umum->lap_surat_janda($dari, $sampai);
+        $this->load->view('admin/download_semua_surat', $data);
+    }
+
 public function rupiah($angka){
   
   $hasil_rupiah = "" . number_format($angka,0,',','.');

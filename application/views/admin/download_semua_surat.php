@@ -558,6 +558,7 @@ padding:1.0pt 0cm 0cm 0cm'>
                      <table class="saya" width="100%" border="0">
                     <thead class="thead-light">
                       <tr>
+                                     <th class="style5">No</th>
                                      <th class="style5">Nama_Lngkap</th>
                         <th class="style5">Alamat_Rmh</th>
                         <th class="style5">RT</th>
@@ -587,6 +588,76 @@ padding:1.0pt 0cm 0cm 0cm'>
                         <td class="style5"><?php echo $d['tanggal_surat']; ?></td>
                         <td class="style5"><?php echo $d['no_surat']; ?></td>
                         <td class="style5"><?php echo $d['status']; ?></td>
+                      </tr>
+                       <?php endforeach; ?>
+                    </tbody>
+                  </table>
+                  <p>
+                  <?php endif; ?>
+
+                  <?php if($jenis==13): ?>         
+<center>DATA SURAT MASUK</center>
+<center><?php echo date("d-m-Y",strtotime($dari)); ?>s/d<?php echo date("d-m-Y",strtotime($sampai)); ?>  </center>
+<p/>
+                     <table class="saya" width="100%" border="0">
+                    <thead class="thead-light">
+                      <tr>
+                                      <th class="style5">No</th>
+                                <th class="style5">No Surat</th>
+                                <th class="style5">Perihal</th>
+                                <th class="style5">Pengirim</th>
+                                <th class="style5">Tgl Surat</th>
+                                <th class="style5">Tgl Diterima</th>
+                     
+                      </tr>
+                    </thead>
+                   
+                    <tbody>
+                         <?php 
+                                        $no=1;
+                                        foreach ($dt_surat_masuk as $d): ?>
+                      <tr>
+                        <td class="style5"><?php echo $no++; ?></td>
+                         <td class="style5"><?php echo $d['no_surat']; ?></td>
+                        <td class="style5"><?php echo $d['perihal']; ?></td>
+                        <td class="style5"><?php echo $d['pengirim']; ?></td>
+                        <td class="style5"><?php echo $d['tgl_surat']; ?></td>
+                        <td class="style5"><?php echo $d['tgl_diterima']; ?></td>
+                      </tr>
+                       <?php endforeach; ?>
+                    </tbody>
+                  </table>
+                  <p>
+                  <?php endif; ?>
+
+                  <?php if($jenis==14): ?>         
+<center>DATA SURAT KELUAR</center>
+<center><?php echo date("d-m-Y",strtotime($dari)); ?>s/d<?php echo date("d-m-Y",strtotime($sampai)); ?>  </center>
+<p/>
+                     <table class="saya" width="100%" border="0">
+                    <thead class="thead-light">
+                      <tr>
+                                      <th class="style5">No</th>
+                                <th class="style5">No Surat</th>
+                                <th class="style5">Perihal</th>
+                                <th class="style5">Tujuan</th>
+                                <th class="style5">Tgl Surat</th>
+                                <th class="style5">Tgl Kirim</th>
+                     
+                      </tr>
+                    </thead>
+                   
+                    <tbody>
+                         <?php 
+                                        $no=1;
+                                        foreach ($dt_surat_keluar as $d): ?>
+                      <tr>
+                        <td class="style5"><?php echo $no++; ?></td>
+                         <td class="style5"><?php echo $d['no_surat']; ?></td>
+                        <td class="style5"><?php echo $d['perihal']; ?></td>
+                        <td class="style5"><?php echo $d['tujuan']; ?></td>
+                        <td class="style5"><?php echo $d['tgl_surat']; ?></td>
+                        <td class="style5"><?php echo $d['tgl_kirim_surat']; ?></td>
                       </tr>
                        <?php endforeach; ?>
                     </tbody>
