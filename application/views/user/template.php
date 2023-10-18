@@ -74,6 +74,7 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
       
+            <a class="collapse-item" href="<?php echo base_url('user/buat_ktp'); ?>">Pembuatan KTP</a>
             <a class="collapse-item" href="<?php echo base_url('user/surat_domisili'); ?>">Surat Domisili</a>
             <a class="collapse-item" href="<?php echo base_url('user/surat_usaha'); ?>">Surat Usaha</a>
             <a class="collapse-item" href="<?php echo base_url('user/surat_kehilangan'); ?>">Surat Kehilangan</a>

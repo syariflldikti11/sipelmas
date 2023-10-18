@@ -23,6 +23,165 @@ class Admin extends CI_Controller
 		}
 	}
 
+    function tambah_buat_ktp()
+    {
+
+        $data['judul'] = 'tambah_buat_ktp';
+        $this->template->load('admin/template', 'admin/tambah_buat_ktp', $data);
+
+
+    }
+    function simpan_buat_ktp()
+    {
+        $this->db->set('id_buat_ktp', 'UUID()', FALSE);
+        $nik = $this->input->post('nik');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $desa = $this->input->post('desa');
+        $rt = $this->input->post('rt');
+        $agama = $this->input->post('agama');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tanggal_lahir = $this->input->post('tanggal_lahir');
+        $jkelamin = $this->input->post('jkelamin');
+        $wnegara = $this->input->post('wnegara');
+        $pekerjaan = $this->input->post('pekerjaan');
+        $snikah = $this->input->post('snikah');
+        $kk = $this->uploadKK();
+        $foto = $this->uploadFoto();
+        $data = array(
+            'nik' => $nik,
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'desa' => $desa,
+            'rt' => $rt,
+            'agama' => $agama,
+            'tempat_lahir' => $tempat_lahir,
+            'tanggal_lahir' => $tanggal_lahir,
+            'jkelamin' => $jkelamin,
+            'wnegara' => $wnegara,
+            'pekerjaan' => $pekerjaan,
+            'snikah' => $snikah,
+            'kk' => $kk,
+            'foto' => $foto
+        
+        );
+        $notif = "Tambah Data Berhasil";
+            $this->session->set_flashdata('success', $notif);
+        $this->umum->input_data($data, 'pelayanan_ktp');
+        redirect('admin/buat_ktp');
+    }
+     public function uploadKK()
+    {
+        $config['upload_path'] = 'upload/file';
+        $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+        $config['overwrite'] = false;
+        $config['max_size'] = 5000; // 1MB
+
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('kk')) {
+            return $this->upload->data("file_name");
+        }
+        $error = $this->upload->display_errors();
+        echo $error;
+        exit;
+        // return "default.jpg";
+    }
+     public function uploadFoto()
+    {
+        $config['upload_path'] = 'upload/file';
+        $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+        $config['overwrite'] = false;
+        $config['max_size'] = 5000; // 1MB
+
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('foto')) {
+            return $this->upload->data("file_name");
+        }
+        $error = $this->upload->display_errors();
+        echo $error;
+        exit;
+        // return "default.jpg";
+    }
+    function edit_buat_ktp($id = NULL)
+    {
+
+        $data['judul'] = "edit_buat_ktp";
+        $data['d'] = $this->umum->update_buat_ktp($id);
+        $this->template->load('admin/template', 'admin/update_buat_ktp', $data);
+
+    }
+    function update_buat_ktp()
+    {
+        $id_buat_ktp = $this->input->post('id_buat_ktp');
+        $nik = $this->input->post('nik');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $desa = $this->input->post('desa');
+        $rt = $this->input->post('rt');
+        $agama = $this->input->post('agama');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tanggal_lahir = $this->input->post('tanggal_lahir');
+        $jkelamin = $this->input->post('jkelamin');
+        $wnegara = $this->input->post('wnegara');
+        $snikah = $this->input->post('snikah');
+        $pekerjaan = $this->input->post('pekerjaan');
+        $status = $this->input->post('status');
+   
+
+        if (!empty($_FILES["kk"]["name"])) {
+            $kk = $this->uploadKK();
+        } else {
+            $kk = $this->input->post('old_image');
+        }
+         if (!empty($_FILES["foto"]["name"])) {
+            $foto = $this->uploadFoto();
+        } else {
+            $foto = $this->input->post('old_foto');
+        }
+        $data_update = array(
+            'id_buat_ktp' => $id_buat_ktp,
+            'nik' => $nik,
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'desa' => $desa,
+            'rt' => $rt,
+            'agama' => $agama,
+            'tempat_lahir' => $tempat_lahir,
+            'tanggal_lahir' => $tanggal_lahir,
+            'jkelamin' => $jkelamin,
+            'wnegara' => $wnegara,
+            'pekerjaan' => $pekerjaan,
+            'snikah' => $snikah,
+            'foto' => $foto,
+            'kk' => $kk,
+            'status' => $status,
+        );
+        $where = array('id_buat_ktp' => $id_buat_ktp);
+        $res = $this->umum->UpdateData('pelayanan_ktp', $data_update, $where);
+        if ($res >= 1) {
+            $notif = "Update Data Berhasil";
+            $this->session->set_flashdata('update', $notif);
+            redirect('admin/buat_ktp');
+        } else {
+            echo "<h1>GAGAL</h1>";
+        }
+    }
+        function buat_ktp()
+    {
+
+        $data['judul'] = 'buat_ktp';
+        $data['dt_ktp'] = $this->umum->get_data('pelayanan_ktp');
+        $this->template->load('admin/template', 'admin/buat_ktp', $data);
+
+
+    }
+
 public function rupiah($angka){
   
   $hasil_rupiah = "" . number_format($angka,0,',','.');
@@ -342,6 +501,7 @@ function tambah_surat_keluar()
 			'surat_masuk' => $this->umum->hitung('surat_masuk'),
 			'surat_keluar' => $this->umum->hitung('surat_keluar'),
 			'penugasan' => $this->umum->hitung('penugasan'),
+            'pelayanan_ktp' => $this->umum->hitung_surat('pelayanan_ktp', 'status','Selesai'),
 			'surat_domisili' => $this->umum->hitung_surat('surat_domisili', 'status','Selesai'),
 			'surat_biodek' => $this->umum->hitung_surat('surat_biodek', 'status','Selesai'),
 			'surat_belum_menikah' => $this->umum->hitung_surat('surat_belum_menikah', 'status','Selesai'),
@@ -354,7 +514,8 @@ function tambah_surat_keluar()
 			'surat_pindah_keluar' => $this->umum->hitung_surat('surat_pindah_keluar', 'status','Selesai'),
 			'surat_skck' => $this->umum->hitung_surat('surat_skck', 'status','Selesai'),
 			'surat_usaha' => $this->umum->hitung_surat('surat_usaha', 'status','Selesai'),
-			'psurat_domisili' => $this->umum->hitung_surat('surat_domisili', 'status','Proses'),
+            'psurat_domisili' => $this->umum->hitung_surat('surat_domisili', 'status','Proses'),
+			'ppelayanan_ktp' => $this->umum->hitung_surat('pelayanan_ktp', 'status','Proses'),
             'psurat_biodek' => $this->umum->hitung_surat('surat_biodek', 'status','Proses'),
             'psurat_belum_menikah' => $this->umum->hitung_surat('surat_belum_menikah', 'status','Proses'),
             'psurat_izin_keramaian' => $this->umum->hitung_surat('surat_izin_keramaian', 'status','Proses'),

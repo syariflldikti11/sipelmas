@@ -678,6 +678,16 @@ function camat_surat_kehilangan()
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+	function get_buat_ktp()
+	{
+		$this->db->select('*');
+		$this->db->from('pelayanan_ktp');
+		
+		$this->db->where('status','Validasi Pimpinan');
+	
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 	function print_surat_kehilangan($id = FALSE)
 	{
 	

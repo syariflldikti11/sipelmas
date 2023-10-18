@@ -1,6 +1,90 @@
 <?php
 	//----------------- CLASS MODELS -----------------------------
 class Umum extends CI_model{
+	 function qr_surat_domisili($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_domisili',array('id_surat_domisili'=>$id));
+	 
+		 }
+		  function qr_surat_belum_menikah($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_belum_menikah',array('id_surat_belum_menikah'=>$id));
+	 
+		 }
+		   function qr_surat_biodek($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_biodek',array('id_surat_biodek'=>$id));
+	 
+		 }
+		   function qr_surat_izin_keramaian($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_izin_keramaian',array('id_surat_izin_keramaian'=>$id));
+	 
+		 }
+		   function qr_surat_janda($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_janda',array('id_surat_janda'=>$id));
+	 
+		 }
+		   function qr_surat_kehilangan($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_kehilangan',array('id_surat_kehilangan'=>$id));
+	 
+		 }
+		   function qr_surat_kematian($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_kematian',array('id_surat_kematian'=>$id));
+	 
+		 }
+		   function qr_surat_kurang_mampu($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_kurang_mampu',array('id_surat_kurang_mampu'=>$id));
+	 
+		 }
+		   function qr_surat_pindah_datang($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_pindah_datang',array('id_surat_pindah_datang'=>$id));
+	 
+		 }
+		   function qr_surat_pindah_keluar($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_pindah_keluar',array('id_surat_pindah_keluar'=>$id));
+	 
+		 }
+		   function qr_surat_skck($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_skck',array('id_surat_skck'=>$id));
+	 
+		 }
+		   function qr_surat_usaha($id)
+
+		 {
+	 
+			 return $this->db->get_where('surat_usaha',array('id_surat_usaha'=>$id));
+	 
+		 }
 
 
 public function hitung_pengaduan()
@@ -854,6 +938,16 @@ function admin_surat_kehilangan()
 		}	
 
 		$query = $this->db->get_where('ktp', array('id_ktp' => $id));
+        return $query->row_array();
+	}
+	function update_buat_ktp($id = FALSE)
+	{
+		if($id == FALSE){
+			$query = $this->db->get('pelayanan_ktp');
+			return $query->result_array();
+		}	
+
+		$query = $this->db->get_where('pelayanan_ktp', array('id_buat_ktp' => $id));
         return $query->row_array();
 	}
 	function update_surat_masuk($id = FALSE)

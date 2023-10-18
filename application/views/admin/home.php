@@ -1,7 +1,7 @@
  
 <?php
 $total_pelayanan=0;
-$total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat_janda+$surat_kehilangan+$surat_kematian+$surat_kurang_mampu+$surat_pindah_datang+$surat_pindah_keluar+$surat_skck+$surat_usaha+$surat_domisili;
+$total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat_janda+$surat_kehilangan+$surat_kematian+$surat_kurang_mampu+$surat_pindah_datang+$surat_pindah_keluar+$surat_skck+$surat_usaha+$surat_domisili+$pelayanan_ktp;
 
 ?>
   
@@ -114,6 +114,13 @@ $total_pelayanan=$surat_biodek+$surat_belum_menikah+$surat_izin_keramaian+$surat
                       </tr>
                     </thead>
                     <tbody>
+                     <tr>
+                        <td>Pelayanan KTP</td>
+                        <td><?= $pelayanan_ktp; ?> </td>
+                        <td>
+                        <?php if($ppelayanan_ktp<>0) :?><span class="badge badge-danger"><?php endif; ?>
+                         <?php if($ppelayanan_ktp==0) :?><span class="badge badge-success"><?php endif; ?><?= $ppelayanan_ktp; ?> </span></td>
+                      </tr>
                       <tr>
                         <td>Surat Domisili</td>
                         <td><?= $surat_domisili; ?> </td>

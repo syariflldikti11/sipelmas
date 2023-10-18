@@ -160,8 +160,91 @@ function print_surat_kematian($id = NULL)
         $this->umum->input_data($data, 'ktp');
         redirect('user/ktp');
     }
+function tambah_buat_ktp()
+    {
+
+        $data['judul'] = 'tambah_buat_ktp';
+        $this->template->load('user/template', 'user/tambah_buat_ktp', $data);
 
 
+    }
+    function simpan_buat_ktp()
+    {
+        $this->db->set('id_buat_ktp', 'UUID()', FALSE);
+        $nik = $this->input->post('nik');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $desa = $this->input->post('desa');
+        $rt = $this->input->post('rt');
+        $agama = $this->input->post('agama');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tanggal_lahir = $this->input->post('tanggal_lahir');
+        $jkelamin = $this->input->post('jkelamin');
+        $wnegara = $this->input->post('wnegara');
+        $pekerjaan = $this->input->post('pekerjaan');
+        $snikah = $this->input->post('snikah');
+        $kk = $this->uploadKK();
+        $foto = $this->uploadFoto();
+        $data = array(
+            'nik' => $nik,
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'desa' => $desa,
+            'rt' => $rt,
+            'agama' => $agama,
+            'tempat_lahir' => $tempat_lahir,
+            'tanggal_lahir' => $tanggal_lahir,
+            'jkelamin' => $jkelamin,
+            'wnegara' => $wnegara,
+            'pekerjaan' => $pekerjaan,
+            'snikah' => $snikah,
+            'kk' => $kk,
+            'foto' => $foto
+        
+        );
+        $notif = "Tambah Data Berhasil";
+            $this->session->set_flashdata('success', $notif);
+        $this->umum->input_data($data, 'pelayanan_ktp');
+        redirect('user/buat_ktp');
+    }
+   public function uploadKK()
+    {
+        $config['upload_path'] = 'upload/file';
+        $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+        $config['overwrite'] = false;
+        $config['max_size'] = 5000; // 1MB
+
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('kk')) {
+            return $this->upload->data("file_name");
+        }
+        $error = $this->upload->display_errors();
+        echo $error;
+        exit;
+        // return "default.jpg";
+    }
+     public function uploadFoto()
+    {
+        $config['upload_path'] = 'upload/file';
+        $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+        $config['overwrite'] = false;
+        $config['max_size'] = 5000; // 1MB
+
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('foto')) {
+            return $this->upload->data("file_name");
+        }
+        $error = $this->upload->display_errors();
+        echo $error;
+        exit;
+        // return "default.jpg";
+    }
     public function uploadKTP()
     {
         $config['upload_path'] = 'upload/file';
@@ -180,6 +263,68 @@ function print_surat_kematian($id = NULL)
         echo $error;
         exit;
         // return "default.jpg";
+    }
+     function edit_buat_ktp($id = NULL)
+    {
+
+        $data['judul'] = "edit_buat_ktp";
+        $data['d'] = $this->umum->update_buat_ktp($id);
+        $this->template->load('user/template', 'user/update_buat_ktp', $data);
+
+    }
+    function update_buat_ktp()
+    {
+        $id_buat_ktp = $this->input->post('id_buat_ktp');
+        $nik = $this->input->post('nik');
+        $nama = $this->input->post('nama');
+        $alamat = $this->input->post('alamat');
+        $desa = $this->input->post('desa');
+        $rt = $this->input->post('rt');
+        $agama = $this->input->post('agama');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tanggal_lahir = $this->input->post('tanggal_lahir');
+        $jkelamin = $this->input->post('jkelamin');
+        $wnegara = $this->input->post('wnegara');
+        $snikah = $this->input->post('snikah');
+        $pekerjaan = $this->input->post('pekerjaan');
+   
+
+        if (!empty($_FILES["kk"]["name"])) {
+            $kk = $this->uploadKK();
+        } else {
+            $kk = $this->input->post('old_image');
+        }
+         if (!empty($_FILES["foto"]["name"])) {
+            $foto = $this->uploadFoto();
+        } else {
+            $foto = $this->input->post('old_foto');
+        }
+        $data_update = array(
+            'id_buat_ktp' => $id_buat_ktp,
+            'nik' => $nik,
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'desa' => $desa,
+            'rt' => $rt,
+            'agama' => $agama,
+            'tempat_lahir' => $tempat_lahir,
+            'tanggal_lahir' => $tanggal_lahir,
+            'jkelamin' => $jkelamin,
+            'wnegara' => $wnegara,
+            'pekerjaan' => $pekerjaan,
+            'snikah' => $snikah,
+            'foto' => $foto,
+            'kk' => $kk
+        );
+        $where = array('id_buat_ktp' => $id_buat_ktp);
+        $res = $this->umum->UpdateData('pelayanan_ktp', $data_update, $where);
+        if ($res >= 1) {
+            $notif = "Update Data Berhasil";
+            $this->session->set_flashdata('update', $notif);
+            redirect('user/buat_ktp');
+        } else {
+            echo "<h1>GAGAL</h1>";
+        }
     }
     function edit_ktp($id = NULL)
     {
@@ -252,6 +397,15 @@ function print_surat_kematian($id = NULL)
         $data['judul'] = 'ktp';
         $data['dt_ktp'] = $this->umum->ambil_ktp('ktp');
         $this->template->load('user/template', 'user/ktp', $data);
+
+
+    }
+      function buat_ktp()
+    {
+
+        $data['judul'] = 'buat_ktp';
+        $data['dt_ktp'] = $this->umum->get_data('pelayanan_ktp');
+        $this->template->load('user/template', 'user/buat_ktp', $data);
 
 
     }
