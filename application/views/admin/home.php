@@ -271,7 +271,7 @@ jQuery(function(){
    type: 'column',
   },
   title: {
-   text: '',
+   text: 'Kegiatan Pada Kecamatan Kertak Hanyar',
    x: -20
   },
   subtitle: {
@@ -279,7 +279,7 @@ jQuery(function(){
    x: -20
   },
   xAxis: {
-   categories: ['Kegiatan'],
+   categories: ['Kegiatan Pada Kecamatan Kertak Hanyar'],
    
   },
   yAxis: {

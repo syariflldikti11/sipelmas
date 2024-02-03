@@ -22,6 +22,7 @@
                         <th>Status Nikah</th>
                        <th>Tanggal_Surat</th>
                         <th>Nomor Surat</th>
+                        <th>Berkas</th>
                         <th>Status</th>
                        
                         <th>Opsi/Pilihan</th>
@@ -43,6 +44,7 @@
                         <td><?php echo $d['status_nikah']; ?></td>
                         <td><?php echo $d['tanggal_surat']; ?></td>
                         <td><?php echo $d['no_surat']; ?></td>
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                           
                          <td><a class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingin menghapus data ini')"  href="<?php echo base_url('admin/delete_surat_belum_menikah/'.$d['id_surat_belum_menikah']);?>"> <i class="fas fa-trash"></i> </a>  </a>  <a class="btn btn-info btn-sm"   href="<?php echo base_url('admin/update_surat_belum_menikah/'.$d['id_surat_belum_menikah']);?>"> <i class="fas fa-fw fa-edit"></i> </a>

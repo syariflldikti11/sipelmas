@@ -19,6 +19,7 @@
                         <th>TTL</th>
                         <th>No Penguasaan</th>
                         <th>Luas Tanah</th>
+                        <th>Berkas</th>
                        
                         <th>Status</th>
 
@@ -40,8 +41,7 @@
                         <td><?php echo $d['tempat_lahir']; ?>, <?php echo $d['tanggal_lahir']; ?></td>
                         <td><?php echo $d['no_tanah']; ?></td>
                         <td><?php echo $d['luas_tanah']; ?></td>
-                        <td><?php echo $d['tanggal_surat']; ?></td>
-                        <td><?php echo $d['no_surat']; ?></td>
+                       <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                            <td>        
 

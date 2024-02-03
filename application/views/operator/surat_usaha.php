@@ -21,6 +21,7 @@
                         <th>Alamat Usaha</th>
                        <th>Tanggal Surat</th>
                         <th>Nomor Surat</th>
+                        <th>Berkas</th>
                         <th>Status</th>
                        
                         <th>Opsi/Pilihan</th>
@@ -44,6 +45,7 @@
                         <td><?php echo $d['alamat_usaha']; ?></td>
                            <td><?php echo $d['tanggal_surat']; ?></td>
                         <td><?php echo $d['no_surat']; ?></td>
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                           
                          <td><a class="btn btn-danger btn-sm" onclick="return confirm('anda yakin ingin menghapus data ini')"  href="<?php echo base_url('operator/delete_surat_usaha/'.$d['id_surat_usaha']);?>"> <i class="fas fa-trash"></i> </a>  </a>  <a class="btn btn-info btn-sm"   href="<?php echo base_url('operator/update_surat_usaha/'.$d['id_surat_usaha']);?>"> <i class="fas fa-fw fa-edit"></i> </a><a class="btn btn-success btn-sm"   href="<?php echo base_url('operator/print_surat_usaha/'.$d['id_surat_usaha']);?>"> <i class="fas fa-fw fa-print"></i> </a></td>

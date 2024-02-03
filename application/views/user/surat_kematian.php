@@ -23,6 +23,7 @@
                         <th>Pukul </th>
                         <th>Bertempat </th>
                         <th>Dimakamkan </th>
+                        <th>Berkas </th>
                         
                         <th>Status</th>
                       
@@ -47,7 +48,7 @@
                         <td><?php echo $d['pukul']; ?></td>
                         <td><?php echo $d['bertempat']; ?></td>
                         <td><?php echo $d['dimakamkan']; ?></td>
-                       
+                       <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                          <td>
                             <?php if($d['status']=='Selesai'):?>

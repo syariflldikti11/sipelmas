@@ -18,6 +18,7 @@
                         <th>RT</th>
                         <th>TTL</th>
                         <th>Keperluan</th>
+                        <th>Berkas</th>
 
                         <th>Status</th>
                        
@@ -38,7 +39,7 @@
                         <td><?php echo $d['rt']; ?></td>
                         <td><?php echo $d['tempat_lahir']; ?>, <?php echo $d['tanggal_lahir']; ?></td>
                         <td><?php echo $d['keperluan']; ?></td>
-                       
+                       <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                            <td>        
 

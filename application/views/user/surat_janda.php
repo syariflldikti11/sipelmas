@@ -20,6 +20,7 @@
                         <th>Pekerjaan</th>
                         <th>Tanggal_Surat</th>
                         <th>Nomor_Surat</th>
+                        <th>Berkas</th>
                         <th>Status</th>
 
                         <th>Opsi/Pilihan</th>
@@ -42,6 +43,7 @@
 
                         <td><?php echo $d['tanggal_surat']; ?></td>
                         <td><?php echo $d['no_surat']; ?></td>
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                           <td>        
 

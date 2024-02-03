@@ -21,6 +21,7 @@
                         <th>Peruntukan/Penggunaan </th>
                         <th>keperluan </th>
                         <th>Penghasilan </th>
+                        <th>Berkas </th>
                        
                         <th>Status</th>
                        
@@ -43,12 +44,12 @@
                         <td><?php echo $d['peruntukan']; ?></td>
                         <td><?php echo $d['keperluan']; ?></td>
                         <td><?php echo $d['penghasilan']; ?></td>
-                        
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                         
                          <td>
                           <?php if($d['status']=='Selesai'):?>
- <a class="btn btn-success btn-sm"   href="<?php echo base_url('admin/print_surat_kematian/'.$d['id_surat_kematian']);?>"> <i class="fas fa-fw fa-print"></i> </a>
+ <a class="btn btn-success btn-sm"   href="<?php echo base_url('admin/print_surat_kurang_mampu/'.$d['id_surat_kurang_mampu']);?>"> <i class="fas fa-fw fa-print"></i> </a>
 <?php endif; ?>
 
 <?php if($d['status']!='Selesai'):?> 

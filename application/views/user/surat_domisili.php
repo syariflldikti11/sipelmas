@@ -19,6 +19,7 @@
                         <th>Tmpt_Tgl_Lahir</th>
                         <th>Pekerjaan</th>
                         <th>Alamat_Domisli</th>
+                        <th>Berkas</th>
                        
                         <th>Status</th>
                        
@@ -39,6 +40,7 @@
                         <td><?php echo $d['tempat_lahir']; ?>, <?php echo $d['tanggal_lahir']; ?></td>
                         <td><?php echo $d['pekerjaan']; ?></td>
                         <td><?php echo $d['alamat_domisili']; ?></td>
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                        
                         <td><?php echo $d['status']; ?></td>
                 <td>        

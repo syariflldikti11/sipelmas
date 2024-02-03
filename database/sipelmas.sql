@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Okt 2023 pada 07.07
--- Versi server: 10.4.11-MariaDB
+-- Waktu pembuatan: 03 Feb 2024 pada 17.53
+-- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -39,7 +39,7 @@ CREATE TABLE `informasi` (
 --
 
 INSERT INTO `informasi` (`id_informasi`, `isi_informasi`, `informasi`, `file`) VALUES
-('1', 'tes', 'tes', '');
+('1', 'Syarat pengusulan layanan lihat pada lampiran di bawah ini', 'tes', 'Syarat_Pelayanan_Kecamatan_Kertak_Hanyar.pdf');
 
 -- --------------------------------------------------------
 
@@ -346,16 +346,6 @@ CREATE TABLE `surat_belum_menikah` (
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_belum_menikah`
---
-
-INSERT INTO `surat_belum_menikah` (`id_surat_belum_menikah`, `no_surat`, `id_ktp`, `bin`, `status_nikah`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('68ff14ae-3bd4-11ee-9f7f-10af40302f5f', '69/SIA/VII/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'ruslan', 'Janda', '2023-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '68ff14ae-3bd4-11ee-9f7f-10af40302f5f.png'),
-('b87f9644-3bd4-11ee-9f7f-10af40302f5f', '223 / PPN / L / 2023', '6620acc8-3b67-11ee-9f7f-10af40302f5f', 'santoso', 'Duda', '2023-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'b87f9644-3bd4-11ee-9f7f-10af40302f5f.png'),
-('bcc4857b-3bd3-11ee-9f7f-10af40302f5f', '300/0023/TR/I/2023', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'Andrea', 'Belum menikah', '2023-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'bcc4857b-3bd3-11ee-9f7f-10af40302f5f.png'),
-('f7ec9fef-3bd3-11ee-9f7f-10af40302f5f', '280/29/TP/BY/2024', '736bedd0-3b65-11ee-9f7f-10af40302f5f', 'rafi\'i', 'Belum menikah', '2023-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'f7ec9fef-3bd3-11ee-9f7f-10af40302f5f.png');
-
 -- --------------------------------------------------------
 
 --
@@ -375,16 +365,6 @@ CREATE TABLE `surat_biodek` (
   `no_tanah` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_biodek`
---
-
-INSERT INTO `surat_biodek` (`id_surat_biodek`, `no_surat`, `id_ktp`, `luas_tanah`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`, `no_tanah`) VALUES
-('3c4bbbbb-3be9-11ee-9f7f-10af40302f5f', 'TM /590 /PEM', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', '60 Meter', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '', '001'),
-('6b58b70c-3c33-11ee-bafc-3a9b5dfee47c', 'HM/575/PEM', '6620acc8-3b67-11ee-9f7f-10af40302f5f', '70 Meter', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '', '004'),
-('cfb8d485-3be9-11ee-9f7f-10af40302f5f', 'HM/780/PEM', '736bedd0-3b65-11ee-9f7f-10af40302f5f', '50 meter', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '', '002'),
-('fcc3cff6-3be9-11ee-9f7f-10af40302f5f', 'HM/570/PEM', '0201511b-3b68-11ee-9f7f-10af40302f5f', '20 meter', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '', '003');
-
 -- --------------------------------------------------------
 
 --
@@ -402,20 +382,6 @@ CREATE TABLE `surat_domisili` (
   `file` char(100) NOT NULL,
   `qrcode` char(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `surat_domisili`
---
-
-INSERT INTO `surat_domisili` (`id_surat_domisili`, `no_surat`, `id_ktp`, `alamat_domisili`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('0e5b78de-3b78-11ee-9f7f-10af40302f5f', '212/SKD/VII/2023', 'e60a5097-3b66-11ee-9f7f-10af40302f5f', 'mahligai', '2023-08-07', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '0e5b78de-3b78-11ee-9f7f-10af40302f5f.png'),
-('375e0321-4236-11ee-aa25-2f3681e7045b', 'No.12/Sekt-RT/III/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'manarap', '2023-08-07', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '375e0321-4236-11ee-aa25-2f3681e7045b.png'),
-('5872e70c-3b77-11ee-9f7f-10af40302f5f', '470/ 10 / DS-PAB/ I / 2023', '52a093b5-3b66-11ee-9f7f-10af40302f5f', 'Manarap Lama', '2023-08-07', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '5872e70c-3b77-11ee-9f7f-10af40302f5f.png'),
-('756ab9fc-3b76-11ee-9f7f-10af40302f5f', '03 / SK/RW.04/vii/2023', '736bedd0-3b65-11ee-9f7f-10af40302f5f', 'kertak hanyar', '2023-08-07', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '756ab9fc-3b76-11ee-9f7f-10af40302f5f.png'),
-('a7a1fc12-505f-11ee-9cd0-e321f6735c74', '414/659 /BPD/DPMD', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'kertak hanyar', '2023-09-01', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Validasi Pimpinan', '', ''),
-('c70bd770-6d72-11ee-989b-c454445434d3', '470 / 314/PH/ XII/ 2021', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'jalan bjms', '2023-10-18', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'c70bd770-6d72-11ee-989b-c454445434d3.png'),
-('c9cd4eeb-505f-11ee-9cd0-e321f6735c74', 'TM /1607 /PEM', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'kertak hanyar', '2023-09-02', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'c9cd4eeb-505f-11ee-9cd0-e321f6735c74.png'),
-('ce2dc96e-3b77-11ee-9f7f-10af40302f5f', '202/003/TR/I/2023', '6620acc8-3b67-11ee-9f7f-10af40302f5f', 'kertak hanyar', '2023-08-07', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'ce2dc96e-3b77-11ee-9f7f-10af40302f5f.png');
 
 -- --------------------------------------------------------
 
@@ -438,16 +404,6 @@ CREATE TABLE `surat_izin_keramaian` (
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_izin_keramaian`
---
-
-INSERT INTO `surat_izin_keramaian` (`id_surat_izin_keramaian`, `no_surat`, `id_ktp`, `dalam_rangka`, `hari`, `tanggal`, `tempat`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('b90765a0-3be1-11ee-9f7f-10af40302f5f', '001/SK.PBS/III2023', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'permohonan izin mengadakan bakti sosial keseahatan', 'minggu', '07', 'mahligai', '2023-08-18', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', ''),
-('cc1e5290-3c32-11ee-bafc-3a9b5dfee47c', 'O24/PLMM/IX/2023', '736bedd0-3b65-11ee-9f7f-10af40302f5f', 'Acara Festival', 'Minggu', '20', 'banjarbaru', '2023-08-18', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', ''),
-('cf545ccc-3be3-11ee-9f7f-10af40302f5f', '022/mada-LMPP/VIII/2023', 'e60a5097-3b66-11ee-9f7f-10af40302f5f', 'laskar merah putih perjuangan', 'kamis', '17', 'di halaman gedung susu', '2023-08-18', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', ''),
-('dd12c068-3be0-11ee-9f7f-10af40302f5f', '331 / 165 / BTL / AM / SB / 2023', '52a093b5-3b66-11ee-9f7f-10af40302f5f', 'Acara Resepsi Perkawinan', 'minggu', '07', 'galaxy hotel', '2023-08-18', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -465,16 +421,6 @@ CREATE TABLE `surat_janda` (
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_janda`
---
-
-INSERT INTO `surat_janda` (`id_surat_janda`, `no_surat`, `id_ktp`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('3e4d3ec8-3beb-11ee-9f7f-10af40302f5f', '113/Ds/II/2023', '736bedd0-3b65-11ee-9f7f-10af40302f5f', '0202-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '3e4d3ec8-3beb-11ee-9f7f-10af40302f5f.png'),
-('89a3c8d4-3bea-11ee-9f7f-10af40302f5f', '473.3/ 575/430.10.15.2/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', '2023-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '89a3c8d4-3bea-11ee-9f7f-10af40302f5f.png'),
-('dccc1430-3bea-11ee-9f7f-10af40302f5f', '145/01/WN/KPJ-KTB/SKJ/2023', '52a093b5-3b66-11ee-9f7f-10af40302f5f', '2023-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'dccc1430-3bea-11ee-9f7f-10af40302f5f.png'),
-('f2d32a73-3c33-11ee-bafc-3a9b5dfee47c', '135/KBL/VIII/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', '2023-08-10', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'f2d32a73-3c33-11ee-bafc-3a9b5dfee47c.png');
-
 -- --------------------------------------------------------
 
 --
@@ -488,23 +434,12 @@ CREATE TABLE `surat_kehilangan` (
   `kehilangan` char(200) NOT NULL,
   `tgl_kehilangan` date NOT NULL,
   `tempat` char(100) NOT NULL,
-  `tanggal_surat` date NOT NULL DEFAULT current_timestamp(),
+  `tanggal_surat` date NOT NULL,
   `tanda_tangan` char(100) DEFAULT NULL,
   `status` char(100) NOT NULL DEFAULT 'Proses',
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `surat_kehilangan`
---
-
-INSERT INTO `surat_kehilangan` (`id_surat_kehilangan`, `no_surat`, `id_ktp`, `kehilangan`, `tgl_kehilangan`, `tempat`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('48b81ad1-3bcc-11ee-9f7f-10af40302f5f', '212/MB.BB/2023', '52a093b5-3b66-11ee-9f7f-10af40302f5f', 'STNK', '2023-08-07', 'jl.ayani km.6', '2023-08-05', '9a08c31f-3b62-11ee-9f7f-10af40302f5f', 'Selesai', '', '48b81ad1-3bcc-11ee-9f7f-10af40302f5f.png'),
-('ae7ebde1-3c2d-11ee-bafc-3a9b5dfee47c', '470/507/.V.10.06/XI.2023', '736bedd0-3b65-11ee-9f7f-10af40302f5f', 'Katu Keluarga', '2023-08-07', 'mahligai', '2023-08-05', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'ae7ebde1-3c2d-11ee-bafc-3a9b5dfee47c.png'),
-('bbbc8325-4320-11ee-824b-e1aec5cebc40', '021/UND/DBH-KH/V/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'STNK', '2023-08-14', 'banjarmasin', '2023-08-12', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Proses', '', ''),
-('d95f28f1-3bb0-11ee-9f7f-10af40302f5f', '208/0023//TR/I2023', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'kartu mahasiswa', '2023-08-07', 'jl.ayani km.8', '2023-08-05', 'b6d748b6-3b62-11ee-9f7f-10af40302f5f', 'Selesai', '', 'd95f28f1-3bb0-11ee-9f7f-10af40302f5f.png'),
-('f231b672-3bcc-11ee-9f7f-10af40302f5f', '310/GBR/VII/2023', 'e60a5097-3b66-11ee-9f7f-10af40302f5f', 'KTP', '2023-08-07', 'jalan pramuka', '2023-08-05', 'b6d748b6-3b62-11ee-9f7f-10af40302f5f', 'Selesai', '', 'f231b672-3bcc-11ee-9f7f-10af40302f5f.png');
 
 -- --------------------------------------------------------
 
@@ -521,18 +456,6 @@ CREATE TABLE `surat_keluar` (
   `file` varchar(200) NOT NULL,
   `tgl_kirim_surat` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `surat_keluar`
---
-
-INSERT INTO `surat_keluar` (`id_surat_keluar`, `no_surat`, `perihal`, `tujuan`, `tgl_surat`, `file`, `tgl_kirim_surat`) VALUES
-('0ddbdf43-3b72-11ee-9f7f-10af40302f5f', 'KU/869-Keu/KH', 'Permohonan Tunjangan Kelangkaan Profesi', 'Kecamatan Kertak Hanyar', '2023-11-02', 'keluar_3.jpeg', '2023-02-03'),
-('66d79f19-3b72-11ee-9f7f-10af40302f5f', 'HM.03.00/831/KH', 'Date Calender Of Events', 'Kecamatan Kertak Hanyar', '2023-10-24', 'keluar_4.jpeg', '2023-10-25'),
-('6b35fbf7-3b71-11ee-9f7f-10af40302f5f', 'HM.03.00/846/KH', 'Undangan Rapat Koordinasi', 'Kecamatan Kertak Hanyar', '2023-10-21', 'keluar_1.jpeg', '2023-10-23'),
-('a6aa19fd-3b72-11ee-9f7f-10af40302f5f', 'HM.03.00/870/KH', 'Undangan Serah Terima Jabatan Camat Kertak Hanyar', 'Kecamatan Kertak Hanyar', '2023-11-05', 'keluar_5.jpeg', '2023-11-05'),
-('bd683728-3b71-11ee-9f7f-10af40302f5f', 'HM.03.00/850/KH', 'Undangan Lokakarya Mini Percepatan Penurunan Stunting Kec. Kertak Hanyar', 'Kecamatan Kertak Hanyar', '2023-10-26', 'keluar_2.jpeg', '2023-11-02'),
-('f04016f5-3b72-11ee-9f7f-10af40302f5f', 'KP.00/903-UMPEG/KH', 'Usulan ke 2 Calon Kpsek Panwas Kecamatan Kertak Hanyar', 'Kecamatan Kertak Hanyar', '2023-11-14', 'keluar_6.jpeg', '2023-11-14');
 
 -- --------------------------------------------------------
 
@@ -555,16 +478,6 @@ CREATE TABLE `surat_kematian` (
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_kematian`
---
-
-INSERT INTO `surat_kematian` (`id_surat_kematian`, `no_surat`, `id_ktp`, `hari`, `pukul`, `bertempat`, `dimakamkan`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('6a5301d5-3bd2-11ee-9f7f-10af40302f5f', '121/KBL/VIII/2023', '6620acc8-3b67-11ee-9f7f-10af40302f5f', 'sabtu', '08.30', 'di rumah duka', 'TPU', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '6a5301d5-3bd2-11ee-9f7f-10af40302f5f.png'),
-('e1f19795-3bd1-11ee-9f7f-10af40302f5f', '201/0012/TR/I/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'jumat', '02.00', 'rumah sakit', 'TPU', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'e1f19795-3bd1-11ee-9f7f-10af40302f5f.png'),
-('f07f5d9c-3bd2-11ee-9f7f-10af40302f5f', '218/KD/-RHT/SKK/1X/2023', '52a093b5-3b66-11ee-9f7f-10af40302f5f', 'jumat', '03.00', 'rumah sakit melahirkan', 'karang paci', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'f07f5d9c-3bd2-11ee-9f7f-10af40302f5f.png'),
-('fdc9326d-3c2e-11ee-bafc-3a9b5dfee47c', '140/517/14.SKM/XII/2023', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'selasa', '10.00', 'di rumah duka', 'Karang Paci', '2023-08-04', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'fdc9326d-3c2e-11ee-bafc-3a9b5dfee47c.png');
-
 -- --------------------------------------------------------
 
 --
@@ -584,16 +497,6 @@ CREATE TABLE `surat_kurang_mampu` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `surat_kurang_mampu`
---
-
-INSERT INTO `surat_kurang_mampu` (`id_surat_kurang_mampu`, `no_surat`, `id_ktp`, `peruntukan`, `keperluan`, `penghasilan`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('635fff6a-3bcf-11ee-9f7f-10af40302f5f', '204/0015/TR/I/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'SURAT PERNYATAAN MISIKN', 'biaya mencari penghasilan', '500.000', '2023-08-03', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '635fff6a-3bcf-11ee-9f7f-10af40302f5f.png'),
-('7c6d8925-3c04-11ee-9f7f-10af40302f5f', '213/Des.Gkestur/Kesra.2016', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'SURAT KETERANGAN MISIKN', 'biaya mengambil obat', '400.000', '2023-08-03', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '7c6d8925-3c04-11ee-9f7f-10af40302f5f.png'),
-('82439d65-3bd0-11ee-9f7f-10af40302f5f', '470/ 12 /413.312/23/2023', '6620acc8-3b67-11ee-9f7f-10af40302f5f', 'SURAT KETERANGAN MISIKN', 'biaya berobat di rumah sakit', '1.000.000', '2023-08-03', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '82439d65-3bd0-11ee-9f7f-10af40302f5f.png'),
-('ea149d7a-3bcf-11ee-9f7f-10af40302f5f', '011/VIX/CA/2023', '736bedd0-3b65-11ee-9f7f-10af40302f5f', 'SURAT KETERANGAN MISIKN', 'beasiswa', '600.000', '2023-08-03', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', 'ea149d7a-3bcf-11ee-9f7f-10af40302f5f.png');
 
 -- --------------------------------------------------------
 
@@ -681,16 +584,6 @@ CREATE TABLE `surat_pindah_datang` (
   `jenis_permohonan` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_pindah_datang`
---
-
-INSERT INTO `surat_pindah_datang` (`id_surat_pindah_datang`, `no_kk`, `nama_kk`, `alamat_awal`, `rt_awal`, `rw_awal`, `dusun_awal`, `desa_awal`, `kec_awal`, `kab_awal`, `prov_awal`, `pos_awal`, `telp_awal`, `id_ktp`, `alasan_pindah`, `alamat_pindah`, `rt_pindah`, `rw_pindah`, `dusun_pindah`, `desa_pindah`, `kec_pindah`, `kab_pindah`, `prov_pindah`, `pos_pindah`, `telp_pindah`, `jenis_kepindahan`, `status_kk_tidak_pindah`, `status_kk_pindah`, `no_surat`, `tanggal_surat`, `file`, `qrcode`, `nik1`, `nik2`, `nik3`, `nik4`, `nik5`, `nik6`, `nik7`, `nama1`, `nama2`, `nama3`, `nama4`, `nama5`, `nama6`, `nama7`, `status`, `tanda_tangan`, `jenis_permohonan`) VALUES
-('0efec4c7-3c32-11ee-bafc-3a9b5dfee47c', '6303021312100002', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '05', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081367891234', '6620acc8-3b67-11ee-9f7f-10af40302f5f', 'Perumahan', 'banjarmasin', '10', '01', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70652', '081367891234', 'Kepala Keluarga', 'Membuat KK Baru', 'Membuat KK Baru', '470 / 17 / LN - IV / 2023', '2023-08-12', '', '', '6302031507760005', '6302036407760003', '6302751501010007', '6302621202060003', '', '', '', 'ahsa', 'arin ', 'zayyan', 'alex', '', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Desa dalam Satu Kecamatan'),
-('1d79c8e0-3bdc-11ee-9f7f-10af40302f5f', '6303021312100002', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '05', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081347602749', '736bedd0-3b65-11ee-9f7f-10af40302f5f', 'Pendidikan', 'komplek melati indah', '05', '07', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70652', '081347602749', 'Kepala Keluarga', 'Numpang KK', 'Numpang KK', '470 / 12 / LN - IV / 2023', '2023-08-12', '', '', '6302031507760005', '6302036407760003', '', '', '', '', '', 'muhammad raffi', 'siti nur annisa', '', '', '', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Kabupaten/Kota Atau Provinsi'),
-('ef8aa21d-3bdf-11ee-9f7f-10af40302f5f', '6303021312100002', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '01', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081367891257', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'Lainnya', 'jl.ayani km.8', '10', '08', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70157', '081367891257', 'Kepala Keluarga', 'Nomor KK Tetap', 'Numpang KK', '038 / 19 / KS /2023', '2023-08-12', '', '', '6302031507760005', '', '', '', '', '', '', 'zayyan', '', '', '', '', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Desa dalam Satu Kecamatan'),
-('f863ab80-3bdd-11ee-9f7f-10af40302f5f', '1101060505910001', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '01', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081367891257', '52a093b5-3b66-11ee-9f7f-10af40302f5f', 'Kesehatan', 'jalan pramuka km.6', '10', '05', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70150', '081367891257', 'Kepala Keluarga', 'Numpang KK', 'Numpang KK', '09/ 145 / 2023', '2023-08-12', '', '', '6302031507760005', '6302036407760003', '', '', '', '', '', 'syafina', 'rara', '', '', '', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Desa dalam Satu Kecamatan');
-
 -- --------------------------------------------------------
 
 --
@@ -749,16 +642,6 @@ CREATE TABLE `surat_pindah_keluar` (
   `jenis_permohonan` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `surat_pindah_keluar`
---
-
-INSERT INTO `surat_pindah_keluar` (`id_surat_pindah_keluar`, `no_kk`, `nama_kk`, `alamat_awal`, `rt_awal`, `rw_awal`, `dusun_awal`, `desa_awal`, `kec_awal`, `kab_awal`, `prov_awal`, `pos_awal`, `telp_awal`, `id_ktp`, `alasan_pindah`, `alamat_pindah`, `rt_pindah`, `rw_pindah`, `dusun_pindah`, `desa_pindah`, `kec_pindah`, `kab_pindah`, `prov_pindah`, `pos_pindah`, `telp_pindah`, `jenis_kepindahan`, `status_kk_tidak_pindah`, `status_kk_pindah`, `no_surat`, `tanggal_surat`, `file`, `qrcode`, `nik1`, `nik2`, `nik3`, `nik4`, `nik5`, `nik6`, `nik7`, `nama1`, `nama2`, `nama3`, `nama4`, `nama5`, `nama6`, `nama7`, `status`, `tanda_tangan`, `jenis_permohonan`) VALUES
-('9b8ec1e7-3bd6-11ee-9f7f-10af40302f5f', '6303021312100002', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '04', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081367891234', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'Pekerjaan', 'banjarbaru', '12', '05', 'banjar', 'loktabat', 'loktabat selatan', 'banjar', 'kalimantan selatan', '70858', '081367891234', 'Kepala Keluarga', 'Numpang KK', 'Membuat KK Baru', '102/0004TR/I/2023', '2023-08-11', '', '.png', '19630675', '19630670', '19630671', '', '', '', '', 'Siti Nur Annisa', 'Rabi\'atul', 'zayyan', '', '', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Desa dalam Satu Kecamatan'),
-('b6c8fd50-3c30-11ee-bafc-3a9b5dfee47c', '6303021312100002', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '05', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081347602749', 'e60a5097-3b66-11ee-9f7f-10af40302f5f', 'Lainnya', 'manarap', '07', '02', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70652', '081347602749', 'Kepala Keluarga', 'Nomor KK Tetap', 'Nomor KK Tetap', '470 / 10 / BA - IV / 2023', '2023-08-11', '', '.png', '6302031507760005', '6302036407760003', '6302751501010007', '', '', '', '', 'Siti Nur Annisa', 'rara', 'dewi', '', '', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Desa dalam Satu Kecamatan'),
-('cea348bf-3bd9-11ee-9f7f-10af40302f5f', '6303021312100002', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '05', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081347602749', '6620acc8-3b67-11ee-9f7f-10af40302f5f', 'Keluarga', 'komplek melati indah', '02', '07', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70655', '081347602749', 'Kepala Keluarga', 'Membuat KK Baru', 'Membuat KK Baru', '005/PK/60/XI/2023', '2023-08-11', '', '.png', '6302031507780002', '6302036407760003', '6302751501010007', '6302621202060003', '6302641501310002', '', '', 'muhammad raffi', 'kamsidah', 'siti nur annisa', 'rabi\'atul', 'dewi melati', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Kabupaten/Kota Atau Provinsi'),
-('e6ac3e73-3bda-11ee-9f7f-10af40302f5f', '6303021312100002', 'muhammad rafi\'i', 'jl.ayani km.7', '06', '02', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70654', '081345097812', 'e60a5097-3b66-11ee-9f7f-10af40302f5f', 'Perumahan', 'bunyamin', '05', '01', 'banjar', 'kertak hanyar 1', 'kertak hanyar', 'banjar', 'kalimantan selatan', '70157', '081345097812', 'Kepala Keluarga', 'Nomor KK Tetap', 'Nomor KK Tetap', '470 / 15 / C.4.05/2023', '2023-08-11', '', '.png', '6302031507760005', '', '', '', '', '', '', 'muhammad raffi', '', '', '', '', '', '', 'Selesai', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Antar Desa dalam Satu Kecamatan');
-
 -- --------------------------------------------------------
 
 --
@@ -782,10 +665,7 @@ CREATE TABLE `surat_skck` (
 --
 
 INSERT INTO `surat_skck` (`id_surat_skck`, `no_surat`, `id_ktp`, `keperluan`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('002e757c-3c08-11ee-9f7f-10af40302f5f', 'SKCK/YANMAS/523/IX/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'melamar pekerjaan di swasta', '2023-08-05', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '002e757c-3c08-11ee-9f7f-10af40302f5f.png'),
-('335aa44a-3be8-11ee-9f7f-10af40302f5f', 'SKCK/YANMAS/639/IX/2023', '52a093b5-3b66-11ee-9f7f-10af40302f5f', 'melengkapi adm kuliah', '2023-08-05', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '335aa44a-3be8-11ee-9f7f-10af40302f5f.png'),
-('3bbcf734-3be7-11ee-9f7f-10af40302f5f', 'SKCK/07525/III/2023/INTELKAM', '6620acc8-3b67-11ee-9f7f-10af40302f5f', 'melamar pekerjaan', '2023-08-05', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '3bbcf734-3be7-11ee-9f7f-10af40302f5f.png'),
-('6e818e64-3be6-11ee-9f7f-10af40302f5f', 'SKCK/49/VIII/2023/SEKTOR', 'e60a5097-3b66-11ee-9f7f-10af40302f5f', 'melamar pekerjaan', '2023-08-05', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '6e818e64-3be6-11ee-9f7f-10af40302f5f.png');
+('b361cc06-c2b4-11ee-b9a5-7f66825833f6', '', '736bedd0-3b65-11ee-9f7f-10af40302f5f', 'PERSYARATAN PENETAPAN NI PPPK FORMASI TAHUN 2023 KOTA BANJARMASIN', '0000-00-00', NULL, 'Proses', '9009bfc35b492340ecbe23625162b900.pdf', '');
 
 -- --------------------------------------------------------
 
@@ -806,16 +686,6 @@ CREATE TABLE `surat_usaha` (
   `file` char(100) NOT NULL,
   `qrcode` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `surat_usaha`
---
-
-INSERT INTO `surat_usaha` (`id_surat_usaha`, `no_surat`, `id_ktp`, `jenis_usaha`, `nama_usaha`, `alamat_usaha`, `tanggal_surat`, `tanda_tangan`, `status`, `file`, `qrcode`) VALUES
-('03bcff65-3b85-11ee-9f7f-10af40302f5f', '503/970-EKB/VII/2023', '52a093b5-3b66-11ee-9f7f-10af40302f5f', 'pedagang', 'pengusaha', 'kertak hanyar', '2023-08-02', 'b6d748b6-3b62-11ee-9f7f-10af40302f5f', 'Selesai', '', '03bcff65-3b85-11ee-9f7f-10af40302f5f.png'),
-('423a1737-3b84-11ee-9f7f-10af40302f5f', '205/0016/TRI/I2023', 'e60a5097-3b66-11ee-9f7f-10af40302f5f', 'distributor, properti dll', 'PT. MAJU MAKMUR', 'jl.ayani km.7.800', '2023-08-02', '9a08c31f-3b62-11ee-9f7f-10af40302f5f', 'Selesai', '', '423a1737-3b84-11ee-9f7f-10af40302f5f.png'),
-('574a87d8-3c05-11ee-9f7f-10af40302f5f', '140/24/BGS/III/2023', '0681d18c-3b6a-11ee-9f7f-10af40302f5f', 'pedangang swasta', 'syafaat motor', 'jl.ayani km.7.800', '2023-08-02', '5ae6330e-3b63-11ee-9f7f-10af40302f5f', 'Selesai', '', '574a87d8-3c05-11ee-9f7f-10af40302f5f.png'),
-('bf6a4a8d-3b82-11ee-9f7f-10af40302f5f', '394/SKU/KU/KS/XI/2023', '0201511b-3b68-11ee-9f7f-10af40302f5f', 'pengurus yayasan', 'yayasan', 'jl.ayani km.8 kertak hanyar', '2023-08-02', '9a08c31f-3b62-11ee-9f7f-10af40302f5f', 'Selesai', '', 'bf6a4a8d-3b82-11ee-9f7f-10af40302f5f.png');
 
 -- --------------------------------------------------------
 

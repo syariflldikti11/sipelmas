@@ -21,6 +21,7 @@
                         <th>Jenis Usaha</th>
                         <th>Nama Usaha</th>
                         <th>Alamat Usaha</th>
+                        <th>Berkas</th>
                       
                         <th>Status</th>
                
@@ -42,7 +43,7 @@
                         <td><?php echo $d['jenis_usaha']; ?></td>
                         <td><?php echo $d['nama_usaha']; ?></td>
                         <td><?php echo $d['alamat_usaha']; ?></td>
-                         
+                            <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                          <td>
 <?php if($d['status']=='Selesai'):?>

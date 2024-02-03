@@ -17,6 +17,7 @@
                         <th>NIK</th>
                         <th>Nama</th>
                         <th>Tanggal Surat</th>
+                        <th>Berkas</th>
                         <th>Status</th>
                        
                         <th>Opsi</th>
@@ -34,6 +35,7 @@
                            <td><?php echo $d['nik']; ?></td>
                         <td><?php echo $d['nama']; ?></td>
                         <td><?php echo $d['tanggal_surat']; ?></td>
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                         
                         <td>   <?php if($d['status']=='Selesai'):?>

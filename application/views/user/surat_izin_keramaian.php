@@ -21,6 +21,7 @@
                         <th>Hari</th>
                         <th>Tanggal </th>
                         <th>Tempat</th>
+                        <th>Berkas</th>
 
                         <th>Status</th>
 
@@ -44,6 +45,7 @@
                         <td><?php echo $d['hari']; ?></td>
                         <td><?php echo $d['tanggal']; ?></td>
                         <td><?php echo $d['tempat']; ?></td>
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                             <td>        
 

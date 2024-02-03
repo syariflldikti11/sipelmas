@@ -19,6 +19,7 @@
                         <th>Kehilangan</th>
                         <th>Tgl_Kehilangan</th>
                         <th>Tempat</th>
+                        <th>Berkas</th>
                         <th>Status</th>
                       
                         <th>Opsi</th>
@@ -38,6 +39,7 @@
                         <td><?php echo $d['kehilangan']; ?></td>
                         <td><?php echo $d['tgl_kehilangan']; ?></td>
                         <td><?php echo $d['tempat']; ?></td>
+                        <td><a target="_blank" href="<?= base_url(); ?>upload/file/<?= $d['file']; ?>">File </a></td>
                         <td><?php echo $d['status']; ?></td>
                         
                          <td>

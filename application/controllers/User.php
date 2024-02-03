@@ -270,6 +270,8 @@ function tambah_buat_ktp()
         $config['allowed_types'] = 'pdf|jpg|jpeg|png';
         $config['overwrite'] = false;
         $config['max_size'] = 5000; // 1MB
+        $config['encrypt_name'] = TRUE;
+
 
 
         $this->load->library('upload', $config);
