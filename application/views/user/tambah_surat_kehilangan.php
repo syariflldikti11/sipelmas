@@ -11,7 +11,7 @@
                 
        <?php echo validation_errors();
                                                        
-    echo form_open('user/tambah_surat_kehilangan'); ?>
+    echo form_open_multipart('user/tambah_surat_kehilangan'); ?>
                     <div class="form-group">
                       <label for="exampleInputEmail1">NIK</label>
                      <select name="id_ktp" id="id_ktp" class="select2-single form-control " onchange="changeValuee(this.value)" >
@@ -57,6 +57,11 @@
                      <div class="form-group">
                       <label for="exampleInputEmail1">Tempat</label>
                       <input type="text" name="tempat" class="form-control" placeholder="tempat kehilangan terkahir kali....">
+                    
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Berkas</label>
+                      <input type="file" name="file" class="form-control">
                     
                     </div>
 

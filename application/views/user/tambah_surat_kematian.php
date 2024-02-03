@@ -11,7 +11,7 @@
                 
        <?php echo validation_errors();
                                                        
-    echo form_open('user/tambah_surat_kematian'); ?>
+    echo form_open_multipart('user/tambah_surat_kematian'); ?>
                     <div class="form-group">
                       <label for="exampleInputEmail1">NIK</label>
                       <select name="id_ktp" id="id_ktp" class="select2-single form-control " onchange="changeValuee(this.value)" >
@@ -66,7 +66,11 @@
                     
                     </div>
 
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Berkas</label>
+                      <input type="file" name="file" class="form-control">
                     
+                    </div>
                  
                     <input type="submit" name="submit" class="btn btn-info" value="Tambah">
                   </form>

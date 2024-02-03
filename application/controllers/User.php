@@ -264,6 +264,25 @@ function tambah_buat_ktp()
         exit;
         // return "default.jpg";
     }
+    public function uploadFile()
+    {
+        $config['upload_path'] = 'upload/file';
+        $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+        $config['overwrite'] = false;
+        $config['max_size'] = 5000; // 1MB
+
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('file')) {
+            return $this->upload->data("file_name");
+        }
+        $error = $this->upload->display_errors();
+        echo $error;
+        exit;
+        // return "default.jpg";
+    }
      function edit_buat_ktp($id = NULL)
     {
 
@@ -616,6 +635,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_kematian");
             redirect('user/surat_kematian');
         }
@@ -682,6 +703,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_belum_menikah");
             redirect('user/surat_belum_menikah');
         }
@@ -745,6 +768,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_kurang_mampu");
             redirect('user/surat_kurang_mampu');
         }
@@ -797,7 +822,9 @@ function tambah_buat_ktp()
         $data['judul'] = "tambah_surat_domisili";
         $data['dt_ktp'] = $this->umum->get_ktp();
         $data['dt_pegawai'] = $this->umum->get_data('pegawai');
+
         $this->db->set('id_surat_domisili', 'UUID()', FALSE);
+       
         $this->form_validation->set_rules('id_ktp', 'id_ktp', 'required');
 
         $this->form_validation->set_rules('alamat_domisili', 'tambah_surat_domisili', 'required');
@@ -808,6 +835,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_domisili");
             redirect('user/surat_domisili');
         }
@@ -867,6 +896,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_janda");
             redirect('user/surat_janda');
         }
@@ -928,6 +959,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_kehilangan");
             redirect('user/surat_kehilangan');
         }
@@ -992,6 +1025,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_usaha");
             redirect('user/surat_usaha');
         }
@@ -1096,6 +1131,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_pindah_datang");
             redirect('user/surat_pindah_datang');
         }
@@ -1315,6 +1352,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_pindah_keluar");
             redirect('user/surat_pindah_keluar');
         }
@@ -1495,6 +1534,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_skck");
             redirect('user/surat_skck');
         }
@@ -1553,6 +1594,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_biodek");
             redirect('user/surat_biodek');
         }
@@ -1611,6 +1654,8 @@ function tambah_buat_ktp()
         else {
             $notif = "Tambah Data Berhasil";
             $this->session->set_flashdata('success', $notif);
+             $file = $this->uploadFile();
+          $this->db->set('file',  $file);
             $this->umum->set_data("surat_izin_keramaian");
             redirect('user/surat_izin_keramaian');
         }

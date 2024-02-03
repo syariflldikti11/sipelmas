@@ -11,7 +11,7 @@
                 
        <?php echo validation_errors();
                                                        
-    echo form_open('user/tambah_surat_skck'); ?>
+    echo form_open_multipart('user/tambah_surat_skck'); ?>
                     <div class="form-group">
                       <label for="exampleInputEmail1">NIK</label>
                      
@@ -47,6 +47,11 @@
                      <div class="form-group">
                       <label for="exampleInputEmail1">Keperluan</label>
                       <input type="text" name="keperluan" class="form-control">
+                    
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Berkas</label>
+                      <input type="file" name="file" class="form-control">
                     
                     </div>
                     

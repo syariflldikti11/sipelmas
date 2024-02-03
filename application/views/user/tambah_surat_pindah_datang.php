@@ -11,7 +11,7 @@
                 <div class="card-body">
                    <?php echo validation_errors();
                                                        
-    echo form_open('user/tambah_surat_pindah_datang'); ?>
+    echo form_open_multipart('user/tambah_surat_pindah_datang'); ?>
                      <div class="form-group">
                       <label for="exampleInputEmail1">Jenis Permohonan</label>
                       <select name="jenis_permohonan" class="select2-single form-control" id="select2Single">
@@ -46,6 +46,11 @@
                 </div>
                 <div class="card-body">
                   <form>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Berkas</label>
+                      <input type="file" name="file" class="form-control">
+                    
+                    </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">NO KK</label>
                       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
